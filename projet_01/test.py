@@ -37,8 +37,18 @@ def test_server_creation():
 
     print("Serveur MCP correctement créé !")
     print(f"  Nom: {solution.mcp_server.name}")
-    print(f"  Host: {solution.mcp_server.host}")
-    print(f"  Port: {solution.mcp_server.port}")
+    
+    # Vérifie les variables host et port si elles existent
+    if hasattr(solution, 'mcp_host'):
+        print(f"  Host: {solution.mcp_host}")
+    else:
+        print(f"  Host: (non défini comme variable)")
+    
+    if hasattr(solution, 'mcp_port'):
+        print(f"  Port: {solution.mcp_port}")
+    else:
+        print(f"  Port: (non défini comme variable)")
+    
     return True
 
 def test_main_exists():
