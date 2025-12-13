@@ -1,4 +1,4 @@
-from mcp.server.fastmcp import FastMCP
+from mcp.server.fastmcp import FastMCP, Context
 from typing import Any
 
 # TODO: Crée le serveur MCP avec support des resources
@@ -28,7 +28,6 @@ RESOURCES = {
 }
 
 # TODO: Crée la fonction list_resources
-@mcp_server.list_resources()
 async def list_resources() -> list[dict[str, Any]]:
     """
     Liste toutes les ressources disponibles.
@@ -38,9 +37,11 @@ async def list_resources() -> list[dict[str, Any]]:
     """
     pass
 
+# TODO: Enregistre la fonction avec FastMCP
+# mcp_server.list_resources = list_resources
+
 # TODO: Crée la fonction read_resource
-@mcp_server.read_resource()
-async def read_resource(uri: str) -> dict[str, Any]:
+async def read_resource(uri: str, ctx: Context = None) -> dict[str, Any]:
     """
     Lit le contenu d'une ressource.
 
@@ -55,6 +56,8 @@ async def read_resource(uri: str) -> dict[str, Any]:
     """
     pass
 
+# TODO: Enregistre la fonction avec FastMCP
+# mcp_server.read_resource = read_resource
 
 def main():
     print("Mon serveur MCP avec resources démarre !")
