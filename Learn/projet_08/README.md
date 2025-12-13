@@ -24,9 +24,11 @@ Une **ressource** est une source de données que le serveur MCP expose aux clien
 
 ### Comment FastMCP gère les ressources
 
-Dans FastMCP, tu utilises des décorateurs :
-- `@mcp_server.list_resources()` : Liste les ressources disponibles
-- `@mcp_server.read_resource()` : Lit le contenu d'une ressource
+Dans FastMCP, tu dois assigner directement les fonctions :
+- `mcp_server.list_resources = list_resources` : Liste les ressources disponibles
+- `mcp_server.read_resource = read_resource` : Lit le contenu d'une ressource
+
+**Note** : Contrairement aux outils (`@mcp_server.tool()`), les resources utilisent l'assignation directe, pas des décorateurs.
 
 ## Documentation MCP
 
