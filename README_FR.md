@@ -4,7 +4,14 @@ Bienvenue dans ce guide d'apprentissage progressif pour comprendre le Model Cont
 
 ## Structure d'apprentissage
 
-Ce dossier contient **25 mini-projets progressifs** qui te permettront de maîtriser MCP du niveau débutant au niveau avancé :
+Ce dépôt contient **40 mini-projets progressifs** qui te permettront de maîtriser MCP du niveau débutant au niveau avancé, avec des spécialisations en cybersécurité offensive et défensive.
+
+Les projets sont organisés en trois catégories :
+- **Learn** (Projets 01-25) : Concepts fondamentaux de MCP
+- **Offensive** (Projets 26-32) : Outils et techniques de sécurité offensive
+- **Defensive** (Projets 33-40) : Outils défensifs et réponse aux incidents
+
+## Parcours d'apprentissage
 
 ### Projets - Niveau Débutant (01-07)
 
@@ -52,6 +59,48 @@ Ce dossier contient **25 mini-projets progressifs** qui te permettront de maîtr
 24. **Projet 24** - Transports personnalisés et optimisations
 25. **Projet 25** - PROJET FINAL AVANCÉ : Serveur MCP complet avec toutes les fonctionnalités
 
+### Projets - Sécurité Offensive (26-32)
+
+26. **Projet 26** - Scanner de Ports MCP : Scanner les ports et analyser les services
+27. **Projet 27** - Gestionnaire de Payloads : Gérer les exploits, shells et shellcodes
+28. **Projet 28** - Analyseur de Vulnérabilités : Analyser les CVE et générer des advisories
+29. **Projet 29** - Gestionnaire de Sessions Pentest : Gérer les sessions d'exploitation
+30. **Projet 30** - Framework d'Exploitation : Chaîner les exploits avec payloads intelligents
+31. **Projet 31** - Gestionnaire C2 : Simulation de serveur Command & Control
+32. **Projet 32** - Automatisation de Pentest : Orchestrer des workflows de pentest complets
+
+### Projets - Sécurité Défensive (33-40)
+
+33. **Projet 33** - SIEM MCP : Security Information and Event Management
+34. **Projet 34** - Gestionnaire d'Incidents : Gérer les incidents de sécurité avec triage
+35. **Projet 35** - Analyseur de Malware : Analyser les fichiers suspects et générer des règles YARA
+36. **Projet 36** - Gestionnaire de Patchs : Suivre et déployer les patchs de sécurité
+37. **Projet 37** - Gestionnaire de Règles Firewall : Gérer les règles firewall avec validation
+38. **Projet 38** - Détecteur d'Anomalies : Détecter les anomalies avec baselines et ML
+39. **Projet 39** - Gestionnaire de Secrets : Gérer de manière sécurisée mots de passe, tokens et clés
+40. **Projet 40** - PROJET FINAL AVANCÉ : Plateforme de sécurité complète (offensive + défensive)
+
+## Structure du dépôt
+
+Le dépôt est organisé en trois répertoires principaux :
+
+```
+Learn/
+├── projet_01/       # Projets d'apprentissage MCP (01-25)
+├── projet_02/
+└── ...
+
+Offensive/
+├── projet_26/       # Projets sécurité offensive (26-32)
+├── projet_27/
+└── ...
+
+Defensive/
+├── projet_33/       # Projets sécurité défensive (33-40)
+├── projet_34/
+└── ...
+```
+
 ## Comment utiliser ces projets
 
 Pour chaque projet :
@@ -68,16 +117,40 @@ Pour chaque projet :
 - Compréhension basique de Python (fonctions, classes, imports)
 - Aucune connaissance de MCP requise (on apprend tout ici !)
 
+## Installation
+
+```bash
+pip install mcp pydantic
+```
+
+Ou avec `uv` :
+
+```bash
+uv pip install mcp pydantic
+```
+
 ## Objectifs d'apprentissage
 
 À la fin de ces projets, tu sauras :
 
--  Créer un serveur MCP avec FastMCP
--  Déclarer et implémenter des outils (tools)
--  Utiliser Pydantic pour valider les données
--  Gérer les logs et le contexte
--  Gérer les erreurs proprement
--  Structurer un projet MCP comme Exegol-MCP
+- ✅ Créer un serveur MCP avec FastMCP
+- ✅ Déclarer et implémenter des outils (tools)
+- ✅ Utiliser Pydantic pour valider les données
+- ✅ Gérer les logs et le contexte
+- ✅ Gérer les erreurs proprement
+- ✅ Structurer un projet MCP comme Exegol-MCP
+- ✅ **Outils sécurité offensive** : Scan de ports, exploitation, gestion C2
+- ✅ **Outils sécurité défensive** : SIEM, réponse aux incidents, analyse malware
+- ✅ **Plateformes de sécurité complètes** : Combiner capacités offensive et défensive
+
+## Statut des traductions
+
+**Note :**
+- **Projets Learn (01-25)** : Documentation en français (README.md et INSTRUCTIONS.md)
+- **Projets Offensive (26-32)** : Documentation en anglais
+- **Projets Defensive (33-40)** : Documentation en anglais
+
+Le code, les fichiers de test et les noms de variables utilisent les conventions anglaises dans tous les projets.
 
 ## Notes importantes
 
@@ -86,6 +159,12 @@ Pour chaque projet :
 - N'hésite pas à regarder le code d'Exegol-MCP pour référence
 - Je suis là pour t'aider et corriger tes solutions !
 
+## Ressources
+
+- [Spécification MCP](https://modelcontextprotocol.io)
+- [Documentation FastMCP](https://github.com/jlowin/fastmcp)
+- [Documentation Pydantic](https://docs.pydantic.dev)
+
 ---
 
-**Bonne chance ! **
+**Bonne chance !**

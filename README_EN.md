@@ -199,4 +199,3 @@ This learning path is inspired by real-world MCP implementations and follows the
 ---
 
 **Happy Learning!**
-
