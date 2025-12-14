@@ -1,33 +1,32 @@
-# Instructions - Projet 12
+# Instructions - Project 12
 
-## Ta mission
+## Your mission
 
-Créer des prompts avec des arguments dynamiques pour personnaliser le contenu.
+Create prompts with dynamic arguments to personalize content.
 
-## Étapes à suivre
+## Steps to follow
 
-1. **Utilise la base du projet 11** ou crée un nouveau serveur
+1. **Use the base from project 11** or create a new server
 
-2. **Modifie `list_prompts`** pour inclure les arguments :
-   - Chaque prompt peut avoir un champ `arguments` (liste)
-   - Chaque argument a `name`, `description`, `required`
+2. **Modify `list_prompts`** to include arguments:
+   - Each prompt can have an `arguments` field (list)
+   - Each argument has `name`, `description`, `required`
 
-3. **Modifie `get_prompt`** pour accepter des arguments :
-   - Prend un paramètre `arguments` (dict, optionnel)
-   - Utilise les arguments pour remplacer des placeholders dans le texte
-   - Valide que les arguments requis sont présents
+3. **Modify `get_prompt`** to accept arguments:
+   - Takes an `arguments` parameter (dict, optional)
+   - Uses arguments to replace placeholders in text
+   - Validates that required arguments are present
 
-4. **Crée au moins 2 prompts avec arguments** :
-   - `code_review` : Prend `language` (requis) et `code` (requis)
-   - `summary` : Prend `topic` (requis) et `length` (optionnel, défaut "short")
+4. **Create at least 2 prompts with arguments**:
+   - `code_review`: Takes `language` (required) and `code` (required)
+   - `summary`: Takes `topic` (required) and `length` (optional, default "short")
 
-## Indices
+## Hints
 
-- Utilise `.format()` ou f-strings pour remplacer les arguments
-- Valide les arguments requis avant de générer le message
-- Si un argument requis est manquant, lève `ValueError`
+- Use `.format()` or f-strings to replace arguments
+- Validate required arguments before generating the message
+- If a required argument is missing, raise `ValueError`
 
 ## Test
 
-Utilise `python test.py` pour vérifier que les prompts avec arguments fonctionnent.
-
+Use `python test.py` to verify that prompts with arguments work.

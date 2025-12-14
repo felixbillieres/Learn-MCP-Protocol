@@ -1,5 +1,5 @@
 """
-Script de test pour le projet 15
+Test script for project 15
 """
 
 import sys
@@ -8,24 +8,24 @@ import asyncio
 from unittest.mock import AsyncMock, MagicMock
 
 async def test_schema_structure():
-    """Test que les outils sont définis"""
+    """Test that tools are defined"""
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
     
-    if not hasattr(solution, 'inscription'):
-        print("❌ L'outil 'inscription' n'existe pas")
+    if not hasattr(solution, 'register'):
+        print("❌ The tool 'register' does not exist")
         return False
     
-    if not hasattr(solution, 'commander_produit'):
-        print("❌ L'outil 'commander_produit' n'existe pas")
+    if not hasattr(solution, 'order_product'):
+        print("❌ The tool 'order_product' does not exist")
         return False
     
-    print("✅ Les outils existent")
+    print("✅ Tools exist")
     return True
 
 async def test_validation_functions():
-    """Test que les fonctions de validation fonctionnent"""
+    """Test that validation functions work"""
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
@@ -33,21 +33,21 @@ async def test_validation_functions():
     # Test validate_username
     if hasattr(solution, 'validate_username'):
         assert solution.validate_username("test123") == True
-        assert solution.validate_username("ab") == False  # Trop court
-        assert solution.validate_username("a" * 21) == False  # Trop long
-        assert solution.validate_username("test-123") == False  # Caractère invalide
-        print("✅ validate_username fonctionne")
+        assert solution.validate_username("ab") == False  # Too short
+        assert solution.validate_username("a" * 21) == False  # Too long
+        assert solution.validate_username("test-123") == False  # Invalid character
+        print("✅ validate_username works")
     
     # Test validate_email
     if hasattr(solution, 'validate_email'):
         assert solution.validate_email("test@example.com") == True
         assert solution.validate_email("invalid") == False
-        print("✅ validate_email fonctionne")
+        print("✅ validate_email works")
     
     return True
 
 async def test_elicitation_with_schema():
-    """Test que l'elicitation peut être appelée"""
+    """Test that elicitation can be called"""
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
@@ -64,15 +64,15 @@ async def test_elicitation_with_schema():
     mock_ctx.elicitation = mock_elicitation
     
     try:
-        await solution.inscription(mock_ctx)
-        print("✅ L'outil peut être appelé")
+        await solution.register(mock_ctx)
+        print("✅ The tool can be called")
         return True
     except Exception as e:
-        print(f"⚠️  Erreur (peut être normal si non implémenté) : {e}")
+        print(f"⚠️  Error (may be normal if not implemented): {e}")
         return True
 
 if __name__ == "__main__":
-    print("🧪 Test du Projet 15\n")
+    print("🧪 Test for Project 15\n")
     
     success = True
     success = asyncio.run(test_schema_structure()) and success
@@ -83,9 +83,8 @@ if __name__ == "__main__":
     
     print()
     if success:
-        print("✅ Tests de base passent !")
-        print("💡 Pour tester l'elicitation complètement, utilise un client MCP réel")
+        print("✅ Basic tests pass!")
+        print("💡 To test elicitation completely, use a real MCP client")
     else:
-        print("❌ Certains tests ont échoué.")
+        print("❌ Some tests failed.")
         sys.exit(1)
-

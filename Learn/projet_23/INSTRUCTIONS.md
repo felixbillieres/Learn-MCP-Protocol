@@ -1,16 +1,15 @@
-# Instructions - Projet 23
+# Instructions - Project 23
 
-## Ta mission
+## Your mission
 
-Créer un serveur qui utilise les roots pour opérer dans des répertoires autorisés.
+Create a server that uses roots to operate in authorized directories.
 
-## Étapes
+## Steps
 
-1. **Demander les roots** : Utilise `ctx.roots.list()` pour obtenir les roots disponibles
+1. **Request roots**: Use `ctx.roots.list()` to get available roots
 
-2. **Créer des outils qui respectent les roots** :
-   - `lister_fichiers` : Liste les fichiers dans les roots autorisés
-   - `lire_fichier` : Lit un fichier s'il est dans un root autorisé
+2. **Create tools that respect roots**:
+   - `list_files`: Lists files in authorized roots
+   - `read_file`: Reads a file if it's in an authorized root
 
-3. **Valider les chemins** : Vérifie que le chemin demandé est bien dans un root autorisé
-
+3. **Validate paths**: Checks that the requested path is within an authorized root

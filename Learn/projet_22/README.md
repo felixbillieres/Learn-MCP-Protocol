@@ -1,17 +1,16 @@
-# Projet 22 : Sécurité avancée et bonnes pratiques
+# Project 22: Advanced security and best practices
 
-## Objectif
+## Objective
 
-Appliquer les bonnes pratiques de sécurité : validation d'audience, protection contre token passthrough, rate limiting.
+Apply security best practices: audience validation, protection against token passthrough, rate limiting.
 
 ## Concepts
 
-- Validation stricte d'audience
-- Protection contre token reuse
-- Rate limiting par utilisateur
-- Logging des tentatives d'accès
+- Strict audience validation
+- Protection against token reuse
+- Rate limiting per user
+- Logging access attempts
 
-## Ce que tu vas créer
+## What you will create
 
-Un serveur sécurisé avec toutes ces protections.
-
+A secure server with all these protections.

@@ -51,19 +51,19 @@ class SecurityReport(BaseModel):
 # TODO: Create 20+ tools covering all domains
 # Offensive tools
 @mcp_server.tool()
-async def scanner_ports(target: str, ctx: Context = None) -> Dict[str, Any]:
+async def scan_ports(target: str, ctx: Context = None) -> Dict[str, Any]:
     """Scan ports (from project 26)"""
     pass
 
 # Defensive tools
 @mcp_server.tool()
-async def collecter_evenement(source: str, event_type: str, ctx: Context = None) -> Dict[str, Any]:
+async def collect_event(source: str, event_type: str, ctx: Context = None) -> Dict[str, Any]:
     """Collect security event (from project 33)"""
     pass
 
 # Integration tools
 @mcp_server.tool()
-async def correler_offensive_defensive(
+async def correlate_offensive_defensive(
     scan_id: int,
     incident_id: int,
     ctx: Context = None
@@ -72,7 +72,7 @@ async def correler_offensive_defensive(
     pass
 
 @mcp_server.tool()
-async def generer_rapport_complet(
+async def generate_complete_report(
     operation_id: int,
     ctx: Context = None
 ) -> SecurityReport:
@@ -113,4 +113,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

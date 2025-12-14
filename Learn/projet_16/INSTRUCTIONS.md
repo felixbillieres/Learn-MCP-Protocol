@@ -1,35 +1,34 @@
-# Instructions - Projet 16
+# Instructions - Project 16
 
-## Ta mission
+## Your mission
 
-Créer un outil qui utilise l'elicitation URL mode pour l'authentification sécurisée.
+Create a tool that uses URL mode elicitation for secure authentication.
 
-## Étapes à suivre
+## Steps to follow
 
-1. **Crée un serveur FastMCP** basique
+1. **Create a basic FastMCP server**
 
-2. **Crée un outil `authentifier`** :
-   - Utilise `ctx.elicitation.create()` avec `mode="url"`
-   - Demande une URL d'authentification (ex: `https://auth.example.com/login`)
-   - Retourne un message indiquant que l'utilisateur doit s'authentifier via l'URL
+2. **Create an `authenticate` tool**:
+   - Uses `ctx.elicitation.create()` with `mode="url"`
+   - Requests an authentication URL (e.g., `https://auth.example.com/login`)
+   - Returns a message indicating the user must authenticate via the URL
 
-3. **Crée un outil `configurer_api_key`** :
-   - Utilise aussi URL mode
-   - Redirige vers une page pour configurer une clé API
-   - Retourne une confirmation
+3. **Create a `configure_api_key` tool**:
+   - Also uses URL mode
+   - Redirects to a page to configure an API key
+   - Returns a confirmation
 
-4. **Important** :
-   - Pour URL mode, utilise `mode="url"` dans l'elicitation
-   - L'URL fournie doit être complète (avec https://)
-   - Le serveur doit expliquer clairement pourquoi l'URL est nécessaire
+4. **Important**:
+   - For URL mode, use `mode="url"` in elicitation
+   - The provided URL must be complete (with https://)
+   - The server must clearly explain why the URL is necessary
 
-## Indices
+## Hints
 
-- URL mode utilise la même API mais avec `mode: "url"` et une `url` au lieu de `requested_schema`
-- Le format est : `{"mode": "url", "message": "...", "url": "https://..."}`
-- L'utilisateur sera redirigé vers l'URL pour compléter l'action
+- URL mode uses the same API but with `mode: "url"` and a `url` instead of `requested_schema`
+- The format is: `{"mode": "url", "message": "...", "url": "https://..."}`
+- The user will be redirected to the URL to complete the action
 
 ## Test
 
-Le test vérifiera que les outils utilisent bien URL mode.
-
+The test will verify that tools use URL mode correctly.

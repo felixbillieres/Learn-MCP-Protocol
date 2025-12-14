@@ -1,40 +1,39 @@
-# Instructions - Projet 11
+# Instructions - Project 11
 
-## Ta mission
+## Your mission
 
-Créer un serveur MCP qui expose des prompts (templates de messages).
+Create an MCP server that exposes prompts (message templates).
 
-## Étapes à suivre
+## Steps to follow
 
-1. **Crée un serveur FastMCP** avec support des prompts :
+1. **Create a FastMCP server** with prompt support:
    ```python
    capabilities={"prompts": {}}
    ```
 
-2. **Crée `list_prompts`** décorée avec `@mcp_server.list_prompts()` :
-   - Retourne une liste de prompts disponibles
-   - Chaque prompt doit avoir :
-     - `name` : Identifiant unique (ex: "greeting")
-     - `title` : Titre lisible (optionnel)
-     - `description` : Description du prompt
+2. **Create `list_prompts`** decorated with `@mcp_server.list_prompts()`:
+   - Returns a list of available prompts
+   - Each prompt must have:
+     - `name`: Unique identifier (e.g., "greeting")
+     - `title`: Readable title (optional)
+     - `description`: Prompt description
 
-3. **Crée `get_prompt`** décorée avec `@mcp_server.get_prompt()` :
-   - Prend un paramètre `name` (str)
-   - Retourne un dict avec :
-     - `messages` : Liste de messages (format pour LLM)
-     - Chaque message a `role` ("user" ou "assistant") et `content` avec `type: "text"` et `text: "..."`
+3. **Create `get_prompt`** decorated with `@mcp_server.get_prompt()`:
+   - Takes a parameter `name` (str)
+   - Returns a dict with:
+     - `messages`: List of messages (format for LLM)
+     - Each message has `role` ("user" or "assistant") and `content` with `type: "text"` and `text: "..."`
 
-4. **Crée au moins 2 prompts** :
-   - `greeting` : Un message de salutation
-   - `help` : Un message d'aide
+4. **Create at least 2 prompts**:
+   - `greeting`: A greeting message
+   - `help`: A help message
 
-## Indices
+## Hints
 
-- Les fonctions doivent être `async`
-- Pour `get_prompt`, retourne des messages formatés pour un LLM
-- Format d'un message : `{"role": "user", "content": {"type": "text", "text": "..."}}`
+- Functions must be `async`
+- For `get_prompt`, return messages formatted for an LLM
+- Message format: `{"role": "user", "content": {"type": "text", "text": "..."}}`
 
 ## Test
 
-Utilise `python test.py` pour vérifier que les prompts sont listés et récupérables.
-
+Use `python test.py` to verify that prompts are listed and retrievable.

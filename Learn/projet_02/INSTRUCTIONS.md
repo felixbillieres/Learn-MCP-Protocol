@@ -1,42 +1,42 @@
-# Instructions - Projet 02
+# Instructions - Project 02
 
-## Ta mission
+## Your mission
 
-Ajoute deux outils simples à ton serveur MCP.
+Add two simple tools to your MCP server.
 
-## Étapes à suivre
+## Steps to follow
 
-1. **Utilise le serveur du projet 01** comme base (ou crée-en un nouveau)
+1. **Use the server from project 01** as a base (or create a new one)
 
-2. **Crée l'outil `dire_bonjour`** :
-   - Prend un paramètre `nom` (type `str`)
-   - Retourne une string avec un message : `f"Bonjour, {nom} ! Comment vas-tu ?"`
-   - Ajoute une docstring descriptive
-   - Utilise le décorateur `@mcp_server.tool()`
-   - La fonction doit être `async`
+2. **Create the `say_hello` tool**:
+   - Takes a parameter `name` (type `str`)
+   - Returns a string with a message: `f"Hello, {name}! How are you?"`
+   - Add a descriptive docstring
+   - Use the decorator `@mcp_server.tool()`
+   - The function must be `async`
 
-3. **Crée l'outil `calculer_somme`** :
-   - Prend deux paramètres `a` et `b` (type `int`)
-   - Retourne un `int` : la somme de a et b
-   - Ajoute une docstring descriptive
-   - Utilise le décorateur `@mcp_server.tool()`
-   - La fonction doit être `async`
+3. **Create the `calculate_sum` tool**:
+   - Takes two parameters `a` and `b` (type `int`)
+   - Returns an `int`: the sum of a and b
+   - Add a descriptive docstring
+   - Use the decorator `@mcp_server.tool()`
+   - The function must be `async`
 
-## Indices
+## Hints
 
-- N'oublie pas le `async` devant `def` !
-- N'oublie pas le décorateur `@mcp_server.tool()` juste avant la fonction
-- La docstring est importante pour décrire l'outil
-- Les types de paramètres et de retour sont importants (MCP les utilise)
+- Don't forget the `async` before `def`!
+- Don't forget the decorator `@mcp_server.tool()` right before the function
+- The docstring is important to describe the tool
+- Parameter and return types are important (MCP uses them)
 
 ## Test
 
-Utilise `python test.py` pour vérifier que :
-- Les outils sont bien enregistrés
-- Les outils fonctionnent correctement
+Use `python test.py` to verify that:
+- The tools are properly registered
+- The tools work correctly
 
-## Résultat attendu
+## Expected result
 
-Quand tu lances le serveur et qu'un client l'appelle :
-- `dire_bonjour("Alice")` devrait retourner `"Bonjour, Alice ! Comment vas-tu ?"`
-- `calculer_somme(5, 3)` devrait retourner `8`
+When you start the server and a client calls it:
+- `say_hello("Alice")` should return `"Hello, Alice! How are you?"`
+- `calculate_sum(5, 3)` should return `8`

@@ -1,5 +1,5 @@
 """
-Script de test pour le projet 12
+Test script for project 12
 """
 
 import sys
@@ -7,57 +7,57 @@ import importlib.util
 import asyncio
 
 async def test_prompt_with_args():
-    """Test que get_prompt fonctionne avec des arguments"""
+    """Test that get_prompt works with arguments"""
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
     
     try:
-        # Test avec tous les arguments
+        # Test with all arguments
         result = await solution.get_prompt(
             "code_review",
             arguments={"language": "python", "code": "def hello(): pass"}
         )
         
         if not isinstance(result, dict) or "messages" not in result:
-            print("❌ Le résultat doit contenir 'messages'")
+            print("❌ The result must contain 'messages'")
             return False
         
-        # Vérifie que les arguments ont été remplacés
+        # Check that arguments were replaced
         msg_text = result["messages"][0]["content"]["text"]
         if "python" not in msg_text.lower():
-            print("❌ Les arguments devraient être remplacés dans le message")
+            print("❌ Arguments should be replaced in the message")
             return False
         
-        print("✅ get_prompt avec arguments fonctionne !")
+        print("✅ get_prompt with arguments works!")
         return True
         
     except Exception as e:
-        print(f"❌ Erreur : {e}")
+        print(f"❌ Error: {e}")
         import traceback
         traceback.print_exc()
         return False
 
 async def test_missing_required_arg():
-    """Test qu'une erreur est levée si un argument requis manque"""
+    """Test that an error is raised if a required argument is missing"""
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
     
     try:
         await solution.get_prompt("code_review", arguments={"language": "python"})
-        # Manque "code" qui est requis
-        print("❌ Devrait lever ValueError pour argument requis manquant")
+        # Missing "code" which is required
+        print("❌ Should raise ValueError for missing required argument")
         return False
     except ValueError:
-        print("✅ ValueError levé correctement pour argument manquant")
+        print("✅ ValueError correctly raised for missing argument")
         return True
     except Exception as e:
-        print(f"❌ Erreur inattendue : {e}")
+        print(f"❌ Unexpected error: {e}")
         return False
 
 async def test_optional_arg():
-    """Test qu'un argument optionnel utilise sa valeur par défaut"""
+    """Test that an optional argument uses its default value"""
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
@@ -67,23 +67,23 @@ async def test_optional_arg():
             "summary",
             arguments={"topic": "MCP"}
         )
-        # length est optionnel, devrait utiliser "short" par défaut
+        # length is optional, should use "short" as default
         
         if not isinstance(result, dict):
-            print("❌ Le résultat doit être un dict")
+            print("❌ The result must be a dict")
             return False
         
-        print("✅ Arguments optionnels fonctionnent !")
+        print("✅ Optional arguments work!")
         return True
         
     except Exception as e:
-        print(f"❌ Erreur : {e}")
+        print(f"❌ Error: {e}")
         import traceback
         traceback.print_exc()
         return False
 
 if __name__ == "__main__":
-    print("🧪 Test du Projet 12\n")
+    print("🧪 Test for Project 12\n")
     
     success = True
     success = asyncio.run(test_prompt_with_args()) and success
@@ -94,8 +94,7 @@ if __name__ == "__main__":
     
     print()
     if success:
-        print("🎉 Tous les tests passent !")
+        print("🎉 All tests pass!")
     else:
-        print("❌ Certains tests ont échoué.")
+        print("❌ Some tests failed.")
         sys.exit(1)
-

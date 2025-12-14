@@ -1,39 +1,39 @@
-# Instructions - Projet 09
+# Instructions - Project 09
 
-## Ta mission
+## Your mission
 
-Créer des resources avec templates URI pour accéder à des fichiers de configuration dynamiquement.
+Create resources with URI templates to access configuration files dynamically.
 
-## Étapes à suivre
+## Steps to follow
 
-1. **Crée un serveur FastMCP** avec support des resources
+1. **Create a FastMCP server** with resource support
 
-2. **Implémente `list_resources`** pour les resources statiques :
-   - Retourne une ressource statique : `info://server/about` avec les infos du serveur
+2. **Implement `list_resources`** for static resources:
+   - Returns a static resource: `info://server/about` with server info
 
-3. **Crée `list_resource_templates`** décorée avec `@mcp_server.list_resource_templates()` :
-   - Retourne une liste de templates
-   - Chaque template doit avoir :
-     - `uriTemplate` : Le template URI (ex: `"config://{section}/{key}"`)
-     - `name` : Nom du template
-     - `description` : Description
-     - `mimeType` : Type MIME
+3. **Create `list_resource_templates`** decorated with `@mcp_server.list_resource_templates()`:
+   - Returns a list of templates
+   - Each template must have:
+     - `uriTemplate`: The URI template (e.g., `"config://{section}/{key}"`)
+     - `name`: Template name
+     - `description`: Description
+     - `mimeType`: MIME type
 
-4. **Adapte `read_resource`** pour gérer les templates :
-   - Si l'URI correspond à un template (ex: `config://database/host`), extraire les paramètres
-   - Retourner le contenu approprié
-   - Si l'URI ne correspond à aucun template, lancer `ValueError`
+4. **Adapt `read_resource`** to handle templates:
+   - If the URI matches a template (e.g., `config://database/host`), extract the parameters
+   - Return the appropriate content
+   - If the URI doesn't match any template, raise `ValueError`
 
-5. **Templates à créer** :
-   - `config://{section}/{key}` : Accès à des configurations par section/clé
-   - `file://{filename}` : Accès à des fichiers virtuels
+5. **Templates to create**:
+   - `config://{section}/{key}`: Access configurations by section/key
+   - `file://{filename}`: Access virtual files
 
-## Indices
+## Hints
 
-- Utilise `re` ou `urllib.parse` pour parser les URIs et extraire les paramètres
-- Stocke des données de configuration simulées dans un dict
-- Pour `config://{section}/{key}`, parse l'URI pour extraire `section` et `key`
+- Use `re` or `urllib.parse` to parse URIs and extract parameters
+- Store simulated configuration data in a dict
+- For `config://{section}/{key}`, parse the URI to extract `section` and `key`
 
 ## Test
 
-Utilise `python test.py` pour vérifier que les templates fonctionnent.
+Use `python test.py` to verify that templates work.

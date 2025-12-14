@@ -1,74 +1,53 @@
-# Projet 03 : Utiliser les modèles Pydantic
+# Project 03: Use Pydantic models
 
-## Objectif
+## Objective
 
-Apprendre à utiliser Pydantic pour structurer et valider les données dans tes outils MCP.
+Learn to use Pydantic to structure and validate data in your MCP tools.
 
-## Concepts à apprendre
+## Concepts to learn
 
-### Qu'est-ce que Pydantic ?
+### What is Pydantic?
 
-Pydantic est une bibliothèque Python qui permet de :
-- **Définir des modèles de données** avec validation automatique
-- **Valider les types** automatiquement
-- **Documenter les données** avec des descriptions
-- **Convertir** entre Python et JSON facilement
+Pydantic is a Python library that allows you to:
+- **Define data models** with automatic validation
+- **Validate types** automatically
+- **Document data** with descriptions
+- **Convert** between Python and JSON easily
 
-### Pourquoi utiliser Pydantic dans MCP ?
+### Why use Pydantic in MCP?
 
-Dans MCP, les données passent souvent en JSON. Pydantic permet de :
-- S'assurer que les données sont correctes avant de les utiliser
-- Avoir une documentation claire de ce que ton outil attend/retourne
-- Avoir une meilleure structure de code
+In MCP, data often passes through JSON. Pydantic allows you to:
+- Ensure data is correct before using it
+- Have clear documentation of what your tool expects/returns
+- Have better code structure
 
-### Créer un modèle Pydantic
+### Create a Pydantic model
 
 ```python
 from pydantic import BaseModel, Field
 
-class Personne(BaseModel):
-    nom: str = Field(description="Le nom de la personne")
-    age: int = Field(description="L'âge de la personne", ge=0, le=120)
-    email: str | None = Field(None, description="Email optionnel")
+class Person(BaseModel):
+    name: str = Field(description="The person's name")
+    age: int = Field(description="The person's age", ge=0, le=120)
+    email: str | None = Field(None, description="Optional email")
 ```
 
-### Utiliser un modèle dans un outil
+### Use a model in a tool
 
 ```python
 @mcp_server.tool()
-async def creer_personne(personne: Personne) -> Personne:
-    """Crée une personne"""
-    return personne  # Pydantic valide automatiquement !
+async def create_person(person: Person) -> Person:
+    """Creates a person"""
+    return person  # Pydantic validates automatically!
 ```
 
-## Exemple dans Exegol-MCP
+## What you will create
 
-Regarde `src/models/container.py` :
+In this project, you will:
+1. Create a Pydantic `Message` model to represent a message
+2. Create a tool that uses this model
+3. See how Pydantic automatically validates data
 
-```23:25:Exegol-MCP/src/models/container.py
-class ExecutionResult(BaseModel):
-    exit_code: int = Field(description="Exit code of the command")
-    output: str = Field(description="Command output (stdout + stderr)")
-```
+## Next steps
 
-Et son utilisation dans `src/assets/tools_container.py` :
-
-```9:13:Exegol-MCP/src/assets/tools_container.py
-@mcp_server.tool()
-async def execute_command_in_container(
-        container_name: str,
-        command: str,
-        ctx: Context
-) -> ExecutionResult:
-```
-
-## Ce que tu vas créer
-
-Dans ce projet, tu vas :
-1. Créer un modèle Pydantic `Message` pour représenter un message
-2. Créer un outil qui utilise ce modèle
-3. Voir comment Pydantic valide automatiquement les données
-
-## Prochaines étapes
-
-Lis `INSTRUCTIONS.md` pour voir ce que tu dois faire exactement !
+Read `INSTRUCTIONS.md` to see exactly what you need to do!

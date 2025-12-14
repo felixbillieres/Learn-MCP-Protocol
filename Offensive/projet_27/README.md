@@ -1,29 +1,28 @@
-# Projet 27 : Gestionnaire de Payloads
+# Project 27: Payload Manager
 
-## Objectif
+## Objective
 
-Créer un serveur MCP pour gérer des payloads d'exploitation (exploits, shells, shellcodes) avec validation et sélection intelligente.
+Create an MCP server to manage exploitation payloads (exploits, shells, shellcodes) with validation and intelligent selection.
 
-## Concepts à apprendre
+## Concepts to Learn
 
-### Payloads en sécurité offensive
+### Payloads in offensive security
 
-Un payload est le code malveillant exécuté après l'exploitation d'une vulnérabilité :
-- **Exploits** : Code qui exploite une vulnérabilité spécifique
-- **Shells** : Interfaces de ligne de commande (reverse shell, bind shell)
-- **Shellcodes** : Code machine pour exécution directe
+A payload is malicious code executed after exploiting a vulnerability:
+- **Exploits**: Code that exploits a specific vulnerability
+- **Shells**: Command-line interfaces (reverse shell, bind shell)
+- **Shellcodes**: Machine code for direct execution
 
-### Architecture MCP
+### MCP Architecture
 
-- **Tools** : CRUD pour payloads
-- **Resources** : Exposer les payloads disponibles
-- **Elicitation** : Sélectionner le payload adapté selon le contexte
-- **Validation** : Vérifier la compatibilité OS/architecture
+- **Tools**: CRUD for payloads
+- **Resources**: Expose available payloads
+- **Elicitation**: Select the appropriate payload based on context
+- **Validation**: Verify OS/architecture compatibility
 
-## Cas d'usage
+## Use Cases
 
-- Stocker et organiser des payloads
-- Sélectionner automatiquement le bon payload
-- Valider la compatibilité avant utilisation
-- Générer des payloads personnalisés
-
+- Store and organize payloads
+- Automatically select the right payload
+- Validate compatibility before use
+- Generate custom payloads

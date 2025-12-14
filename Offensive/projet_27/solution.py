@@ -1,33 +1,33 @@
-# PROJET 27 - Gestionnaire de Payloads
+# PROJECT 27 - Payload Manager
 # 
-# TODO: Crée un gestionnaire de payloads avec CRUD et sélection intelligente
+# TODO: Create a payload manager with CRUD and intelligent selection
 
 from mcp.server.fastmcp import FastMCP, Context
 from pydantic import BaseModel, Field
 from typing import List, Dict, Any, Optional
 from enum import Enum
 
-# TODO: Crée le serveur avec capabilities
+# TODO: Create the server with capabilities
 mcp_server = FastMCP(
-    "GestionnairePayloads",
+    "PayloadManager",
     host="127.0.0.1",
     port=8000,
     stateless_http=True,
     json_response=True
 )
 
-# TODO: Crée les enums pour type, os, architecture
-# TODO: Liste globale pour stocker les payloads
+# TODO: Create enums for type, os, architecture
+# TODO: Global list to store payloads
 # payloads: List[Payload] = []
 
-# TODO: Crée le modèle Payload
+# TODO: Create the Payload model
 class Payload(BaseModel):
     pass
 
-# TODO: Crée les outils CRUD
+# TODO: Create CRUD tools
 @mcp_server.tool()
-async def creer_payload(
-    nom: str,
+async def create_payload(
+    name: str,
     type: str,
     os: str,
     architecture: str,
@@ -36,62 +36,61 @@ async def creer_payload(
     tags: List[str] = None,
     ctx: Context = None
 ) -> Payload:
-    """Crée un nouveau payload"""
+    """Creates a new payload"""
     pass
 
 @mcp_server.tool()
-async def lister_payloads(
+async def list_payloads(
     type: str | None = None,
     os: str | None = None,
     architecture: str | None = None,
     ctx: Context = None
 ) -> List[Payload]:
-    """Liste les payloads avec filtres"""
+    """Lists payloads with filters"""
     pass
 
 @mcp_server.tool()
-async def obtenir_payload(
+async def get_payload(
     payload_id: int,
     ctx: Context = None
 ) -> Payload:
-    """Récupère un payload par ID"""
+    """Retrieves a payload by ID"""
     pass
 
 @mcp_server.tool()
-async def supprimer_payload(
+async def delete_payload(
     payload_id: int,
     ctx: Context = None
 ) -> bool:
-    """Supprime un payload"""
+    """Deletes a payload"""
     pass
 
-# TODO: Crée l'outil avec elicitation pour sélectionner
+# TODO: Create tool with elicitation to select
 @mcp_server.tool()
-async def selectionner_payload(
+async def select_payload(
     os: str,
     architecture: str,
     type: str,
     ctx: Context = None
 ) -> Payload:
-    """Sélectionne le payload le plus adapté"""
+    """Selects the most suitable payload"""
     pass
 
-# TODO: Crée les resources
+# TODO: Create resources
 @mcp_server.list_resources()
 async def list_resources() -> List[Dict[str, Any]]:
-    """Liste les resources de payloads"""
+    """Lists payload resources"""
     pass
 
 @mcp_server.read_resource()
 async def read_resource(uri: str) -> Dict[str, Any]:
-    """Lit une resource de payload"""
+    """Reads a payload resource"""
     pass
 
 def main():
-    print("Gestionnaire de Payloads MCP démarre !")
+    print("Payload Manager MCP is starting!")
     print("URL: http://127.0.0.1:8000/mcp")
     mcp_server.run(transport="streamable-http")
 
 if __name__ == "__main__":
     main()
-

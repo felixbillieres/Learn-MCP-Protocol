@@ -20,19 +20,19 @@ Create an MCP server to analyze CVEs (Common Vulnerabilities and Exposures) and 
      - `recommended_actions` : List[str]
 
 2. **Create Tools**:
-   - `rechercher_cve` : Search CVE by ID or product
-   - `analyser_cve` : Analyze a CVE and return VulnerabilityAnalysis
-   - `lister_cve_par_produit` : List CVEs for a specific product
+   - `search_cve` : Search CVE by ID or product
+   - `analyze_cve` : Analyze a CVE and return VulnerabilityAnalysis
+   - `list_cve_by_product` : List CVEs for a specific product
 
 3. **Create Resource** `cve://list/{product}`:
    - Expose CVEs filtered by product
 
-4. **Create Prompt** `generer_advisory`:
+4. **Create Prompt** `generate_advisory`:
    - Takes `cve_id` argument
    - Generates a formatted security advisory
 
 5. **Create Sampling Tool** (optional):
-   - `suggerer_exploit` : Uses sampling to suggest exploits for a CVE
+   - `suggest_exploit` : Uses sampling to suggest exploits for a CVE
 
 ## Hints
 

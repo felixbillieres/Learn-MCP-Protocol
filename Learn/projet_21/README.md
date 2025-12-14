@@ -1,28 +1,27 @@
-# Projet 21 : Tokens et validation avancée
+# Project 21: Tokens and advanced validation
 
-## Objectif
+## Objective
 
-Implémenter une validation de tokens plus avancée avec scopes, audiences et expiration.
+Implement more advanced token validation with scopes, audiences, and expiration.
 
-## Concepts à apprendre
+## Concepts to learn
 
 ### Scopes
 
-Les scopes définissent les permissions (ex: "read:data", "write:data"). Un token peut avoir plusieurs scopes.
+Scopes define permissions (e.g., "read:data", "write:data"). A token can have multiple scopes.
 
 ### Audiences
 
-L'audience indique pour quelle ressource le token est destiné. C'est crucial pour la sécurité.
+The audience indicates which resource the token is intended for. This is crucial for security.
 
-### Validation complète
+### Complete validation
 
-- Format du token
-- Signature (si JWT)
+- Token format
+- Signature (if JWT)
 - Expiration
 - Audience
-- Scopes requis
+- Required scopes
 
-## Ce que tu vas créer
+## What you will create
 
-Dans ce projet, tu vas créer une validation de tokens avec scopes et audiences.
-
+In this project, you will create token validation with scopes and audiences.

@@ -27,8 +27,8 @@ Create a patch management system with deployment planning.
      - `test_results` : Dict[str, Any] | None
 
 2. **Create Tools**:
-   - `lister_patches` : List available patches
-   - `creer_plan_deploiement` : Create deployment plan (uses prompts)
+   - `list_patches` : List available patches
+   - `create_deployment_plan` : Create deployment plan (uses prompts)
    - `deployer_patch` : Deploy a patch (uses elicitation for confirmation)
    - `verifier_patch` : Test a patch before deployment
 
@@ -38,7 +38,7 @@ Create a patch management system with deployment planning.
    - `deployment://{plan_id}` : Get deployment plan
 
 4. **Create Prompts**:
-   - `generer_plan_deploiement` : Generate deployment plan
+   - `generate_deployment_plan` : Generate deployment plan
 
 5. **Use Elicitation**:
    - Confirm before deploying patches

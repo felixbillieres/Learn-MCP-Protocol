@@ -2,46 +2,46 @@ from mcp.server.fastmcp import FastMCP, Context
 from typing import Any
 import re
 
-# TODO: Crée le serveur MCP
+# TODO: Create the MCP server
 mcp_server = FastMCP(
-    "MonServeurElicitationSchemas",
+    "ElicitationSchemasServer",
     host="127.0.0.1",
     port=8000,
     stateless_http=True,
     json_response=True
 )
 
-# TODO: Crée l'outil inscription avec schéma détaillé
+# TODO: Create the register tool with detailed schema
 @mcp_server.tool()
-async def inscription(ctx: Context) -> dict[str, Any]:
+async def register(ctx: Context) -> dict[str, Any]:
     """
-    Inscrit un nouvel utilisateur avec validation via elicitation.
+    Registers a new user with validation via elicitation.
     
     Returns:
-        Dict avec message de confirmation
+        Dict with confirmation message
     """
-    # TODO: Crée le schéma avec :
-    # - username: string, minLength 3, maxLength 20, pattern alphanumeric
-    # - email: string, format email
+    # TODO: Create the schema with:
+    # - username: string, minLength 3, maxLength 20, alphanumeric pattern
+    # - email: string, email format
     # - age: integer, minimum 13, maximum 120
-    # - newsletter: boolean, défaut false
+    # - newsletter: boolean, default false
     
     schema = {
         "type": "object",
         "properties": {
-            # TODO: Ajoute les propriétés avec leurs contraintes
+            # TODO: Add properties with their constraints
         },
-        "required": []  # TODO: Ajoute les champs requis
+        "required": []  # TODO: Add required fields
     }
     
-    # TODO: Utilise ctx.elicitation.create() avec le schéma
-    # TODO: Valide les données reçues (double validation pour sécurité)
-    # TODO: Retourne un message de confirmation
+    # TODO: Use ctx.elicitation.create() with the schema
+    # TODO: Validate received data (double validation for security)
+    # TODO: Return a confirmation message
     pass
 
-# TODO: Fonction de validation
+# TODO: Validation function
 def validate_username(username: str) -> bool:
-    """Valide le username selon les règles."""
+    """Validates username according to rules."""
     if len(username) < 3 or len(username) > 20:
         return False
     if not re.match(r"^[a-zA-Z0-9]+$", username):
@@ -49,35 +49,34 @@ def validate_username(username: str) -> bool:
     return True
 
 def validate_email(email: str) -> bool:
-    """Valide le format email."""
+    """Validates email format."""
     pattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
     return bool(re.match(pattern, email))
 
-# TODO: Crée l'outil commander_produit avec enum
+# TODO: Create the order_product tool with enum
 @mcp_server.tool()
-async def commander_produit(ctx: Context) -> dict[str, Any]:
+async def order_product(ctx: Context) -> dict[str, Any]:
     """
-    Commande un produit avec sélection via enum.
+    Orders a product with selection via enum.
     
     Returns:
-        Dict avec résumé de commande
+        Dict with order summary
     """
-    # TODO: Crée le schéma avec :
-    # - produit: enum ["basic", "premium", "enterprise"]
-    # - quantite: integer, min 1, max 100
-    # - livraison_express: boolean
+    # TODO: Create the schema with:
+    # - product: enum ["basic", "premium", "enterprise"]
+    # - quantity: integer, min 1, max 100
+    # - express_delivery: boolean
     
-    # TODO: Utilise ctx.elicitation.create()
-    # TODO: Retourne un résumé
+    # TODO: Use ctx.elicitation.create()
+    # TODO: Return a summary
     pass
 
 
 def main():
-    print("Mon serveur MCP avec elicitation et schémas démarre !")
+    print("My MCP server with elicitation and schemas is starting!")
     print("URL: http://127.0.0.1:8000/mcp")
     mcp_server.run(transport="streamable-http")
 
 
 if __name__ == "__main__":
     main()
-

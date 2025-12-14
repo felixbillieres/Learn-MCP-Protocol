@@ -1,119 +1,118 @@
 from mcp.server.fastmcp import FastMCP, Context
 from typing import Any
 
-# TODO: Crée le serveur MCP
+# TODO: Create the MCP server
 mcp_server = FastMCP(
-    "MonServeurAgentique",
+    "AgenticServer",
     host="127.0.0.1",
     port=8000,
     stateless_http=True,
     json_response=True
 )
 
-# TODO: Crée des outils simples que le LLM pourra utiliser
+# TODO: Create simple tools that the LLM can use
 @mcp_server.tool()
-async def calculer(expression: str, ctx: Context) -> float:
+async def calculate(expression: str, ctx: Context) -> float:
     """
-    Évalue une expression mathématique simple.
+    Evaluates a simple mathematical expression.
     
     Args:
-        expression: Expression à évaluer (ex: "2 + 2")
-        ctx: Context MCP
+        expression: Expression to evaluate (e.g., "2 + 2")
+        ctx: MCP Context
         
     Returns:
-        Le résultat du calcul
+        The calculation result
     """
-    # TODO: Évalue l'expression (utilise eval avec précaution ou une bibliothèque sécurisée)
-    # Pour ce projet, on peut utiliser eval() mais en production utilise une bibliothèque sécurisée
+    # TODO: Evaluate the expression (use eval with caution or a secure library)
+    # For this project, we can use eval() but in production use a secure library
     pass
 
 @mcp_server.tool()
-async def rechercher_info(terme: str, ctx: Context) -> str:
+async def search_info(term: str, ctx: Context) -> str:
     """
-    Recherche des informations sur un terme (simulé).
+    Searches for information on a term (simulated).
     
     Args:
-        terme: Le terme à rechercher
-        ctx: Context MCP
+        term: The term to search for
+        ctx: MCP Context
         
     Returns:
-        Informations sur le terme
+        Information about the term
     """
-    # TODO: Simule une recherche (retourne des infos hardcodées)
+    # TODO: Simulate a search (return hardcoded info)
     pass
 
 @mcp_server.tool()
-async def convertir_unite(
-    valeur: float,
-    unite_source: str,
-    unite_cible: str,
+async def convert_unit(
+    value: float,
+    source_unit: str,
+    target_unit: str,
     ctx: Context
 ) -> float:
     """
-    Convertit une valeur d'une unité à une autre.
+    Converts a value from one unit to another.
     
     Args:
-        valeur: La valeur à convertir
-        unite_source: Unité source (ex: "km", "m", "kg")
-        unite_cible: Unité cible
-        ctx: Context MCP
+        value: The value to convert
+        source_unit: Source unit (e.g., "km", "m", "kg")
+        target_unit: Target unit
+        ctx: MCP Context
         
     Returns:
-        La valeur convertie
+        The converted value
     """
-    # TODO: Implémente des conversions basiques (km->m, kg->g, etc.)
+    # TODO: Implement basic conversions (km->m, kg->g, etc.)
     pass
 
-# Définitions des outils pour le LLM (format MCP)
+# Tool definitions for the LLM (MCP format)
 TOOLS_FOR_LLM = [
     {
-        "name": "calculer",
-        "description": "Évalue une expression mathématique simple",
+        "name": "calculate",
+        "description": "Evaluates a simple mathematical expression",
         "inputSchema": {
             "type": "object",
             "properties": {
                 "expression": {
                     "type": "string",
-                    "description": "Expression mathématique à évaluer"
+                    "description": "Mathematical expression to evaluate"
                 }
             },
             "required": ["expression"]
         }
     },
-    # TODO: Ajoute les définitions pour rechercher_info et convertir_unite
+    # TODO: Add definitions for search_info and convert_unit
 ]
 
-# TODO: Crée l'outil agent_resolveur
+# TODO: Create the agent_solver tool
 @mcp_server.tool()
-async def agent_resolveur(
+async def agent_solver(
     question: str,
     ctx: Context
 ) -> str:
     """
-    Utilise un agent LLM avec outils pour résoudre une question complexe.
+    Uses an LLM agent with tools to solve a complex question.
     
     Args:
-        question: La question à résoudre
-        ctx: Context MCP
+        question: The question to solve
+        ctx: MCP Context
         
     Returns:
-        La réponse de l'agent
+        The agent's response
     """
-    # TODO: Utilise ctx.sampling.create_message() avec :
+    # TODO: Use ctx.sampling.create_message() with:
     # - messages: [{"role": "user", "content": {"type": "text", "text": question}}]
     # - tools: TOOLS_FOR_LLM
     # - max_tokens: 500
     
-    # Le LLM pourra appeler les outils automatiquement
+    # The LLM will be able to call tools automatically
     pass
 
 
 def main():
-    print("Mon serveur MCP avec workflows agentiques démarre !")
+    print("My MCP server with agentic workflows is starting!")
     print("URL: http://127.0.0.1:8000/mcp")
     mcp_server.run(transport="streamable-http")
 
 
 if __name__ == "__main__":
     main()
-

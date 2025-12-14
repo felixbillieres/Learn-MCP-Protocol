@@ -31,7 +31,7 @@ class Credential(BaseModel):
 
 # TODO: Create tools
 @mcp_server.tool()
-async def creer_session(
+async def create_session(
     type: str,
     target: str,
     username: str,
@@ -42,7 +42,7 @@ async def creer_session(
     pass
 
 @mcp_server.tool()
-async def lister_sessions(
+async def list_sessions(
     status: str | None = None,
     type: str | None = None,
     ctx: Context = None
@@ -51,7 +51,7 @@ async def lister_sessions(
     pass
 
 @mcp_server.tool()
-async def fermer_session(
+async def close_session(
     session_id: int,
     ctx: Context = None
 ) -> bool:
@@ -59,7 +59,7 @@ async def fermer_session(
     pass
 
 @mcp_server.tool()
-async def obtenir_session(
+async def get_session(
     session_id: int,
     ctx: Context = None
 ) -> Session:
@@ -100,4 +100,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

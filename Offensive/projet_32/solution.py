@@ -34,7 +34,7 @@ class Report(BaseModel):
 
 # TODO: Create tools for each phase
 @mcp_server.tool()
-async def creer_pentest(
+async def create_pentest(
     target: str,
     ctx: Context = None
 ) -> Pentest:
@@ -42,7 +42,7 @@ async def creer_pentest(
     pass
 
 @mcp_server.tool()
-async def executer_reconnaissance(
+async def execute_reconnaissance(
     pentest_id: int,
     ctx: Context = None
 ) -> Pentest:
@@ -50,7 +50,7 @@ async def executer_reconnaissance(
     pass
 
 @mcp_server.tool()
-async def preparer_exploits(
+async def prepare_exploits(
     pentest_id: int,
     ctx: Context = None
 ) -> Pentest:
@@ -58,7 +58,7 @@ async def preparer_exploits(
     pass
 
 @mcp_server.tool()
-async def deployer_payloads(
+async def deploy_payloads(
     pentest_id: int,
     ctx: Context = None
 ) -> Pentest:
@@ -66,7 +66,7 @@ async def deployer_payloads(
     pass
 
 @mcp_server.tool()
-async def executer_exploits(
+async def execute_exploits(
     pentest_id: int,
     ctx: Context = None
 ) -> Pentest:
@@ -74,7 +74,7 @@ async def executer_exploits(
     pass
 
 @mcp_server.tool()
-async def etablir_persistence(
+async def establish_persistence(
     pentest_id: int,
     ctx: Context = None
 ) -> Pentest:
@@ -82,7 +82,7 @@ async def etablir_persistence(
     pass
 
 @mcp_server.tool()
-async def configurer_c2(
+async def configure_c2(
     pentest_id: int,
     ctx: Context = None
 ) -> Pentest:
@@ -90,7 +90,7 @@ async def configurer_c2(
     pass
 
 @mcp_server.tool()
-async def atteindre_objectifs(
+async def achieve_objectives(
     pentest_id: int,
     ctx: Context = None
 ) -> Pentest:
@@ -98,7 +98,7 @@ async def atteindre_objectifs(
     pass
 
 @mcp_server.tool()
-async def generer_rapport(
+async def generate_report(
     pentest_id: int,
     ctx: Context = None
 ) -> Report:
@@ -139,4 +139,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

@@ -1,44 +1,43 @@
-# Instructions - Projet 01
+# Instructions - Project 01
 
-## Ta mission
+## Your mission
 
-Crée un serveur MCP basique qui affiche un message de démarrage.
+Create a basic MCP server that displays a startup message.
 
-## Étapes à suivre
+## Steps to follow
 
-1. **Crée un serveur FastMCP** dans `solution.py` :
-   - Nom du serveur : `"MonPremierServeur"`
-   - Host : `"127.0.0.1"`
-   - Port : `8000`
-   - Options : `stateless_http=True` et `json_response=True`
+1. **Create a FastMCP server** in `solution.py`:
+   - Server name: `"MyFirstServer"`
+   - Host: `"127.0.0.1"`
+   - Port: `8000`
+   - Options: `stateless_http=True` and `json_response=True`
 
-2. **Crée une fonction `main()`** qui :
-   - Affiche un message : `" Mon premier serveur MCP démarre !"`
-   - Affiche l'URL du serveur : `"URL: http://127.0.0.1:8000/mcp"`
-   - Démarre le serveur avec `mcp_server.run(transport="streamable-http")`
+2. **Create a `main()` function** that:
+   - Displays a message: `"My first MCP server is starting!"`
+   - Displays the server URL: `"URL: http://127.0.0.1:8000/mcp"`
+   - Starts the server with `mcp_server.run(transport="streamable-http")`
 
-3. **Ajoute le point d'entrée** `if __name__ == "__main__": main()`
+3. **Add the entry point** `if __name__ == "__main__": main()`
 
-## Indices
+## Hints
 
-- Importe `FastMCP` depuis `mcp.server.fastmcp`
-- Suis le modèle d'Exegol-MCP (`src/mcp_app.py` et `src/main.py`)
-- Ne t'inquiète pas si le serveur ne fait rien d'autre pour l'instant, c'est normal !
+- Import `FastMCP` from `mcp.server.fastmcp`
+- Don't worry if the server doesn't do anything else for now, that's normal!
 
 ## Test
 
-Une fois terminé, lance `python solution.py` et vérifie que :
-- Le message s'affiche
-- Le serveur démarre (il va rester en écoute, c'est normal)
+Once finished, run `python solution.py` and verify that:
+- The message is displayed
+- The server starts (it will stay listening, that's normal)
 
-Pour tester, tu peux aussi utiliser `python test.py` qui vérifie que le serveur est bien créé.
+To test, you can also use `python test.py` which verifies that the server is created correctly.
 
-## Résultat attendu
+## Expected result
 
-Quand tu lances le serveur, tu devrais voir :
+When you start the server, you should see:
 ```
- Mon premier serveur MCP démarre !
+My first MCP server is starting!
 URL: http://127.0.0.1:8000/mcp
 ```
 
-Le serveur reste ensuite en écoute (appuie sur Ctrl+C pour l'arrêter).
+The server then stays listening (press Ctrl+C to stop it).

@@ -1,5 +1,5 @@
 """
-Script de test pour le projet 27
+Test script for project 27
 """
 
 import sys
@@ -13,15 +13,15 @@ def test_models_exist():
     try:
         spec.loader.exec_module(solution)
     except Exception as e:
-        print(f"Erreur : {e}")
+        print(f"Error: {e}")
         return False
     if not hasattr(solution, 'Payload'):
-        print("Le modèle 'Payload' n'existe pas")
+        print("The model 'Payload' does not exist")
         return False
-    print("Les modèles existent")
+    print("Models exist")
     return True
 
-async def test_creer_payload():
+async def test_create_payload():
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
@@ -29,27 +29,26 @@ async def test_creer_payload():
         solution.payloads.clear()
     mock_ctx = AsyncMock()
     try:
-        result = await solution.creer_payload(
+        result = await solution.create_payload(
             "test", "shell", "linux", "x64", "#!/bin/bash\nwhoami",
             None, [], mock_ctx
         )
         if not isinstance(result, solution.Payload):
             return False
-        print("creer_payload fonctionne")
+        print("create_payload works")
         return True
     except Exception as e:
-        print(f"Erreur : {e}")
+        print(f"Error: {e}")
         return False
 
 if __name__ == "__main__":
-    print("Test du Projet 27\n")
+    print("Test for Project 27\n")
     success = test_models_exist()
     print()
-    success = asyncio.run(test_creer_payload()) and success
+    success = asyncio.run(test_create_payload()) and success
     print()
     if success:
-        print("Tests passent !")
+        print("Tests pass!")
     else:
-        print("Tests échoués")
+        print("Tests failed")
         sys.exit(1)
-

@@ -24,7 +24,7 @@ Create the ultimate security platform combining offensive and defensive capabili
 
 3. **Create Integration Tools**:
    - `correler_offensive_defensive` : Link attack and defense data
-   - `generer_rapport_complet` : Generate comprehensive security report
+   - `generate_comprehensive_report` : Generate comprehensive security report
    - `orchestrer_operation` : Orchestrate multi-step operations
 
 4. **Organize Code**:

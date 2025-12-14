@@ -1,25 +1,25 @@
-# Projet 10 : Resources avec subscriptions
+# Project 10: Resources with subscriptions
 
-## Objectif
+## Objective
 
-Apprendre à implémenter les subscriptions pour les resources, permettant aux clients d'être notifiés quand une resource change.
+Learn to implement subscriptions for resources, allowing clients to be notified when a resource changes.
 
-## Concepts à apprendre
+## Concepts to learn
 
-### Qu'est-ce qu'une subscription ?
+### What is a subscription?
 
-Une **subscription** permet à un client de s'abonner aux changements d'une resource. Quand la resource est modifiée, le serveur envoie une notification au client.
+A **subscription** allows a client to subscribe to changes in a resource. When the resource is modified, the server sends a notification to the client.
 
-### Flow de subscription
+### Subscription flow
 
-1. Client envoie `resources/subscribe` avec une URI
-2. Serveur accepte la subscription
-3. Quand la resource change, serveur envoie `notifications/resources/updated`
-4. Client peut envoyer `resources/unsubscribe` pour se désabonner
+1. Client sends `resources/subscribe` with a URI
+2. Server accepts the subscription
+3. When the resource changes, server sends `notifications/resources/updated`
+4. Client can send `resources/unsubscribe` to unsubscribe
 
-### Capacités requises
+### Required capabilities
 
-Pour supporter les subscriptions, le serveur doit déclarer :
+To support subscriptions, the server must declare:
 ```json
 {
   "capabilities": {
@@ -30,10 +30,10 @@ Pour supporter les subscriptions, le serveur doit déclarer :
 }
 ```
 
-## Ce que tu vas créer
+## What you will create
 
-Dans ce projet, tu vas créer un serveur avec des resources qui peuvent être modifiées et qui notifient les clients abonnés.
+In this project, you will create a server with resources that can be modified and that notify subscribed clients.
 
-## Prochaines étapes
+## Next steps
 
-Lis `INSTRUCTIONS.md` pour voir ce que tu dois faire exactement !
+Read `INSTRUCTIONS.md` to see exactly what you need to do!

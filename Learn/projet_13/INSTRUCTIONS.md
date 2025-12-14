@@ -1,36 +1,35 @@
-# Instructions - Projet 13
+# Instructions - Project 13
 
-## Ta mission
+## Your mission
 
-Créer des prompts avancés avec messages multiples et références à des resources.
+Create advanced prompts with multiple messages and resource references.
 
-## Étapes à suivre
+## Steps to follow
 
-1. **Crée un serveur** avec support des prompts ET des resources
+1. **Create a server** with support for prompts AND resources
 
-2. **Crée des resources** :
-   - `doc://examples/code_sample` : Un exemple de code
-   - `doc://guidelines/best_practices` : Des bonnes pratiques
+2. **Create resources**:
+   - `doc://examples/code_sample`: A code example
+   - `doc://guidelines/best_practices`: Best practices
 
-3. **Crée un prompt avancé `tutorial`** :
-   - Prend un argument `topic` (requis)
-   - Retourne plusieurs messages :
-     1. Message système expliquant le contexte
-     2. Message utilisateur avec la question
-     3. (Optionnel) Message assistant avec un exemple
+3. **Create an advanced `tutorial` prompt**:
+   - Takes an argument `topic` (required)
+   - Returns multiple messages:
+     1. System message explaining the context
+     2. User message with the question
+     3. (Optional) Assistant message with an example
 
-4. **Crée un prompt `code_analysis`** :
-   - Prend `code` (requis)
-   - Retourne un message qui référence une resource contenant les guidelines
-   - Utilise le format de resource intégrée dans le message
+4. **Create a `code_analysis` prompt**:
+   - Takes `code` (required)
+   - Returns a message that references a resource containing guidelines
+   - Uses the integrated resource format in the message
 
-## Indices
+## Hints
 
-- Pour les resources intégrées, utilise le format : `{"type": "resource", "resource": {...}}`
-- Les messages multiples permettent de créer un contexte riche
-- Combine resources et arguments pour des prompts puissants
+- For integrated resources, use the format: `{"type": "resource", "resource": {...}}`
+- Multiple messages allow you to create a rich context
+- Combine resources and arguments for powerful prompts
 
 ## Test
 
-Utilise `python test.py` pour vérifier que les prompts avancés fonctionnent.
-
+Use `python test.py` to verify that advanced prompts work.

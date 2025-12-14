@@ -34,7 +34,7 @@ class DetectionModel(BaseModel):
 
 # TODO: Create tools
 @mcp_server.tool()
-async def creer_baseline(
+async def create_baseline(
     metric: str,
     normal_range: Dict[str, float],
     ctx: Context = None
@@ -43,7 +43,7 @@ async def creer_baseline(
     pass
 
 @mcp_server.tool()
-async def detecter_anomalie(
+async def detect_anomaly(
     baseline_id: str,
     metric_value: float,
     ctx: Context = None
@@ -52,7 +52,7 @@ async def detecter_anomalie(
     pass
 
 @mcp_server.tool()
-async def lister_anomalies(
+async def list_anomalies(
     severity: str | None = None,
     ctx: Context = None
 ) -> List[Anomaly]:
@@ -60,7 +60,7 @@ async def lister_anomalies(
     pass
 
 @mcp_server.tool()
-async def generer_modele(
+async def generate_model(
     metric: str,
     ctx: Context = None
 ) -> DetectionModel:
@@ -91,4 +91,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

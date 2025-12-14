@@ -1,33 +1,32 @@
-# Instructions - Projet 17
+# Instructions - Project 17
 
-## Ta mission
+## Your mission
 
-Créer un outil qui utilise le sampling pour demander une complétion LLM.
+Create a tool that uses sampling to request an LLM completion.
 
-## Étapes à suivre
+## Steps to follow
 
-1. **Crée un serveur FastMCP** basique
+1. **Create a basic FastMCP server**
 
-2. **Crée un outil `poser_question`** :
-   - Prend un paramètre `question` (str) et `ctx: Context`
-   - Utilise `await ctx.sampling.create_message()` pour demander une réponse au LLM
-   - Construis un message avec role "user" et content avec type "text"
-   - Retourne la réponse du LLM
+2. **Create a `ask_question` tool**:
+   - Takes a parameter `question` (str) and `ctx: Context`
+   - Uses `await ctx.sampling.create_message()` to request a response from the LLM
+   - Builds a message with role "user" and content with type "text"
+   - Returns the LLM response
 
-3. **Crée un outil `generer_resume`** :
-   - Prend un paramètre `texte` (str) et `ctx: Context`
-   - Demande au LLM de générer un résumé du texte
-   - Utilise un system prompt pour guider le LLM
-   - Retourne le résumé
+3. **Create a `generate_summary` tool**:
+   - Takes a parameter `text` (str) and `ctx: Context`
+   - Asks the LLM to generate a summary of the text
+   - Uses a system prompt to guide the LLM
+   - Returns the summary
 
-## Indices
+## Hints
 
-- Utilise `ctx.sampling.create_message()` avec une liste de `messages`
-- Chaque message a `role` ("user" ou "system") et `content` avec `type: "text"` et `text: "..."`
-- Pour system prompt, utilise `system_prompt` en paramètre ou un message avec role "system"
-- La réponse contient `role`, `content`, et peut-être `model` et `stop_reason`
+- Use `ctx.sampling.create_message()` with a list of `messages`
+- Each message has `role` ("user" or "system") and `content` with `type: "text"` and `text: "..."`
+- For system prompt, use `system_prompt` as parameter or a message with role "system"
+- The response contains `role`, `content`, and possibly `model` and `stop_reason`
 
 ## Test
 
-Note: Le sampling nécessite un vrai client MCP avec LLM. Le test vérifiera que l'outil peut être appelé.
-
+Note: Sampling requires a real MCP client with LLM. The test will verify that the tool can be called.

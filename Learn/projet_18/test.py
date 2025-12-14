@@ -1,5 +1,5 @@
 """
-Script de test pour le projet 18
+Test script for project 18
 """
 
 import sys
@@ -8,22 +8,22 @@ import asyncio
 from unittest.mock import AsyncMock, MagicMock
 
 async def test_tools_exist():
-    """Test que les outils existent"""
+    """Test that tools exist"""
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
     
-    tools = ["creatif_ideation", "conversation", "reponse_rapide"]
+    tools = ["creative_ideation", "conversation", "quick_response"]
     for tool_name in tools:
         if not hasattr(solution, tool_name):
-            print(f"❌ L'outil '{tool_name}' n'existe pas")
+            print(f"❌ The tool '{tool_name}' does not exist")
             return False
     
-    print("✅ Tous les outils existent")
+    print("✅ All tools exist")
     return True
 
 async def test_advanced_parameters():
-    """Test que les outils peuvent être appelés"""
+    """Test that tools can be called"""
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
@@ -31,20 +31,20 @@ async def test_advanced_parameters():
     mock_ctx = AsyncMock()
     mock_sampling = MagicMock()
     mock_response = MagicMock()
-    mock_response.content.text = "Réponse simulée"
+    mock_response.content.text = "Simulated response"
     mock_sampling.create_message = AsyncMock(return_value=mock_response)
     mock_ctx.sampling = mock_sampling
     
     try:
-        await solution.reponse_rapide("Test", mock_ctx)
-        print("✅ Les outils peuvent être appelés")
+        await solution.quick_response("Test", mock_ctx)
+        print("✅ Tools can be called")
         return True
     except Exception as e:
-        print(f"⚠️  Erreur (peut être normal si non implémenté) : {e}")
+        print(f"⚠️  Error (may be normal if not implemented): {e}")
         return True
 
 if __name__ == "__main__":
-    print("🧪 Test du Projet 18\n")
+    print("🧪 Test for Project 18\n")
     
     success = True
     success = asyncio.run(test_tools_exist()) and success
@@ -53,8 +53,7 @@ if __name__ == "__main__":
     
     print()
     if success:
-        print("✅ Tests de base passent !")
+        print("✅ Basic tests pass!")
     else:
-        print("❌ Certains tests ont échoué.")
+        print("❌ Some tests failed.")
         sys.exit(1)
-

@@ -4,15 +4,15 @@ import sys
 # Configuration
 TRANSPORT = sys.argv[1] if len(sys.argv) > 1 else "http"
 
-mcp_server = FastMCP("MonServeurTransport", host="127.0.0.1", port=8000)
+mcp_server = FastMCP("TransportServer", host="127.0.0.1", port=8000)
 
 @mcp_server.tool()
-async def info_transport() -> dict:
-    """Retourne des infos sur le transport utilisé."""
+async def transport_info() -> dict:
+    """Returns info about the transport used."""
     return {"transport": TRANSPORT}
 
 def main():
-    print(f"Serveur avec transport {TRANSPORT} démarre !")
+    print(f"Server with transport {TRANSPORT} is starting!")
     if TRANSPORT == "http":
         mcp_server.run(transport="streamable-http")
     else:
@@ -20,4 +20,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

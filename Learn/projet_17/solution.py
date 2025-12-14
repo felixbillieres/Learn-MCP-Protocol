@@ -1,70 +1,69 @@
 from mcp.server.fastmcp import FastMCP, Context
 
-# TODO: Crée le serveur MCP
+# TODO: Create the MCP server
 mcp_server = FastMCP(
-    "MonServeurSampling",
+    "SamplingServer",
     host="127.0.0.1",
     port=8000,
     stateless_http=True,
     json_response=True
 )
 
-# TODO: Crée l'outil poser_question
+# TODO: Create the ask_question tool
 @mcp_server.tool()
-async def poser_question(
+async def ask_question(
     question: str,
     ctx: Context
 ) -> str:
     """
-    Pose une question au LLM via sampling.
+    Asks a question to the LLM via sampling.
     
     Args:
-        question: La question à poser
-        ctx: Context MCP
+        question: The question to ask
+        ctx: MCP Context
         
     Returns:
-        La réponse du LLM
+        The LLM response
     """
-    # TODO: Utilise ctx.sampling.create_message() avec :
+    # TODO: Use ctx.sampling.create_message() with:
     # - messages: [{"role": "user", "content": {"type": "text", "text": question}}]
-    # - max_tokens: 200 (optionnel)
+    # - max_tokens: 200 (optional)
     # 
-    # La réponse a .content.text qui contient le texte
+    # The response has .content.text which contains the text
     
-    # TODO: Retourne la réponse
+    # TODO: Return the response
     pass
 
-# TODO: Crée l'outil generer_resume
+# TODO: Create the generate_summary tool
 @mcp_server.tool()
-async def generer_resume(
-    texte: str,
+async def generate_summary(
+    text: str,
     ctx: Context
 ) -> str:
     """
-    Génère un résumé d'un texte via le LLM.
+    Generates a summary of a text via the LLM.
     
     Args:
-        texte: Le texte à résumer
-        ctx: Context MCP
+        text: The text to summarize
+        ctx: MCP Context
         
     Returns:
-        Le résumé généré
+        The generated summary
     """
-    # TODO: Utilise ctx.sampling.create_message() avec :
-    # - messages: [{"role": "user", "content": {"type": "text", "text": f"Résume ce texte : {texte}"}}]
-    # - system_prompt: "Tu es un assistant qui crée des résumés concis"
+    # TODO: Use ctx.sampling.create_message() with:
+    # - messages: [{"role": "user", "content": {"type": "text", "text": f"Summarize this text: {text}"}}]
+    # - system_prompt: "You are an assistant that creates concise summaries"
     # - max_tokens: 150
     
-    # TODO: Retourne le résumé
+    # TODO: Return the summary
     pass
 
 
 def main():
-    print("Mon serveur MCP avec sampling démarre !")
+    print("My MCP server with sampling is starting!")
     print("URL: http://127.0.0.1:8000/mcp")
     mcp_server.run(transport="streamable-http")
 
 
 if __name__ == "__main__":
     main()
-

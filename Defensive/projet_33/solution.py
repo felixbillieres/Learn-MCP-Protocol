@@ -35,7 +35,7 @@ class Alert(BaseModel):
 
 # TODO: Create tools
 @mcp_server.tool()
-async def collecter_evenement(
+async def collect_event(
     source: str,
     event_type: str,
     severity: str,
@@ -46,7 +46,7 @@ async def collecter_evenement(
     pass
 
 @mcp_server.tool()
-async def analyser_evenements(
+async def analyze_events(
     time_range: str | None = None,
     ctx: Context = None
 ) -> List[Alert]:
@@ -54,7 +54,7 @@ async def analyser_evenements(
     pass
 
 @mcp_server.tool()
-async def creer_regle(
+async def create_rule(
     name: str,
     pattern: str,
     severity: str,
@@ -64,7 +64,7 @@ async def creer_regle(
     pass
 
 @mcp_server.tool()
-async def lister_alertes(
+async def list_alerts(
     severity: str | None = None,
     ctx: Context = None
 ) -> List[Alert]:
@@ -106,4 +106,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

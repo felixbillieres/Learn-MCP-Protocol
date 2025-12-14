@@ -1,46 +1,46 @@
-# Projet 08 : Créer ta première ressource
+# Project 08: Create your first resource
 
-## Objectif
+## Objective
 
-Apprendre à exposer des ressources (resources) avec MCP. Les ressources permettent d'exposer des données que les clients peuvent lire.
+Learn to expose resources with MCP. Resources allow you to expose data that clients can read.
 
-## Concepts à apprendre
+## Concepts to learn
 
-### Qu'est-ce qu'une ressource ?
+### What is a resource?
 
-Une **ressource** est une source de données que le serveur MCP expose aux clients. Contrairement aux outils (qui sont exécutés), les ressources sont des données que le client peut lire pour obtenir du contexte.
+A **resource** is a data source that the MCP server exposes to clients. Unlike tools (which are executed), resources are data that the client can read to get context.
 
-**Différence clé** :
-- **Tools** : Actions que l'IA peut **exécuter** (modifier, créer, supprimer)
-- **Resources** : Données que l'IA peut **lire** pour comprendre le contexte
+**Key difference**:
+- **Tools**: Actions the AI can **execute** (modify, create, delete)
+- **Resources**: Data the AI can **read** to understand context
 
-### Exemples de ressources
+### Examples of resources
 
-- Contenu de fichiers
-- Schémas de base de données
-- Configuration système
+- File contents
+- Database schemas
+- System configuration
 - Logs
-- Données d'API
+- API data
 
-### Comment FastMCP gère les ressources
+### How FastMCP handles resources
 
-Dans FastMCP, tu dois assigner directement les fonctions :
-- `mcp_server.list_resources = list_resources` : Liste les ressources disponibles
-- `mcp_server.read_resource = read_resource` : Lit le contenu d'une ressource
+In FastMCP, you must directly assign the functions:
+- `mcp_server.list_resources = list_resources`: Lists available resources
+- `mcp_server.read_resource = read_resource`: Reads resource content
 
-**Note** : Contrairement aux outils (`@mcp_server.tool()`), les resources utilisent l'assignation directe, pas des décorateurs.
+**Note**: Unlike tools (`@mcp_server.tool()`), resources use direct assignment, not decorators.
 
-## Documentation MCP
+## MCP Documentation
 
-Les ressources sont identifiées par des **URIs** uniques :
-- Format : `[protocol]://[host]/[path]`
-- Exemple : `file:///home/user/config.json`
-- Exemple : `config://app/settings`
+Resources are identified by unique **URIs**:
+- Format: `[protocol]://[host]/[path]`
+- Example: `file:///home/user/config.json`
+- Example: `config://app/settings`
 
-## Ce que tu vas créer
+## What you will create
 
-Dans ce projet, tu vas créer un serveur qui expose des ressources de configuration simples.
+In this project, you will create a server that exposes simple configuration resources.
 
-## Prochaines étapes
+## Next steps
 
-Lis `INSTRUCTIONS.md` pour voir ce que tu dois faire exactement !
+Read `INSTRUCTIONS.md` to see exactly what you need to do!

@@ -1,37 +1,37 @@
-# Projet 01 : Créer un serveur MCP basique
+# Project 01: Create a basic MCP server
 
-## Objectif
+## Objective
 
-Créer ton premier serveur MCP avec FastMCP. C'est la base de tout projet MCP !
+Create your first MCP server with FastMCP. This is the foundation of any MCP project!
 
-## Concepts à apprendre
+## Concepts to learn
 
-### Qu'est-ce que MCP ?
+### What is MCP?
 
-MCP (Model Context Protocol) est un protocole qui permet à des applications (comme Claude Desktop) de communiquer avec des serveurs qui exposent des **outils** (tools), des **ressources** (resources) et des **prompts** (prompts).
+MCP (Model Context Protocol) is a protocol that allows applications (like Claude Desktop) to communicate with servers that expose **tools**, **resources**, and **prompts**.
 
 ### FastMCP
 
-FastMCP est une bibliothèque Python qui simplifie la création de serveurs MCP. C'est ce que utilise ton projet Exegol-MCP !
+FastMCP is a Python library that simplifies creating MCP servers.
 
-### Structure de base
+### Basic structure
 
-Un serveur MCP a besoin de :
-1. Une instance `FastMCP` qui représente le serveur
-2. Une configuration (nom, host, port)
-3. Un point d'entrée pour démarrer le serveur
+An MCP server needs:
+1. A `FastMCP` instance that represents the server
+2. A configuration (name, host, port)
+3. An entry point to start the server
 
-## Exemple dans Exegol-MCP
+## Example structure
 
-Regarde `src/mcp_app.py` dans ton projet Exegol-MCP :
+A basic MCP server looks like this:
 
-```1:11:Exegol-MCP/src/mcp_app.py
+```python
 from mcp.server.fastmcp import FastMCP
 
 mcp_host = "127.0.0.1"
 mcp_port = 8000
 mcp_server = FastMCP(
-    "Exegol",
+    "MyServer",
     host=mcp_host,
     port=mcp_port,
     stateless_http=True,
@@ -39,19 +39,19 @@ mcp_server = FastMCP(
 )
 ```
 
-Et dans `src/main.py` :
+And to start it:
 
-```21:21:Exegol-MCP/src/main.py
-    mcp_server.run(transport="streamable-http")
+```python
+mcp_server.run(transport="streamable-http")
 ```
 
-## Ce que tu vas créer
+## What you will create
 
-Dans ce projet, tu vas créer un serveur MCP simple qui :
-- S'appelle "MonPremierServeur"
-- Écoute sur `127.0.0.1:8000`
-- Peut être démarré et affiche un message
+In this project, you will create a simple MCP server that:
+- Is named "MyFirstServer"
+- Listens on `127.0.0.1:8000`
+- Can be started and displays a message
 
-## Prochaines étapes
+## Next steps
 
-Lis `INSTRUCTIONS.md` pour voir ce que tu dois faire exactement !
+Read `INSTRUCTIONS.md` to see exactly what you need to do!

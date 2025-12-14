@@ -1,14 +1,13 @@
-# Projet 23 : Utiliser Roots
+# Project 23: Use Roots
 
-## Objectif
+## Objective
 
-Comprendre et utiliser les Roots pour définir les limites d'accès au système de fichiers.
+Understand and use Roots to define file system access boundaries.
 
 ## Concepts
 
-Roots permettent aux clients de spécifier quels répertoires le serveur peut accéder. C'est un mécanisme de sécurité important.
+Roots allow clients to specify which directories the server can access. This is an important security mechanism.
 
-## Ce que tu vas créer
+## What you will create
 
-Un serveur qui demande et utilise les roots pour opérer dans des répertoires spécifiques.
-
+A server that requests and uses roots to operate in specific directories.

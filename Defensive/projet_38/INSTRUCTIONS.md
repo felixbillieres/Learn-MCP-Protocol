@@ -32,10 +32,10 @@ Create an anomaly detection system with baselines and real-time alerting.
    ```
 
 3. **Create Tools**:
-   - `creer_baseline` : Create baseline for a metric
+   - `create_baseline` : Create baseline for a metric
    - `detecter_anomalie` : Detect anomalies in metrics
-   - `lister_anomalies` : List detected anomalies
-   - `generer_modele` : Generate detection model (uses sampling)
+   - `list_anomalies` : List detected anomalies
+   - `generate_model` : Generate detection model (uses sampling)
 
 4. **Create Resources**:
    - `anomaly://recent` : Recent anomalies

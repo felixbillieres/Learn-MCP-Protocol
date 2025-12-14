@@ -1,7 +1,7 @@
 """
-Script de test pour le projet 14
-Note: L'elicitation nécessite un vrai client MCP pour être testée complètement
-Ce test vérifie que les outils sont bien définis
+Test script for project 14
+Note: Elicitation requires a real MCP client to be fully tested
+This test verifies that tools are properly defined
 """
 
 import sys
@@ -10,61 +10,61 @@ import asyncio
 from unittest.mock import AsyncMock, MagicMock
 
 async def test_tools_exist():
-    """Test que les outils existent"""
+    """Test that tools exist"""
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
     
-    if not hasattr(solution, 'creer_profil'):
-        print("❌ L'outil 'creer_profil' n'existe pas")
+    if not hasattr(solution, 'create_profile'):
+        print("❌ The tool 'create_profile' does not exist")
         return False
     
-    if not hasattr(solution, 'configurer_preferences'):
-        print("❌ L'outil 'configurer_preferences' n'existe pas")
+    if not hasattr(solution, 'configure_preferences'):
+        print("❌ The tool 'configure_preferences' does not exist")
         return False
     
-    print("✅ Les outils existent")
+    print("✅ Tools exist")
     return True
 
 async def test_elicitation_structure():
-    """Test que les outils utilisent l'elicitation (simulé)"""
+    """Test that tools use elicitation (simulated)"""
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
     
-    # Crée un mock Context avec elicitation
+    # Create a mock Context with elicitation
     mock_ctx = AsyncMock()
     mock_elicitation = MagicMock()
-    mock_response = {"nom": "Test", "age": 25, "email": "test@example.com"}
+    mock_response = {"name": "Test", "age": 25, "email": "test@example.com"}
     mock_elicitation.create = AsyncMock(return_value=mock_response)
     mock_ctx.elicitation = mock_elicitation
     
     try:
-        # Test que l'outil peut être appelé
-        result = await solution.creer_profil(mock_ctx)
+        # Test that the tool can be called
+        result = await solution.create_profile(mock_ctx)
         
-        # Vérifie que l'elicitation a été appelée
+        # Check that elicitation was called
         if not mock_elicitation.create.called:
-            print("⚠️  ctx.elicitation.create() n'a pas été appelé (normal si le code n'est pas implémenté)")
+            print("⚠️  ctx.elicitation.create() was not called (normal if code is not implemented)")
         else:
-            print("✅ L'elicitation est utilisée correctement")
+            print("✅ Elicitation is used correctly")
         
-        print("✅ L'outil peut être appelé")
+        print("✅ The tool can be called")
         return True
         
     except AttributeError as e:
         if "elicitation" in str(e):
-            print("⚠️  L'elicitation n'est pas encore implémentée dans le code")
-            print("💡 Assure-toi d'utiliser ctx.elicitation.create()")
-            return True  # Pas une erreur, juste pas encore implémenté
+            print("⚠️  Elicitation is not yet implemented in the code")
+            print("💡 Make sure to use ctx.elicitation.create()")
+            return True  # Not an error, just not yet implemented
         raise
     except Exception as e:
-        print(f"⚠️  Erreur (peut être normal si non implémenté) : {e}")
-        return True  # Pas une erreur fatale
+        print(f"⚠️  Error (may be normal if not implemented): {e}")
+        return True  # Not a fatal error
 
 if __name__ == "__main__":
-    print("🧪 Test du Projet 14\n")
-    print("Note: L'elicitation nécessite un client MCP réel pour être testée complètement\n")
+    print("🧪 Test for Project 14\n")
+    print("Note: Elicitation requires a real MCP client to be fully tested\n")
     
     success = True
     success = asyncio.run(test_tools_exist()) and success
@@ -73,9 +73,8 @@ if __name__ == "__main__":
     
     print()
     if success:
-        print("✅ Tests de base passent !")
-        print("💡 Pour tester l'elicitation complètement, utilise un client MCP réel")
+        print("✅ Basic tests pass!")
+        print("💡 To test elicitation completely, use a real MCP client")
     else:
-        print("❌ Certains tests ont échoué.")
+        print("❌ Some tests failed.")
         sys.exit(1)
-

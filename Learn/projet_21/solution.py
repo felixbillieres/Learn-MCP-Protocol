@@ -2,46 +2,46 @@ from mcp.server.fastmcp import FastMCP, Context
 from typing import Optional, List
 
 mcp_server = FastMCP(
-    "MonServeurAuthAvance",
+    "AdvancedAuthServer",
     host="127.0.0.1",
     port=8000,
     stateless_http=True,
     json_response=True
 )
 
-# Tokens avec scopes et audiences
+# Tokens with scopes and audiences
 VALID_TOKENS = {
     "Bearer token123": {
         "user_id": "user1",
         "scopes": ["read:data", "write:data"],
         "audience": "api.example.com",
-        "expires_at": 9999999999  # Expire très loin
+        "expires_at": 9999999999  # Expires far in the future
     }
 }
 
-def valider_token(
+def validate_token(
     token: str,
     required_scopes: Optional[List[str]] = None,
     required_audience: Optional[str] = None
 ) -> Optional[dict]:
-    """Valide un token avec scopes et audience."""
-    # TODO: Implémente la validation complète
+    """Validates a token with scopes and audience."""
+    # TODO: Implement complete validation
     pass
 
 @mcp_server.tool()
-async def lire_donnees(token: str, ctx: Context) -> dict:
-    """Lit des données (nécessite scope read:data)."""
-    # TODO: Valide le token avec scope requis
+async def read_data(token: str, ctx: Context) -> dict:
+    """Reads data (requires read:data scope)."""
+    # TODO: Validate token with required scope
     pass
 
 @mcp_server.tool()
-async def ecrire_donnees(token: str, donnees: dict, ctx: Context) -> dict:
-    """Écrit des données (nécessite scope write:data)."""
-    # TODO: Valide le token avec scope requis
+async def write_data(token: str, data: dict, ctx: Context) -> dict:
+    """Writes data (requires write:data scope)."""
+    # TODO: Validate token with required scope
     pass
 
 def main():
-    print("Mon serveur MCP avec validation avancée démarre !")
+    print("My advanced MCP auth server is starting!")
     mcp_server.run(transport="streamable-http")
 
 if __name__ == "__main__":

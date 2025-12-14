@@ -1,34 +1,33 @@
-# Projet 18 : Sampling avancé avec préférences et paramètres
+# Project 18: Advanced sampling with preferences and parameters
 
-## Objectif
+## Objective
 
-Apprendre à utiliser les préférences de modèle et les paramètres avancés du sampling.
+Learn to use model preferences and advanced sampling parameters.
 
-## Concepts à apprendre
+## Concepts to learn
 
-### Préférences de modèle
+### Model preferences
 
-Les serveurs peuvent suggérer des préférences pour le choix du modèle :
-- `hints` : Suggestions de modèles (ex: "claude-3-sonnet")
-- `intelligencePriority` : Priorité sur les capacités (0-1)
-- `speedPriority` : Priorité sur la vitesse (0-1)
-- `costPriority` : Priorité sur le coût (0-1)
+Servers can suggest preferences for model selection:
+- `hints`: Model suggestions (e.g., "claude-3-sonnet")
+- `intelligencePriority`: Priority on capabilities (0-1)
+- `speedPriority`: Priority on speed (0-1)
+- `costPriority`: Priority on cost (0-1)
 
-### Paramètres de sampling
+### Sampling parameters
 
-- `temperature` : Créativité (0-2)
-- `max_tokens` : Nombre maximum de tokens
-- `stop_sequences` : Séquences qui arrêtent la génération
+- `temperature`: Creativity (0-2)
+- `max_tokens`: Maximum number of tokens
+- `stop_sequences`: Sequences that stop generation
 
-### Messages multiples
+### Multiple messages
 
-On peut envoyer plusieurs messages pour créer une conversation avec contexte.
+You can send multiple messages to create a conversation with context.
 
-## Ce que tu vas créer
+## What you will create
 
-Dans ce projet, tu vas créer des outils qui utilisent les paramètres avancés du sampling.
+In this project, you will create tools that use advanced sampling parameters.
 
-## Prochaines étapes
+## Next steps
 
-Lis `INSTRUCTIONS.md` pour voir ce que tu dois faire exactement !
-
+Read `INSTRUCTIONS.md` to see exactly what you need to do!

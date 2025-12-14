@@ -1,70 +1,70 @@
-# PROJET FINAL - Gestionnaire de tâches MCP
+# FINAL PROJECT - Task Manager MCP
 # 
-# TODO: Crée un serveur MCP complet pour gérer une liste de tâches
-# Utilise TOUS les concepts appris dans les projets précédents !
+# TODO: Create a complete MCP server to manage a task list
+# Use ALL concepts learned in previous projects!
 
-# TODO: Imports nécessaires
-# - FastMCP, Context depuis mcp.server.fastmcp
-# - BaseModel, Field depuis pydantic
-# - List, Dict, Optional depuis typing
-# - datetime depuis datetime
+# TODO: Necessary imports
+# - FastMCP, Context from mcp.server.fastmcp
+# - BaseModel, Field from pydantic
+# - List, Dict, Optional from typing
+# - datetime from datetime
 
-# TODO: Crée le serveur MCP
+# TODO: Create the MCP server
 # mcp_server = FastMCP(...)
 
-# TODO: Liste globale pour stocker les tâches
-# taches = []
+# TODO: Global list to store tasks
+# tasks = []
 
-# TODO: Modèle Tache
-class Tache:
+# TODO: Task model
+class Task:
     pass
 
-# TODO: Modèle StatistiquesTaches
-class StatistiquesTaches:
+# TODO: TaskStatistics model
+class TaskStatistics:
     pass
 
-# TODO: Fonction utilitaire pour trouver une tâche par ID
-# def trouver_tache_par_id(tache_id: int) -> Tache | None:
+# TODO: Utility function to find a task by ID
+# def find_task_by_id(task_id: int) -> Task | None:
 #     ...
 
-# TODO: Outil creer_tache
+# TODO: create_task tool
 @mcp_server.tool()
-async def creer_tache(...):
+async def create_task(...):
     pass
 
-# TODO: Outil lister_taches
+# TODO: list_tasks tool
 @mcp_server.tool()
-async def lister_taches(...):
+async def list_tasks(...):
     pass
 
-# TODO: Outil obtenir_tache
+# TODO: get_task tool
 @mcp_server.tool()
-async def obtenir_tache(...):
+async def get_task(...):
     pass
 
-# TODO: Outil modifier_tache
+# TODO: update_task tool
 @mcp_server.tool()
-async def modifier_tache(...):
+async def update_task(...):
     pass
 
-# TODO: Outil marquer_termine
+# TODO: mark_completed tool
 @mcp_server.tool()
-async def marquer_termine(...):
+async def mark_completed(...):
     pass
 
-# TODO: Outil supprimer_tache
+# TODO: delete_task tool
 @mcp_server.tool()
-async def supprimer_tache(...):
+async def delete_task(...):
     pass
 
-# TODO: Outil obtenir_statistiques
+# TODO: get_statistics tool
 @mcp_server.tool()
-async def obtenir_statistiques(...):
+async def get_statistics(...):
     pass
 
 
 def main():
-    print("Mon serveur MCP de gestion de tâches démarre !")
+    print("My task management MCP server is starting!")
     print("URL: http://127.0.0.1:8000/mcp")
     mcp_server.run(transport="streamable-http")
 

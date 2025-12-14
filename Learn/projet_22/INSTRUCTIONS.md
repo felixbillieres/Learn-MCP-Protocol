@@ -1,16 +1,15 @@
-# Instructions - Projet 22
+# Instructions - Project 22
 
-## Ta mission
+## Your mission
 
-Créer un serveur avec sécurité avancée.
+Create a server with advanced security.
 
-## Étapes
+## Steps
 
-1. **Validation stricte d'audience** : Rejette les tokens avec mauvaise audience
+1. **Strict audience validation**: Rejects tokens with wrong audience
 
-2. **Rate limiting** : Limite les requêtes par utilisateur (ex: 100 req/min)
+2. **Rate limiting**: Limits requests per user (e.g., 100 req/min)
 
-3. **Logging** : Log toutes les tentatives d'accès (succès et échecs)
+3. **Logging**: Log all access attempts (successes and failures)
 
-4. **Protection token reuse** : Détecte si un token est utilisé depuis plusieurs IPs
-
+4. **Token reuse protection**: Detects if a token is used from multiple IPs

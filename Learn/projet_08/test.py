@@ -1,5 +1,5 @@
 """
-Script de test pour le projet 08
+Test script for project 08
 """
 
 import sys
@@ -7,7 +7,7 @@ import importlib.util
 import asyncio
 
 async def test_list_resources():
-    """Test que list_resources fonctionne"""
+    """Test that list_resources works"""
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
@@ -16,33 +16,33 @@ async def test_list_resources():
         result = await solution.list_resources()
 
         if not isinstance(result, list):
-            print(f"list_resources devrait retourner une liste, mais a retourné {type(result)}")
+            print(f"list_resources should return a list, but returned {type(result)}")
             return False
 
         if len(result) < 2:
-            print(f"Il devrait y avoir au moins 2 ressources, mais il y en a {len(result)}")
+            print(f"There should be at least 2 resources, but there are {len(result)}")
             return False
 
-        # Vérifie la structure
+        # Check structure
         for res in result:
             if "uri" not in res:
-                print("Chaque ressource doit avoir un champ 'uri'")
+                print("Each resource must have a 'uri' field")
                 return False
             if "name" not in res:
-                print("Chaque ressource doit avoir un champ 'name'")
+                print("Each resource must have a 'name' field")
                 return False
 
-        print(f"list_resources fonctionne ! {len(result)} ressources trouvées")
+        print(f"list_resources works! {len(result)} resources found")
         return True
 
     except Exception as e:
-        print(f"Erreur : {e}")
+        print(f"Error: {e}")
         import traceback
         traceback.print_exc()
         return False
 
 async def test_read_resource():
-    """Test que read_resource fonctionne"""
+    """Test that read_resource works"""
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
@@ -51,46 +51,46 @@ async def test_read_resource():
         result = await solution.read_resource("config://app/settings")
 
         if not isinstance(result, dict):
-            print(f"read_resource devrait retourner un dict")
+            print(f"read_resource should return a dict")
             return False
 
         if "contents" not in result:
-            print("Le résultat doit contenir 'contents'")
+            print("The result must contain 'contents'")
             return False
 
         contents = result["contents"]
         if not isinstance(contents, list) or len(contents) == 0:
-            print("'contents' doit être une liste non vide")
+            print("'contents' must be a non-empty list")
             return False
 
-        print("read_resource fonctionne !")
+        print("read_resource works!")
         return True
 
     except Exception as e:
-        print(f"Erreur : {e}")
+        print(f"Error: {e}")
         import traceback
         traceback.print_exc()
         return False
 
 async def test_read_invalid_resource():
-    """Test que read_resource lève une erreur pour URI invalide"""
+    """Test that read_resource raises an error for invalid URI"""
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
 
     try:
         await solution.read_resource("invalid://uri/does/not/exist")
-        print("read_resource devrait lever ValueError pour URI invalide")
+        print("read_resource should raise ValueError for invalid URI")
         return False
     except ValueError:
-        print("read_resource lève correctement ValueError pour URI invalide")
+        print("read_resource correctly raises ValueError for invalid URI")
         return True
     except Exception as e:
-        print(f"Erreur inattendue : {e}")
+        print(f"Unexpected error: {e}")
         return False
 
 if __name__ == "__main__":
-    print("Test du Projet 08\n")
+    print("Test for Project 08\n")
 
     success = True
     success = asyncio.run(test_list_resources()) and success
@@ -101,7 +101,7 @@ if __name__ == "__main__":
 
     print()
     if success:
-        print("Tous les tests passent !")
+        print("All tests pass!")
     else:
-        print("Certains tests ont échoué.")
+        print("Some tests failed.")
         sys.exit(1)

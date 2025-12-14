@@ -1,36 +1,35 @@
-# Instructions - Projet 19
+# Instructions - Project 19
 
-## Ta mission
+## Your mission
 
-Créer un workflow agentique avec sampling et outils.
+Create an agentic workflow with sampling and tools.
 
-## Étapes à suivre
+## Steps to follow
 
-1. **Crée un serveur FastMCP** avec des outils de base
+1. **Create a FastMCP server** with basic tools
 
-2. **Crée des outils simples** :
-   - `calculer` : Prend `expression` (str), évalue et retourne le résultat
-   - `rechercher_info` : Prend `terme` (str), retourne des infos (simulé)
-   - `convertir_unite` : Prend `valeur`, `unite_source`, `unite_cible`, convertit
+2. **Create simple tools**:
+   - `calculate`: Takes `expression` (str), evaluates and returns result
+   - `search_info`: Takes `term` (str), returns info (simulated)
+   - `convert_unit`: Takes `value`, `source_unit`, `target_unit`, converts
 
-3. **Crée un outil `agent_resolveur`** :
-   - Prend `question` (str) et `ctx: Context`
-   - Utilise sampling avec les outils définis
-   - Permet au LLM d'utiliser les outils pour résoudre la question
-   - Retourne la réponse finale
+3. **Create an `agent_solver` tool**:
+   - Takes `question` (str) and `ctx: Context`
+   - Uses sampling with defined tools
+   - Allows the LLM to use tools to solve the question
+   - Returns the final response
 
-4. **Définis les outils pour le LLM** :
-   - Crée des définitions d'outils au format MCP
-   - Inclus-les dans la requête de sampling avec `tools`
+4. **Define tools for the LLM**:
+   - Create tool definitions in MCP format
+   - Include them in the sampling request with `tools`
 
-## Indices
+## Hints
 
-- Pour sampling avec outils, utilise `tools` dans create_message
-- Chaque outil a `name`, `description`, `inputSchema` (JSON Schema)
-- Le LLM décidera quand utiliser quels outils
-- Le client gère l'exécution des outils automatiquement
+- For sampling with tools, use `tools` in create_message
+- Each tool has `name`, `description`, `inputSchema` (JSON Schema)
+- The LLM will decide when to use which tools
+- The client automatically handles tool execution
 
 ## Test
 
-Le test vérifiera que les outils sont bien définis.
-
+The test will verify that tools are properly defined.

@@ -32,15 +32,15 @@ Create a complete pentest automation framework orchestrating all phases.
      - `recommendations` : List[str]
 
 2. **Create Tools for Each Phase**:
-   - `creer_pentest` : Create new pentest
-   - `executer_reconnaissance` : Phase 1 - Recon
-   - `preparer_exploits` : Phase 2 - Weaponization
-   - `deployer_payloads` : Phase 3 - Delivery
-   - `executer_exploits` : Phase 4 - Exploitation
-   - `etablir_persistence` : Phase 5 - Installation
-   - `configurer_c2` : Phase 6 - C2
-   - `atteindre_objectifs` : Phase 7 - Objectives
-   - `generer_rapport` : Generate final report
+   - `create_pentest` : Create new pentest
+   - `execute_reconnaissance` : Phase 1 - Recon
+   - `prepare_exploits` : Phase 2 - Weaponization
+   - `deploy_payloads` : Phase 3 - Delivery
+   - `execute_exploits` : Phase 4 - Exploitation
+   - `establish_persistence` : Phase 5 - Installation
+   - `configure_c2` : Phase 6 - C2
+   - `achieve_objectives` : Phase 7 - Objectives
+   - `generate_report` : Generate final report
 
 3. **Create Resources**:
    - `pentest://list` : List all pentests
@@ -49,7 +49,7 @@ Create a complete pentest automation framework orchestrating all phases.
 
 4. **Create Prompts**:
    - `workflow_pentest` : Guide through all phases
-   - `rapport_executif` : Generate executive summary
+   - `executive_report` : Generate executive summary
 
 5. **Use Elicitation**:
    - Confirm before executing exploits

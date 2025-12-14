@@ -1,43 +1,42 @@
-# Projet 20 : Introduction à l'autorisation OAuth 2.1
+# Project 20: Introduction to OAuth 2.1 authorization
 
-## Objectif
+## Objective
 
-Comprendre les concepts de base de l'autorisation OAuth 2.1 dans MCP.
+Understand the basic concepts of OAuth 2.1 authorization in MCP.
 
-## Concepts à apprendre
+## Concepts to learn
 
-### Pourquoi l'autorisation ?
+### Why authorization?
 
-L'autorisation sécurise l'accès aux ressources et opérations sensibles. Elle permet de :
-- Protéger les données utilisateur
-- Contrôler qui peut faire quoi
-- Auditer les actions
-- Implémenter des quotas par utilisateur
+Authorization secures access to sensitive resources and operations. It allows you to:
+- Protect user data
+- Control who can do what
+- Audit actions
+- Implement per-user quotas
 
-### OAuth 2.1 dans MCP
+### OAuth 2.1 in MCP
 
-MCP utilise OAuth 2.1 pour l'autorisation :
-- Le client obtient un token d'accès
-- Le token est inclus dans chaque requête HTTP
-- Le serveur valide le token avant de traiter la requête
+MCP uses OAuth 2.1 for authorization:
+- Client obtains an access token
+- Token is included in each HTTP request
+- Server validates the token before processing the request
 
-### Flow d'autorisation
+### Authorization flow
 
-1. Client demande autorisation au serveur d'autorisation
-2. Utilisateur s'authentifie
-3. Serveur d'autorisation retourne un token
-4. Client utilise le token pour les requêtes
-5. Serveur MCP valide le token
+1. Client requests authorization from authorization server
+2. User authenticates
+3. Authorization server returns a token
+4. Client uses the token for requests
+5. MCP server validates the token
 
 ### Important
 
-Pour ce projet, on va **simuler** l'autorisation car implémenter OAuth complet est complexe. L'objectif est de comprendre les concepts.
+For this project, we will **simulate** authorization as implementing full OAuth is complex. The goal is to understand the concepts.
 
-## Ce que tu vas créer
+## What you will create
 
-Dans ce projet, tu vas créer un serveur qui simule la validation de tokens.
+In this project, you will create a server that simulates token validation.
 
-## Prochaines étapes
+## Next steps
 
-Lis `INSTRUCTIONS.md` pour voir ce que tu dois faire exactement !
-
+Read `INSTRUCTIONS.md` to see exactly what you need to do!

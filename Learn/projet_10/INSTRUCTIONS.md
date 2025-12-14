@@ -1,39 +1,39 @@
-# Instructions - Projet 10
+# Instructions - Project 10
 
-## Ta mission
+## Your mission
 
-Implémenter les subscriptions pour les resources avec notifications de changements.
+Implement subscriptions for resources with change notifications.
 
-## Étapes à suivre
+## Steps to follow
 
-1. **Crée un serveur FastMCP** avec capabilities pour subscriptions :
+1. **Create a FastMCP server** with capabilities for subscriptions:
    ```python
    capabilities={"resources": {"subscribe": True}}
    ```
 
-2. **Gère les subscriptions** :
-   - Stocke les subscriptions dans un dict : `subscriptions = {}` (URI -> set de callbacks)
-   - Implémente `@mcp_server.subscribe_resource()` pour gérer `resources/subscribe`
-   - Implémente `@mcp_server.unsubscribe_resource()` pour gérer `resources/unsubscribe`
+2. **Handle subscriptions**:
+   - Store subscriptions in a dict: `subscriptions = {}` (URI -> set of callbacks)
+   - Implement `@mcp_server.subscribe_resource()` to handle `resources/subscribe`
+   - Implement `@mcp_server.unsubscribe_resource()` to handle `resources/unsubscribe`
 
-3. **Crée une resource modifiable** :
-   - Resource `status://app/current` qui peut être mise à jour
-   - Outil `update_status` pour modifier cette resource
+3. **Create a modifiable resource**:
+   - Resource `status://app/current` that can be updated
+   - Tool `update_status` to modify this resource
 
-4. **Envoie des notifications** :
-   - Quand la resource change, utilise `ctx.send_notification()` pour notifier les abonnés
-   - Format : `notifications/resources/updated` avec `uri` et `contents`
+4. **Send notifications**:
+   - When the resource changes, use `ctx.send_notification()` to notify subscribers
+   - Format: `notifications/resources/updated` with `uri` and `contents`
 
-## Indices
+## Hints
 
-- FastMCP gère automatiquement les subscriptions si tu déclares la capability
-- Pour notifier, tu peux utiliser le Context ou directement le serveur
-- Note : FastMCP peut simplifier cela, mais tu dois comprendre le concept
+- FastMCP automatically handles subscriptions if you declare the capability
+- To notify, you can use Context or the server directly
+- Note: FastMCP may simplify this, but you must understand the concept
 
 ## Test
 
-Utilise `python test.py` pour vérifier que les subscriptions fonctionnent.
+Use `python test.py` to verify that subscriptions work.
 
 ## Note
 
-FastMCP peut avoir des limitations pour les notifications. L'objectif principal est de comprendre le concept de subscriptions.
+FastMCP may have limitations for notifications. The main objective is to understand the concept of subscriptions.

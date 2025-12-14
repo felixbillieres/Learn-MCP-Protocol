@@ -1,55 +1,53 @@
-# Instructions - Projet 08
+# Instructions - Project 08
 
-## Ta mission
+## Your mission
 
-Créer un serveur MCP qui expose des ressources de configuration.
+Create an MCP server that exposes configuration resources.
 
-## Étapes à suivre
+## Steps to follow
 
-1. **Crée un serveur FastMCP** basique
+1. **Create a basic FastMCP server** (resource support is automatically detected)
 
-2. **Crée un serveur FastMCP** basique (le support des resources est détecté automatiquement)
-
-3. **Crée une fonction `list_resources`** et enregistre-la avec FastMCP :
+2. **Create a `list_resources` function** and register it with FastMCP:
    ```python
    async def list_resources() -> list[dict[str, Any]]:
-       # Implémente la logique
+       # Implement the logic
        pass
    
-   # Enregistre la fonction
+   # Register the function
    mcp_server.list_resources = list_resources
    ```
-   - Retourne une liste de ressources
-   - Chaque ressource doit avoir :
-     - `uri` : L'URI unique (ex: `"config://app/settings"`)
-     - `name` : Un nom court
-     - `description` : Description de la ressource
-     - `mimeType` : Type MIME (ex: `"application/json"` ou `"text/plain"`)
+   - Returns a list of resources
+   - Each resource must have:
+     - `uri`: The unique URI (e.g., `"config://app/settings"`)
+     - `name`: A short name
+     - `description`: Resource description
+     - `mimeType`: MIME type (e.g., `"application/json"` or `"text/plain"`)
 
-4. **Crée une fonction `read_resource`** et enregistre-la avec FastMCP :
+3. **Create a `read_resource` function** and register it with FastMCP:
    ```python
    async def read_resource(uri: str, ctx: Context = None) -> dict[str, Any]:
-       # Implémente la logique
+       # Implement the logic
        pass
    
-   # Enregistre la fonction
+   # Register the function
    mcp_server.read_resource = read_resource
    ```
-   - Prend un paramètre `uri` (str)
-   - Retourne le contenu de la ressource
-   - Si l'URI n'existe pas, lève une `ValueError`
+   - Takes a parameter `uri` (str)
+   - Returns the resource content
+   - If the URI doesn't exist, raises a `ValueError`
 
-5. **Expose au moins 2 ressources** :
-   - `config://app/settings` : Configuration de l'app (JSON)
-   - `info://server/version` : Version du serveur (texte)
+4. **Expose at least 2 resources**:
+   - `config://app/settings`: App configuration (JSON)
+   - `info://server/version`: Server version (text)
 
-## Indices
+## Hints
 
-- Les fonctions doivent être `async`
-- **Important** : Dans FastMCP, tu dois assigner directement les fonctions (`mcp_server.list_resources = list_resources`) au lieu d'utiliser des décorateurs
-- Pour `read_resource`, retourne un dict avec `contents` qui contient une liste
-- Chaque contenu a : `uri`, `mimeType`, et soit `text` (pour texte) soit `blob` (pour binaire base64)
+- Functions must be `async`
+- **Important**: In FastMCP, you must directly assign the functions (`mcp_server.list_resources = list_resources`) instead of using decorators
+- For `read_resource`, return a dict with `contents` containing a list
+- Each content has: `uri`, `mimeType`, and either `text` (for text) or `blob` (for base64 binary)
 
 ## Test
 
-Utilise `python test.py` pour vérifier que les ressources sont listées et lisibles.
+Use `python test.py` to verify that resources are listed and readable.

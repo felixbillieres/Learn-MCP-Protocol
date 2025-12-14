@@ -1,21 +1,20 @@
-# Projet 28 : Analyseur de Vulnérabilités
+# Project 28: Vulnerability Analyzer
 
-## Objectif
+## Objective
 
-Créer un serveur MCP pour analyser des CVE (Common Vulnerabilities and Exposures) et générer des advisories de sécurité.
+Create an MCP server to analyze CVEs (Common Vulnerabilities and Exposures) and generate security advisories.
 
-## Concepts à apprendre
+## Concepts to Learn
 
-### CVE et gestion des vulnérabilités
+### CVE and vulnerability management
 
-- **CVE** : Identifiant unique pour une vulnérabilité
-- **CVSS** : Score de sévérité (0.0 à 10.0)
-- **Advisory** : Document de sécurité décrivant une vulnérabilité
+- **CVE**: Unique identifier for a vulnerability
+- **CVSS**: Severity score (0.0 to 10.0)
+- **Advisory**: Security document describing a vulnerability
 
-### Architecture MCP
+### MCP Architecture
 
-- **Tools** : Recherche et analyse de CVE
-- **Resources** : Exposer les CVE par produit/version
-- **Prompts** : Générer des advisories formatés
-- **Sampling** : Suggérer des exploits pour les CVE
-
+- **Tools**: CVE search and analysis
+- **Resources**: Expose CVEs by product/version
+- **Prompts**: Generate formatted advisories
+- **Sampling**: Suggest exploits for CVEs

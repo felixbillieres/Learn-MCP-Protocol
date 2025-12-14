@@ -1,40 +1,39 @@
-# Projet 19 : Sampling avec outils et workflows agentiques
+# Project 19: Sampling with tools and agentic workflows
 
-## Objectif
+## Objective
 
-Apprendre à utiliser le sampling avec des outils pour créer des workflows agentiques où le LLM peut appeler des fonctions.
+Learn to use sampling with tools to create agentic workflows where the LLM can call functions.
 
-## Concepts à apprendre
+## Concepts to learn
 
-### Sampling avec outils
+### Sampling with tools
 
-Le sampling peut inclure des outils que le LLM peut utiliser pendant la génération. Cela permet de créer des agents qui peuvent :
-- Appeler des fonctions
-- Recevoir des résultats
-- Continuer le raisonnement
-- Itérer jusqu'à résoudre la tâche
+Sampling can include tools that the LLM can use during generation. This allows creating agents that can:
+- Call functions
+- Receive results
+- Continue reasoning
+- Iterate until the task is solved
 
-### Flow agentique
+### Agentic flow
 
-1. Serveur envoie une requête avec outils disponibles
-2. LLM décide d'appeler un outil
-3. Client exécute l'outil
-4. Client retourne le résultat au LLM
-5. LLM continue avec le résultat
-6. Répète jusqu'à ce que le LLM termine
+1. Server sends a request with available tools
+2. LLM decides to call a tool
+3. Client executes the tool
+4. Client returns the result to the LLM
+5. LLM continues with the result
+6. Repeats until LLM finishes
 
-### Déclaration des outils
+### Tool declaration
 
-Les outils sont déclarés dans la requête de sampling avec :
-- `name` : Nom de l'outil
-- `description` : Description
-- `inputSchema` : Schéma JSON des paramètres
+Tools are declared in the sampling request with:
+- `name`: Tool name
+- `description`: Description
+- `inputSchema`: JSON schema of parameters
 
-## Ce que tu vas créer
+## What you will create
 
-Dans ce projet, tu vas créer un workflow agentique où le LLM peut utiliser des outils pour résoudre des tâches complexes.
+In this project, you will create an agentic workflow where the LLM can use tools to solve complex tasks.
 
-## Prochaines étapes
+## Next steps
 
-Lis `INSTRUCTIONS.md` pour voir ce que tu dois faire exactement !
-
+Read `INSTRUCTIONS.md` to see exactly what you need to do!

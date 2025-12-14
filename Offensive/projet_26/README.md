@@ -1,28 +1,28 @@
-# Projet 26 : Scanner de Ports MCP
+# Project 26: Port Scanner MCP
 
-## Objectif
+## Objective
 
-Créer un serveur MCP pour scanner des ports et analyser les services, avec génération de rapports de vulnérabilités.
+Create an MCP server to scan ports and analyze services, with vulnerability report generation.
 
-## Concepts à apprendre
+## Concepts to Learn
 
-### Scanner de ports en cybersécurité
+### Port scanning in cybersecurity
 
-Un scanner de ports est un outil fondamental en sécurité offensive qui permet de :
-- Découvrir les ports ouverts sur une cible
-- Identifier les services qui écoutent sur ces ports
-- Détecter les versions des services
-- Analyser les vulnérabilités potentielles
+A port scanner is a fundamental tool in offensive security that allows you to:
+- Discover open ports on a target
+- Identify services listening on these ports
+- Detect service versions
+- Analyze potential vulnerabilities
 
-### Architecture MCP pour le scanning
+### MCP architecture for scanning
 
-Dans ce projet, tu vas utiliser :
-- **Tools** : Pour exécuter les scans et analyses
-- **Resources** : Pour exposer les résultats de scan en temps réel
-- **Prompts** : Pour générer des rapports de vulnérabilités
-- **Modèles Pydantic** : Pour structurer les données de scan
+In this project, you will use:
+- **Tools**: To execute scans and analyses
+- **Resources**: To expose scan results in real-time
+- **Prompts**: To generate vulnerability reports
+- **Pydantic models**: To structure scan data
 
-### Modèles de données
+### Data models
 
 ```python
 class PortInfo(BaseModel):
@@ -38,14 +38,13 @@ class ScanResult(BaseModel):
     scan_type: str
 ```
 
-## Cas d'usage
+## Use Cases
 
-- **Reconnaissance** : Identifier les services exposés
-- **Analyse de surface d'attaque** : Comprendre quels ports sont accessibles
-- **Détection de vulnérabilités** : Analyser les versions de services
-- **Rapport de sécurité** : Générer des rapports pour les clients
+- **Reconnaissance**: Identify exposed services
+- **Attack surface analysis**: Understand which ports are accessible
+- **Vulnerability detection**: Analyze service versions
+- **Security reporting**: Generate reports for clients
 
-## Prochaines étapes
+## Next Steps
 
-Lis `INSTRUCTIONS.md` pour voir ce que tu dois faire exactement !
-
+Read `INSTRUCTIONS.md` to see exactly what you need to do!

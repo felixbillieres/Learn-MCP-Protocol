@@ -1,46 +1,46 @@
-# Instructions - Projet 05
+# Instructions - Project 05
 
-## Ta mission
+## Your mission
 
-Créer un outil avec une gestion d'erreurs robuste et une validation des données.
+Create a tool with robust error handling and data validation.
 
-## Étapes à suivre
+## Steps to follow
 
-1. **Crée un outil `calculer_division`** qui :
-   - Prend deux paramètres : `dividende` (float) et `diviseur` (float)
-   - Prend aussi `ctx: Context`
-   - Divise le dividende par le diviseur
+1. **Create a `calculate_division` tool** that:
+   - Takes two parameters: `dividend` (float) and `divisor` (float)
+   - Also takes `ctx: Context`
+   - Divides the dividend by the divisor
 
-2. **Validations à implémenter** :
-   - Si `dividende` est None ou non fourni → `ctx.error()` + `raise ValueError("Le dividende est requis")`
-   - Si `diviseur` est None ou non fourni → `ctx.error()` + `raise ValueError("Le diviseur est requis")`
-   - Si `diviseur == 0` → `ctx.error()` + `raise ValueError("Division par zéro impossible")`
-   - Si le résultat est infini → `ctx.warning()` (mais retourne quand même le résultat)
+2. **Validations to implement**:
+   - If `dividend` is None or not provided → `ctx.error()` + `raise ValueError("Dividend is required")`
+   - If `divisor` is None or not provided → `ctx.error()` + `raise ValueError("Divisor is required")`
+   - If `divisor == 0` → `ctx.error()` + `raise ValueError("Division by zero is impossible")`
+   - If the result is infinite → `ctx.warning()` (but still return the result)
 
-3. **Logging** :
-   - Au début : `ctx.info()` : "Calcul de {dividende} / {diviseur}"
-   - En cas de succès : `ctx.info()` : "Résultat : {resultat}"
-   - En cas d'erreur : logger avec `ctx.error()` avant de lever l'exception
+3. **Logging**:
+   - At the start: `ctx.info()`: "Calculating {dividend} / {divisor}"
+   - On success: `ctx.info()`: "Result: {result}"
+   - On error: log with `ctx.error()` before raising the exception
 
-4. **Retourne** : un float (le résultat de la division)
+4. **Returns**: a float (the division result)
 
-## Indices
+## Hints
 
-- Valide les paramètres **avant** de faire le calcul
-- Utilise `math.isinf()` pour vérifier si le résultat est infini
-- Les messages d'erreur doivent être clairs et informatifs
-- Toujours logger avec `ctx.error()` avant de lever une exception
+- Validate parameters **before** doing the calculation
+- Use `math.isinf()` to check if the result is infinite
+- Error messages must be clear and informative
+- Always log with `ctx.error()` before raising an exception
 
 ## Test
 
-Utilise `python test.py` pour vérifier que :
-- Les validations fonctionnent
-- Les erreurs sont bien gérées
-- Les messages sont clairs
+Use `python test.py` to verify that:
+- Validations work
+- Errors are properly handled
+- Messages are clear
 
-## Résultat attendu
+## Expected result
 
-- Division normale : retourne le résultat
-- Division par zéro : lève ValueError avec message clair
-- Paramètres manquants : lève ValueError avec message clair
-- Tous les cas sont loggés dans le Context
+- Normal division: returns the result
+- Division by zero: raises ValueError with clear message
+- Missing parameters: raises ValueError with clear message
+- All cases are logged in the Context

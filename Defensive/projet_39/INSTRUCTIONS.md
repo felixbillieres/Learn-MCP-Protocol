@@ -33,11 +33,11 @@ Create a secrets manager with strict authorization and access control.
    ```
 
 3. **Create Tools** (all require authorization):
-   - `creer_secret` : Create new secret (requires secrets:write)
-   - `obtenir_secret` : Get secret (requires secrets:read, uses elicitation)
+   - `create_secret` : Create new secret (requires secrets:write)
+   - `get_secret` : Get secret (requires secrets:read, uses elicitation)
    - `modifier_secret` : Update secret (requires secrets:write)
    - `supprimer_secret` : Delete secret (requires secrets:delete)
-   - `lister_secrets` : List secrets (masked, requires secrets:read)
+   - `list_secrets` : List secrets (masked, requires secrets:read)
    - `consulter_logs` : View access logs (requires secrets:audit)
 
 4. **Create Resources**:

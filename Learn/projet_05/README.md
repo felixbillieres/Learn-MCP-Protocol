@@ -1,90 +1,65 @@
-# Projet 05 : Gestion d'erreurs et validation
+# Project 05: Error handling and validation
 
-## Objectif
+## Objective
 
-Apprendre à gérer les erreurs proprement dans tes outils MCP, avec validation des données et messages d'erreur clairs.
+Learn to handle errors properly in your MCP tools, with data validation and clear error messages.
 
-## Concepts à apprendre
+## Concepts to learn
 
-### Pourquoi gérer les erreurs ?
+### Why handle errors?
 
-Dans MCP, il faut :
-- **Valider les entrées** avant de les utiliser
-- **Gérer les cas d'erreur** proprement
-- **Retourner des messages clairs** au client
-- **Utiliser le Context** pour logger les erreurs
+In MCP, you must:
+- **Validate inputs** before using them
+- **Handle error cases** properly
+- **Return clear messages** to the client
+- **Use Context** to log errors
 
-### Types d'erreurs en Python
+### Error types in Python
 
 ```python
-# ValueError : valeur invalide
+# ValueError: invalid value
 if age < 0:
-    raise ValueError("L'âge ne peut pas être négatif")
+    raise ValueError("Age cannot be negative")
 
-# RuntimeError : erreur d'exécution
-if not ressource_disponible:
-    raise RuntimeError("La ressource n'est pas disponible")
+# RuntimeError: runtime error
+if not resource_available:
+    raise RuntimeError("Resource is not available")
 
-# KeyError, TypeError, etc. : erreurs Python natives
+# KeyError, TypeError, etc.: native Python errors
 ```
 
-### Bonne pratique : Valider tôt, logger toujours
+### Best practice: Validate early, always log
 
 ```python
 @mcp_server.tool()
-async def mon_outil(param: str, ctx: Context):
-    # 1. Valider les entrées
+async def my_tool(param: str, ctx: Context):
+    # 1. Validate inputs
     if not param:
-        await ctx.error("Le paramètre ne peut pas être vide")
-        raise ValueError("param est vide")
+        await ctx.error("Parameter cannot be empty")
+        raise ValueError("param is empty")
 
-    # 2. Logger le début
-    await ctx.info(f"Traitement de {param}")
+    # 2. Log the start
+    await ctx.info(f"Processing {param}")
 
-    # 3. Essayer l'opération
+    # 3. Try the operation
     try:
-        result = faire_operation(param)
+        result = do_operation(param)
     except SpecificError as e:
-        await ctx.error(f"Erreur lors de l'opération : {e}")
-        raise RuntimeError(f"Impossible de traiter {param}") from e
+        await ctx.error(f"Error during operation: {e}")
+        raise RuntimeError(f"Cannot process {param}") from e
 
-    # 4. Retourner le résultat
+    # 4. Return the result
     return result
 ```
 
-## Exemple dans Exegol-MCP
+## What you will create
 
-Regarde `src/assets/tools_container.py` :
+In this project, you will create a tool that:
+- Validates input parameters
+- Handles different error cases
+- Uses Context to log errors
+- Returns clear error messages
 
-```26:31:Exegol-MCP/src/assets/tools_container.py
-    # 1. Check if container exists
-    container = get_container_by_name(container_name)
-    if not container:
-        await ctx.error(f"Container '{container_name}' not found")
-        raise ValueError(f"Container '{container_name}' not found")
-```
+## Next steps
 
-Et aussi :
-
-```33:39:Exegol-MCP/src/assets/tools_container.py
-    # 2. Check if container is running
-    if not container.isRunning():
-        error_msg = (
-            f"Container '{container_name}' is not running. "
-            f"Please start it first using the 'start_container' tool."
-        )
-        await ctx.error(error_msg)
-        raise RuntimeError(error_msg)
-```
-
-## Ce que tu vas créer
-
-Dans ce projet, tu vas créer un outil qui :
-- Valide les paramètres d'entrée
-- Gère différents cas d'erreur
-- Utilise le Context pour logger les erreurs
-- Retourne des messages d'erreur clairs
-
-## Prochaines étapes
-
-Lis `INSTRUCTIONS.md` pour voir ce que tu dois faire exactement !
+Read `INSTRUCTIONS.md` to see exactly what you need to do!

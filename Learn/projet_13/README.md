@@ -1,28 +1,27 @@
-# Projet 13 : Prompts avancés
+# Project 13: Advanced prompts
 
-## Objectif
+## Objective
 
-Créer des prompts avancés avec messages multiples, ressources intégrées, et workflows complexes.
+Create advanced prompts with multiple messages, integrated resources, and complex workflows.
 
-## Concepts à apprendre
+## Concepts to learn
 
-### Messages multiples
+### Multiple messages
 
-Un prompt peut retourner plusieurs messages, permettant de créer des conversations ou des exemples few-shot.
+A prompt can return multiple messages, allowing you to create conversations or few-shot examples.
 
-### Ressources intégrées
+### Integrated resources
 
-Les prompts peuvent référencer des resources du serveur directement dans les messages, permettant d'inclure du contenu dynamique.
+Prompts can reference server resources directly in messages, allowing you to include dynamic content.
 
-### Workflows complexes
+### Complex workflows
 
-En combinant plusieurs messages, des resources, et des arguments, on peut créer des workflows sophistiqués pour guider l'utilisateur ou l'IA.
+By combining multiple messages, resources, and arguments, you can create sophisticated workflows to guide the user or AI.
 
-## Ce que tu vas créer
+## What you will create
 
-Dans ce projet, tu vas créer des prompts avancés avec des messages multiples et des références à des resources.
+In this project, you will create advanced prompts with multiple messages and resource references.
 
-## Prochaines étapes
+## Next steps
 
-Lis `INSTRUCTIONS.md` pour voir ce que tu dois faire exactement !
-
+Read `INSTRUCTIONS.md` to see exactly what you need to do!

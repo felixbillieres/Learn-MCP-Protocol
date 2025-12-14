@@ -1,36 +1,36 @@
-# Projet 11 : Créer ton premier prompt
+# Project 11: Create your first prompt
 
-## Objectif
+## Objective
 
-Apprendre à créer des prompts (templates de messages) avec MCP. Les prompts permettent d'exposer des templates réutilisables que les clients peuvent utiliser.
+Learn to create prompts (message templates) with MCP. Prompts allow you to expose reusable templates that clients can use.
 
-## Concepts à apprendre
+## Concepts to learn
 
-### Qu'est-ce qu'un prompt ?
+### What is a prompt?
 
-Un **prompt** est un template de message prédéfini que le serveur MCP expose aux clients. Les prompts sont conçus pour être **contrôlés par l'utilisateur** - ils sont exposés pour que l'utilisateur puisse les sélectionner explicitement.
+A **prompt** is a predefined message template that the MCP server exposes to clients. Prompts are designed to be **user-controlled** - they are exposed so the user can explicitly select them.
 
-### Différence avec les outils
+### Difference from tools
 
-- **Tools** : Actions que l'IA peut exécuter (modèle contrôle)
-- **Prompts** : Templates que l'utilisateur peut choisir d'utiliser (utilisateur contrôle)
-- **Resources** : Données que l'IA peut lire (application contrôle)
+- **Tools**: Actions the AI can execute (model control)
+- **Prompts**: Templates the user can choose to use (user control)
+- **Resources**: Data the AI can read (application control)
 
-### Structure d'un prompt
+### Prompt structure
 
-Un prompt a :
-- `name` : Identifiant unique
-- `title` : Nom lisible (optionnel)
-- `description` : Description (optionnel)
-- `arguments` : Arguments dynamiques (optionnel)
+A prompt has:
+- `name`: Unique identifier
+- `title`: Readable name (optional)
+- `description`: Description (optional)
+- `arguments`: Dynamic arguments (optional)
 
-### Message retourné
+### Returned message
 
-Quand un client demande un prompt, le serveur retourne des messages formatés (comme des messages pour un LLM).
+When a client requests a prompt, the server returns formatted messages (like messages for an LLM).
 
-## Documentation MCP
+## MCP Documentation
 
-Les prompts sont déclarés avec la capability `prompts` :
+Prompts are declared with the `prompts` capability:
 ```json
 {
   "capabilities": {
@@ -39,11 +39,10 @@ Les prompts sont déclarés avec la capability `prompts` :
 }
 ```
 
-## Ce que tu vas créer
+## What you will create
 
-Dans ce projet, tu vas créer un serveur qui expose des prompts simples pour différentes tâches.
+In this project, you will create a server that exposes simple prompts for different tasks.
 
-## Prochaines étapes
+## Next steps
 
-Lis `INSTRUCTIONS.md` pour voir ce que tu dois faire exactement !
-
+Read `INSTRUCTIONS.md` to see exactly what you need to do!

@@ -1,35 +1,34 @@
-# Instructions - Projet 14
+# Instructions - Project 14
 
-## Ta mission
+## Your mission
 
-Créer un outil qui utilise l'elicitation pour demander des informations à l'utilisateur.
+Create a tool that uses elicitation to request information from the user.
 
-## Étapes à suivre
+## Steps to follow
 
-1. **Crée un serveur FastMCP** basique
+1. **Create a basic FastMCP server**
 
-2. **Crée un outil `creer_profil`** :
-   - Ne prend pas de paramètres (ou seulement `ctx: Context`)
-   - Utilise `await ctx.elicitation.create()` pour demander :
-     - Nom (string)
+2. **Create a `create_profile` tool**:
+   - Takes no parameters (or only `ctx: Context`)
+   - Uses `await ctx.elicitation.create()` to request:
+     - Name (string)
      - Age (integer)
-     - Email (string, optionnel)
-   - Retourne un dict avec les informations collectées
+     - Email (string, optional)
+   - Returns a dict with collected information
 
-3. **Crée un outil `configurer_preferences`** :
-   - Demande via elicitation :
-     - Thème préféré (enum: "dark", "light", "auto")
-     - Notifications activées (boolean)
-   - Retourne les préférences
+3. **Create a `configure_preferences` tool**:
+   - Requests via elicitation:
+     - Preferred theme (enum: "dark", "light", "auto")
+     - Notifications enabled (boolean)
+   - Returns preferences
 
-## Indices
+## Hints
 
-- L'elicitation nécessite un schéma JSON pour définir les champs demandés
-- Utilise `ctx.elicitation.create()` avec `message` et `requested_schema`
-- Le schéma suit le format JSON Schema (type, title, description, etc.)
-- La réponse est un dict avec les valeurs fournies
+- Elicitation requires a JSON schema to define requested fields
+- Use `ctx.elicitation.create()` with `message` and `requested_schema`
+- The schema follows JSON Schema format (type, title, description, etc.)
+- The response is a dict with provided values
 
 ## Test
 
-Note: L'elicitation nécessite un vrai client MCP pour être testée. Le test vérifiera que l'outil peut être appelé.
-
+Note: Elicitation requires a real MCP client to be tested. The test will verify that the tool can be called.

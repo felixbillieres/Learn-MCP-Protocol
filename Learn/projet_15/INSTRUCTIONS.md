@@ -1,41 +1,40 @@
-# Instructions - Projet 15
+# Instructions - Project 15
 
-## Ta mission
+## Your mission
 
-Créer des outils avec des schémas d'elicitation complexes et validés.
+Create tools with complex and validated elicitation schemas.
 
-## Étapes à suivre
+## Steps to follow
 
-1. **Crée un serveur FastMCP** basique
+1. **Create a basic FastMCP server**
 
-2. **Crée un outil `inscription`** avec un schéma détaillé :
-   - Demande :
-     - `username` : string, minLength 3, maxLength 20, pattern alphanumeric
-     - `email` : string, format email
-     - `age` : integer, minimum 13, maximum 120
-     - `newsletter` : boolean, défaut false
-   - Valide les données reçues
-   - Retourne un message de confirmation
+2. **Create a `register` tool** with a detailed schema:
+   - Requests:
+     - `username`: string, minLength 3, maxLength 20, alphanumeric pattern
+     - `email`: string, email format
+     - `age`: integer, minimum 13, maximum 120
+     - `newsletter`: boolean, default false
+   - Validates received data
+   - Returns a confirmation message
 
-3. **Crée un outil `commander_produit`** avec enum :
-   - Demande :
-     - `produit` : enum avec valeurs "basic", "premium", "enterprise"
-     - `quantite` : integer, minimum 1, maximum 100
-     - `livraison_express` : boolean
-   - Retourne un résumé de commande
+3. **Create an `order_product` tool** with enum:
+   - Requests:
+     - `product`: enum with values "basic", "premium", "enterprise"
+     - `quantity`: integer, minimum 1, maximum 100
+     - `express_delivery`: boolean
+   - Returns an order summary
 
-4. **Valide les réponses** :
-   - Vérifie que les valeurs respectent les contraintes du schéma
-   - Lève des erreurs appropriées si la validation échoue
+4. **Validate responses**:
+   - Checks that values respect schema constraints
+   - Raises appropriate errors if validation fails
 
-## Indices
+## Hints
 
-- Le schéma doit suivre JSON Schema strictement
-- Utilise `pattern` pour la validation regex (ex: `"^[a-zA-Z0-9]+$"`)
-- Les formats comme `email` sont validés automatiquement par le client
-- Valide aussi côté serveur pour la sécurité
+- The schema must strictly follow JSON Schema
+- Use `pattern` for regex validation (e.g., `"^[a-zA-Z0-9]+$"`)
+- Formats like `email` are automatically validated by the client
+- Also validate on the server side for security
 
 ## Test
 
-Le test vérifiera que les schémas sont correctement structurés.
-
+The test will verify that schemas are correctly structured.

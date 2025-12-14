@@ -1,70 +1,69 @@
-# Instructions - Projet 26 (Scanner de Ports)
+# Instructions - Project 26 (Port Scanner)
 
-## Ta mission
+## Your Mission
 
-Créer un serveur MCP pour scanner des ports et analyser les services avec génération de rapports.
+Create an MCP server to scan ports and analyze services with report generation.
 
-## Étapes à suivre
+## Steps to Follow
 
-1. **Crée les modèles Pydantic** :
-   - `PortInfo` :
-     - `port` : int (obligatoire)
-     - `state` : str (obligatoire, valeurs: "open", "closed", "filtered")
-     - `service` : str | None (optionnel, ex: "ssh", "http", "mysql")
-     - `version` : str | None (optionnel, version du service)
-   - `ScanResult` :
-     - `target` : str (obligatoire, IP ou hostname)
-     - `ports` : List[PortInfo] (obligatoire)
-     - `timestamp` : str (obligatoire, format ISO)
-     - `scan_type` : str (obligatoire, ex: "quick", "full")
+1. **Create Pydantic Models**:
+   - `PortInfo`:
+     - `port`: int (required)
+     - `state`: str (required, values: "open", "closed", "filtered")
+     - `service`: str | None (optional, e.g., "ssh", "http", "mysql")
+     - `version`: str | None (optional, service version)
+   - `ScanResult`:
+     - `target`: str (required, IP or hostname)
+     - `ports`: List[PortInfo] (required)
+     - `timestamp`: str (required, ISO format)
+     - `scan_type`: str (required, e.g., "quick", "full")
 
-2. **Crée le serveur FastMCP** avec capabilities pour resources :
+2. **Create FastMCP server** with capabilities for resources:
    ```python
    capabilities={"resources": {}}
    ```
 
-3. **Crée l'outil `scanner_ports`** :
-   - Paramètres : `target` (str), `ports` (List[int] | None, optionnel), `scan_type` (str, défaut "quick"), `ctx: Context`
-   - Simule un scan de ports (génère des résultats aléatoires ou prédéfinis)
-   - Stocke le résultat dans une liste globale `scans = []`
-   - Retourne : `ScanResult`
-   - Logge avec `ctx.info()`
+3. **Create `scan_ports` tool**:
+   - Parameters: `target` (str), `ports` (List[int] | None, optional), `scan_type` (str, default "quick"), `ctx: Context`
+   - Simulates port scanning (generates random or predefined results)
+   - Stores the result in a global list `scans = []`
+   - Returns: `ScanResult`
+   - Logs with `ctx.info()`
 
-4. **Crée l'outil `analyser_services`** :
-   - Paramètres : `scan_id` (int, index dans la liste), `ctx: Context`
-   - Analyse les services détectés dans un scan
-   - Identifie les versions et vulnérabilités potentielles
-   - Retourne : `Dict[str, Any]` avec les analyses
-   - Logge avec `ctx.info()`
+4. **Create `analyze_services` tool**:
+   - Parameters: `scan_id` (int, index in the list), `ctx: Context`
+   - Analyzes services detected in a scan
+   - Identifies versions and potential vulnerabilities
+   - Returns: `Dict[str, Any]` with analyses
+   - Logs with `ctx.info()`
 
-5. **Crée la resource `scan://results/{scan_id}`** :
-   - Expose les résultats de scan via resources
-   - Utilise un template URI pour accéder aux scans par ID
-   - Retourne le `ScanResult` au format JSON
+5. **Create resource `scan://results/{scan_id}`**:
+   - Exposes scan results via resources
+   - Uses a URI template to access scans by ID
+   - Returns the `ScanResult` in JSON format
 
-6. **Crée le prompt `generer_rapport_vulnerabilites`** :
-   - Prend un argument `scan_id` (int)
-   - Génère un rapport de vulnérabilités basé sur les résultats du scan
-   - Retourne un template de rapport formaté
+6. **Create prompt `generate_vulnerability_report`**:
+   - Takes a `scan_id` argument (int)
+   - Generates a vulnerability report based on scan results
+   - Returns a formatted report template
 
-## Indices
+## Hints
 
-- Pour simuler le scan, utilise des ports communs : `[22, 80, 443, 3306, 5432, 8080]`
-- Génère des services aléatoires : `["ssh", "http", "https", "mysql", "postgresql"]`
-- Pour le timestamp : `from datetime import datetime` puis `datetime.now().isoformat()`
-- Stocke les scans dans une liste globale : `scans: List[ScanResult] = []`
+- To simulate scanning, use common ports: `[22, 80, 443, 3306, 5432, 8080]`
+- Generate random services: `["ssh", "http", "https", "mysql", "postgresql"]`
+- For timestamp: `from datetime import datetime` then `datetime.now().isoformat()`
+- Store scans in a global list: `scans: List[ScanResult] = []`
 
 ## Test
 
-Utilise `python test.py` pour vérifier que :
-- Les scans fonctionnent
-- Les resources exposent les résultats
-- Les prompts génèrent des rapports
+Use `python test.py` to verify that:
+- Scanning works
+- Resources expose results
+- Prompts generate reports
 
-## Résultat attendu
+## Expected Result
 
-- Scanner des ports sur une cible
-- Analyser les services détectés
-- Exposer les résultats via resources
-- Générer des rapports de vulnérabilités
-
+- Scan ports on a target
+- Analyze detected services
+- Expose results via resources
+- Generate vulnerability reports

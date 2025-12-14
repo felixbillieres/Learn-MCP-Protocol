@@ -1,41 +1,40 @@
-# Instructions - Projet 25 (FINAL)
+# Instructions - Project 25 (FINAL)
 
-## Ta mission
+## Your mission
 
-Créer un serveur MCP complet "Gestionnaire de Projet" avec TOUTES les fonctionnalités.
+Create a complete MCP server "Project Manager" with ALL features.
 
-## Fonctionnalités requises
+## Required features
 
 ### Tools
-- CRUD pour projets et tâches
-- Statistiques et rapports
+- CRUD for projects and tasks
+- Statistics and reports
 
 ### Resources
-- Expose les projets comme resources
-- Templates pour accéder aux tâches
+- Expose projects as resources
+- Templates to access tasks
 
 ### Prompts
-- Prompt pour créer un projet
-- Prompt pour générer un rapport
+- Prompt to create a project
+- Prompt to generate a report
 
 ### Elicitation
-- Demande confirmation pour suppressions
-- Collecte préférences utilisateur
+- Requests confirmation for deletions
+- Collects user preferences
 
-### Sampling (optionnel)
-- Génère des descriptions automatiques
+### Sampling (optional)
+- Generates automatic descriptions
 
 ### Authorization
-- Protection des actions sensibles
-- Validation de tokens
+- Protection of sensitive actions
+- Token validation
 
 ### Structure
-- Code organisé en modules
-- Modèles Pydantic
-- Gestion d'erreurs complète
-- Logging approprié
+- Code organized in modules
+- Pydantic models
+- Complete error handling
+- Appropriate logging
 
-## Objectif
+## Objective
 
-Créer le meilleur serveur MCP possible en utilisant tout ce que tu as appris !
-
+Create the best possible MCP server using everything you've learned!

@@ -1,91 +1,90 @@
 from mcp.server.fastmcp import FastMCP, Context
 from typing import Any
 
-# TODO: Crée le serveur MCP
+# TODO: Create the MCP server
 mcp_server = FastMCP(
-    "MonServeurSamplingAvance",
+    "AdvancedSamplingServer",
     host="127.0.0.1",
     port=8000,
     stateless_http=True,
     json_response=True
 )
 
-# TODO: Crée l'outil creatif_ideation
+# TODO: Create the creative_ideation tool
 @mcp_server.tool()
-async def creatif_ideation(
-    sujet: str,
+async def creative_ideation(
+    topic: str,
     ctx: Context
 ) -> str:
     """
-    Génère des idées créatives sur un sujet.
+    Generates creative ideas on a topic.
     
     Args:
-        sujet: Le sujet pour l'idéation
-        ctx: Context MCP
+        topic: The topic for ideation
+        ctx: MCP Context
         
     Returns:
-        Les idées générées
+        Generated ideas
     """
-    # TODO: Utilise ctx.sampling.create_message() avec :
+    # TODO: Use ctx.sampling.create_message() with:
     # - temperature: 0.9
     # - model_preferences: {"intelligencePriority": 0.8}
-    # - messages: demande des idées créatives
+    # - messages: request creative ideas
     
     pass
 
-# TODO: Crée l'outil conversation
+# TODO: Create the conversation tool
 @mcp_server.tool()
 async def conversation(
-    messages_historique: list[dict[str, Any]],
-    nouveau_message: str,
+    message_history: list[dict[str, Any]],
+    new_message: str,
     ctx: Context
 ) -> str:
     """
-    Continue une conversation avec historique.
+    Continues a conversation with history.
     
     Args:
-        messages_historique: Liste des messages précédents
-        nouveau_message: Le nouveau message
-        ctx: Context MCP
+        message_history: List of previous messages
+        new_message: The new message
+        ctx: MCP Context
         
     Returns:
-        La réponse du LLM
+        The LLM response
     """
-    # TODO: Construit la liste complète de messages
-    # TODO: Utilise max_tokens: 500
-    # TODO: Appelle le sampling
+    # TODO: Build the complete message list
+    # TODO: Use max_tokens: 500
+    # TODO: Call sampling
     
     pass
 
-# TODO: Crée l'outil reponse_rapide
+# TODO: Create the quick_response tool
 @mcp_server.tool()
-async def reponse_rapide(
+async def quick_response(
     question: str,
     ctx: Context
 ) -> str:
     """
-    Génère une réponse rapide (optimisée pour la vitesse).
+    Generates a quick response (optimized for speed).
     
     Args:
-        question: La question
-        ctx: Context MCP
+        question: The question
+        ctx: MCP Context
         
     Returns:
-        Une réponse courte et rapide
+        A short and quick response
     """
-    # TODO: Utilise sampling avec :
-    # - speedPriority élevé
+    # TODO: Use sampling with:
+    # - high speedPriority
     # - max_tokens: 100
     
     pass
 
 
 def main():
-    print("Mon serveur MCP avec sampling avancé démarre !")
+    print("My MCP server with advanced sampling is starting!")
     print("URL: http://127.0.0.1:8000/mcp")
     mcp_server.run(transport="streamable-http")
 
 
 if __name__ == "__main__":
     main()
-

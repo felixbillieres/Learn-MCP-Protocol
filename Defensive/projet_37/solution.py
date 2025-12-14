@@ -46,7 +46,7 @@ def validate_token(token: str | None, required_scope: str) -> bool:
 
 # TODO: Create tools
 @mcp_server.tool()
-async def creer_regle(
+async def create_rule(
     name: str,
     action: str,
     source_ip: str | None = None,
@@ -60,7 +60,7 @@ async def creer_regle(
     pass
 
 @mcp_server.tool()
-async def lister_regles(
+async def list_rules(
     enabled_only: bool = False,
     ctx: Context = None
 ) -> List[FirewallRule]:
@@ -68,7 +68,7 @@ async def lister_regles(
     pass
 
 @mcp_server.tool()
-async def modifier_regle(
+async def modify_rule(
     rule_id: int,
     token: str,
     **kwargs,
@@ -78,7 +78,7 @@ async def modifier_regle(
     pass
 
 @mcp_server.tool()
-async def supprimer_regle(
+async def delete_rule(
     rule_id: int,
     token: str,
     ctx: Context = None
@@ -87,7 +87,7 @@ async def supprimer_regle(
     pass
 
 @mcp_server.tool()
-async def creer_policy(
+async def create_policy(
     name: str,
     rule_ids: List[int],
     applied_to: List[str],
@@ -114,4 +114,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

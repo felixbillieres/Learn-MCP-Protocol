@@ -39,7 +39,7 @@ def validate_token(token: str | None, required_scope: str) -> bool:
 
 # TODO: Create tools (all require authorization)
 @mcp_server.tool()
-async def lister_beacons(
+async def list_beacons(
     token: str,
     ctx: Context = None
 ) -> List[Beacon]:
@@ -47,7 +47,7 @@ async def lister_beacons(
     pass
 
 @mcp_server.tool()
-async def creer_task(
+async def create_task(
     beacon_id: str,
     command: Command,
     token: str,
@@ -57,7 +57,7 @@ async def creer_task(
     pass
 
 @mcp_server.tool()
-async def obtenir_tasks(
+async def get_tasks(
     beacon_id: str,
     token: str,
     ctx: Context = None
@@ -66,7 +66,7 @@ async def obtenir_tasks(
     pass
 
 @mcp_server.tool()
-async def obtenir_response(
+async def get_response(
     task_id: int,
     token: str,
     ctx: Context = None
@@ -109,4 +109,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

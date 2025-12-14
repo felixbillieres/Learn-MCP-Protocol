@@ -32,7 +32,7 @@ class DeploymentPlan(BaseModel):
 
 # TODO: Create tools
 @mcp_server.tool()
-async def lister_patches(
+async def list_patches(
     product: str | None = None,
     ctx: Context = None
 ) -> List[Patch]:
@@ -40,7 +40,7 @@ async def lister_patches(
     pass
 
 @mcp_server.tool()
-async def creer_plan_deploiement(
+async def create_deployment_plan(
     patch_id: str,
     systems: List[str],
     ctx: Context = None
@@ -49,7 +49,7 @@ async def creer_plan_deploiement(
     pass
 
 @mcp_server.tool()
-async def deployer_patch(
+async def deploy_patch(
     plan_id: int,
     ctx: Context = None
 ) -> DeploymentPlan:
@@ -57,7 +57,7 @@ async def deployer_patch(
     pass
 
 @mcp_server.tool()
-async def verifier_patch(
+async def verify_patch(
     patch_id: str,
     system: str,
     ctx: Context = None
@@ -94,4 +94,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

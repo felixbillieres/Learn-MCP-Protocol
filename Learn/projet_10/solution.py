@@ -1,35 +1,35 @@
 from mcp.server.fastmcp import FastMCP, Context
 from typing import Any, Set
 
-# TODO: Crée le serveur avec support des subscriptions
+# TODO: Create the server with subscription support
 mcp_server = FastMCP(
-    "MonServeurSubscriptions",
+    "SubscriptionsServer",
     host="127.0.0.1",
     port=8000,
     stateless_http=True,
     json_response=True
-    # TODO: Ajoute capabilities={"resources": {"subscribe": True}}
+    # TODO: Add capabilities={"resources": {"subscribe": True}}
 )
 
-# État de la resource status
+# Status resource state
 status_content = {"status": "running", "uptime": 0}
 
-# TODO: Gère les subscriptions (URI -> set de clients)
+# TODO: Handle subscriptions (URI -> set of clients)
 # subscriptions: dict[str, Set] = {}
 
-# TODO: Implémente list_resources
+# TODO: Implement list_resources
 @mcp_server.list_resources()
 async def list_resources() -> list[dict[str, Any]]:
     """
-    Liste les resources disponibles.
+    Lists available resources.
     """
     pass
 
-# TODO: Implémente read_resource
+# TODO: Implement read_resource
 @mcp_server.read_resource()
 async def read_resource(uri: str) -> dict[str, Any]:
     """
-    Lit une resource.
+    Reads a resource.
     """
     if uri == "status://app/current":
         return {
@@ -41,7 +41,7 @@ async def read_resource(uri: str) -> dict[str, Any]:
         }
     raise ValueError(f"Resource not found: {uri}")
 
-# TODO: Crée un outil pour modifier le status
+# TODO: Create a tool to modify status
 @mcp_server.tool()
 async def update_status(
     status: str,
@@ -49,25 +49,25 @@ async def update_status(
     ctx: Context
 ) -> dict[str, Any]:
     """
-    Met à jour le status de l'application et notifie les abonnés.
+    Updates the application status and notifies subscribers.
 
     Args:
-        status: Nouveau status
-        uptime: Nouveau uptime
-        ctx: Context MCP
+        status: New status
+        uptime: New uptime
+        ctx: MCP Context
 
     Returns:
-        Confirmation de la mise à jour
+        Update confirmation
     """
     global status_content
-    # TODO: Met à jour status_content
-    # TODO: Notifie les abonnés avec ctx ou le serveur
-    # Note: FastMCP peut avoir des limitations, l'important est le concept
+    # TODO: Update status_content
+    # TODO: Notify subscribers with ctx or server
+    # Note: FastMCP may have limitations, the concept is what matters
     pass
 
 
 def main():
-    print("Mon serveur MCP avec subscriptions démarre !")
+    print("My MCP server with subscriptions is starting!")
     print("URL: http://127.0.0.1:8000/mcp")
     mcp_server.run(transport="streamable-http")
 

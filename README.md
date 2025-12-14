@@ -21,7 +21,7 @@ The projects are organized into three categories:
 4. **Project 04** - Use Context for logging (info, error, warning)
 5. **Project 05** - Error handling and validation
 6. **Project 06** - Tools with complex parameters and advanced types
-7. **Project 07** - Beginner final project: Complete mini server (inspired by Exegol-MCP)
+7. **Project 07** - Beginner final project: Complete mini server
 
 ### Resources (Projects 08-10)
 

@@ -34,10 +34,10 @@ Create a SIEM system with real-time event collection and alerting.
    ```
 
 3. **Create Tools**:
-   - `collecter_evenement` : Collect a security event
-   - `analyser_evenements` : Analyze events for patterns
-   - `creer_regle` : Create a detection rule
-   - `lister_alertes` : List active alerts
+   - `collect_event` : Collect a security event
+   - `analyze_events` : Analyze events for patterns
+   - `create_rule` : Create a detection rule
+   - `list_alerts` : List active alerts
 
 4. **Create Resources**:
    - `event://recent` : Recent security events
@@ -49,7 +49,7 @@ Create a SIEM system with real-time event collection and alerting.
    - Notify when rules trigger
 
 6. **Create Prompts**:
-   - `generer_regle_detection` : Generate detection rules using sampling
+   - `generate_detection_rule` : Generate detection rules using sampling
 
 ## Hints
 

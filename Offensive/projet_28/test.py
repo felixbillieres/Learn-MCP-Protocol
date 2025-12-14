@@ -21,30 +21,29 @@ def test_models_exist():
     print("Models exist")
     return True
 
-async def test_rechercher_cve():
+async def test_search_cve():
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
     mock_ctx = AsyncMock()
     try:
-        result = await solution.rechercher_cve("CVE-2021-44228", None, mock_ctx)
+        result = await solution.search_cve("CVE-2021-44228", None, mock_ctx)
         if not isinstance(result, list):
             return False
-        print("rechercher_cve works")
+        print("search_cve works")
         return True
     except Exception as e:
         print(f"Error: {e}")
         return False
 
 if __name__ == "__main__":
-    print("Test Project 28\n")
+    print("Test for Project 28\n")
     success = test_models_exist()
     print()
-    success = asyncio.run(test_rechercher_cve()) and success
+    success = asyncio.run(test_search_cve()) and success
     print()
     if success:
         print("All tests pass!")
     else:
         print("Some tests failed")
         sys.exit(1)
-

@@ -2,17 +2,17 @@ from mcp.server.fastmcp import FastMCP
 from typing import Any
 import re
 
-# TODO: Crée le serveur MCP avec support des resources
+# TODO: Create the MCP server with resource support
 mcp_server = FastMCP(
-    "MonServeurResourcesTemplates",
+    "ResourceTemplatesServer",
     host="127.0.0.1",
     port=8000,
     stateless_http=True,
     json_response=True
-    # TODO: Ajoute capabilities={"resources": {}}
+    # TODO: Add capabilities={"resources": {}}
 )
 
-# Configuration simulée
+# Simulated configuration
 CONFIG_DATA = {
     "database": {
         "host": "localhost",
@@ -20,64 +20,64 @@ CONFIG_DATA = {
         "name": "mydb"
     },
     "app": {
-        "name": "MonApp",
+        "name": "MyApp",
         "version": "1.0.0",
         "debug": "false"
     }
 }
 
-# Fichiers virtuels simulés
+# Simulated virtual files
 VIRTUAL_FILES = {
-    "readme.txt": "Ceci est un fichier README\nVersion 1.0",
+    "readme.txt": "This is a README file\nVersion 1.0",
     "license.txt": "MIT License\nCopyright 2024",
     "changelog.txt": "Version 1.0.0\n- Initial release"
 }
 
-# TODO: Implémente list_resources pour les resources statiques
+# TODO: Implement list_resources for static resources
 @mcp_server.list_resources()
 async def list_resources() -> list[dict[str, Any]]:
     """
-    Liste les resources statiques disponibles.
+    Lists available static resources.
 
     Returns:
-        Liste de resources statiques
+        List of static resources
     """
     pass
 
-# TODO: Crée list_resource_templates
+# TODO: Create list_resource_templates
 @mcp_server.list_resource_templates()
 async def list_resource_templates() -> list[dict[str, Any]]:
     """
-    Liste les templates de resources disponibles.
+    Lists available resource templates.
 
     Returns:
-        Liste de templates avec uriTemplate, name, description, mimeType
+        List of templates with uriTemplate, name, description, mimeType
     """
     pass
 
-# TODO: Adapte read_resource pour gérer les templates
+# TODO: Adapt read_resource to handle templates
 @mcp_server.read_resource()
 async def read_resource(uri: str) -> dict[str, Any]:
     """
-    Lit une resource, supporte les templates.
+    Reads a resource, supports templates.
 
     Args:
-        uri: URI de la resource (peut être un template résolu)
+        uri: Resource URI (can be a resolved template)
 
     Returns:
-        Dict avec 'contents'
+        Dict with 'contents'
 
     Raises:
-        ValueError: Si l'URI n'est pas valide
+        ValueError: If the URI is not valid
     """
-    # TODO: Gère les resources statiques (info://server/about)
-    # TODO: Gère config://{section}/{key}
-    # TODO: Gère file://{filename}
+    # TODO: Handle static resources (info://server/about)
+    # TODO: Handle config://{section}/{key}
+    # TODO: Handle file://{filename}
     pass
 
 
 def main():
-    print("Mon serveur MCP avec resource templates démarre !")
+    print("My MCP server with resource templates is starting!")
     print("URL: http://127.0.0.1:8000/mcp")
     mcp_server.run(transport="streamable-http")
 

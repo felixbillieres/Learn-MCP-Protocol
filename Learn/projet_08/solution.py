@@ -1,66 +1,66 @@
 from mcp.server.fastmcp import FastMCP, Context
 from typing import Any
 
-# TODO: Crée le serveur MCP avec support des resources
+# TODO: Create the MCP server with resource support
 mcp_server = FastMCP(
-    "MonServeurResources",
+    "ResourcesServer",
     host="127.0.0.1",
     port=8000,
     stateless_http=True,
     json_response=True
-    # TODO: Ajoute capabilities={"resources": {}}
+    # TODO: Add capabilities={"resources": {}}
 )
 
-# Données des ressources (stockage en mémoire)
+# Resource data (in-memory storage)
 RESOURCES = {
     "config://app/settings": {
-        "name": "Paramètres de l'application",
-        "description": "Configuration principale de l'application",
+        "name": "Application settings",
+        "description": "Main application configuration",
         "mimeType": "application/json",
-        "content": '{"theme": "dark", "language": "fr", "notifications": true}'
+        "content": '{"theme": "dark", "language": "en", "notifications": true}'
     },
     "info://server/version": {
-        "name": "Version du serveur",
-        "description": "Informations sur la version du serveur MCP",
+        "name": "Server version",
+        "description": "MCP server version information",
         "mimeType": "text/plain",
         "content": "Version 1.0.0\nBuild: 2024-01-15"
     }
 }
 
-# TODO: Crée la fonction list_resources
+# TODO: Create the list_resources function
 async def list_resources() -> list[dict[str, Any]]:
     """
-    Liste toutes les ressources disponibles.
+    Lists all available resources.
 
     Returns:
-        Liste de dictionnaires avec uri, name, description, mimeType
+        List of dictionaries with uri, name, description, mimeType
     """
     pass
 
-# TODO: Enregistre la fonction avec FastMCP
+# TODO: Register the function with FastMCP
 # mcp_server.list_resources = list_resources
 
-# TODO: Crée la fonction read_resource
+# TODO: Create the read_resource function
 async def read_resource(uri: str, ctx: Context = None) -> dict[str, Any]:
     """
-    Lit le contenu d'une ressource.
+    Reads the content of a resource.
 
     Args:
-        uri: L'URI de la ressource à lire
+        uri: The URI of the resource to read
 
     Returns:
-        Dict avec 'contents' contenant une liste de contenus
+        Dict with 'contents' containing a list of contents
 
     Raises:
-        ValueError: Si l'URI n'existe pas
+        ValueError: If the URI doesn't exist
     """
     pass
 
-# TODO: Enregistre la fonction avec FastMCP
+# TODO: Register the function with FastMCP
 # mcp_server.read_resource = read_resource
 
 def main():
-    print("Mon serveur MCP avec resources démarre !")
+    print("My MCP server with resources is starting!")
     print("URL: http://127.0.0.1:8000/mcp")
     mcp_server.run(transport="streamable-http")
 

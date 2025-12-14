@@ -1,14 +1,13 @@
-# Instructions - Projet 24
+# Instructions - Project 24
 
-## Ta mission
+## Your mission
 
-Créer un serveur configurable pour différents transports.
+Create a server configurable for different transports.
 
-## Étapes
+## Steps
 
-1. **Configuration transport** : Permet de choisir entre HTTP et STDIO
+1. **Transport configuration**: Allows choosing between HTTP and STDIO
 
-2. **Optimisations** : Configurations spécifiques selon le transport
+2. **Optimizations**: Specific configurations according to transport
 
-3. **Détection automatique** : Détecte le transport utilisé
-
+3. **Automatic detection**: Detects the transport used

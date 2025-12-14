@@ -1,41 +1,40 @@
-# Instructions - Projet 27 (Gestionnaire de Payloads)
+# Instructions - Project 27 (Payload Manager)
 
-## Ta mission
+## Your Mission
 
-Créer un gestionnaire de payloads avec CRUD, validation et sélection intelligente.
+Create a payload manager with CRUD, validation, and intelligent selection.
 
-## Étapes à suivre
+## Steps to Follow
 
-1. **Crée les modèles Pydantic** :
-   - `Payload` :
-     - `id` : int
-     - `nom` : str
-     - `type` : str (enum: "exploit", "shell", "shellcode")
-     - `os` : str (enum: "linux", "windows", "macos")
-     - `architecture` : str (enum: "x86", "x64", "arm")
-     - `description` : str | None
-     - `code` : str (le payload lui-même)
-     - `tags` : List[str]
+1. **Create Pydantic Models**:
+   - `Payload`:
+     - `id`: int
+     - `name`: str
+     - `type`: str (enum: "exploit", "shell", "shellcode")
+     - `os`: str (enum: "linux", "windows", "macos")
+     - `architecture`: str (enum: "x86", "x64", "arm")
+     - `description`: str | None
+     - `code`: str (the payload itself)
+     - `tags`: List[str]
 
-2. **Crée les outils CRUD** :
-   - `creer_payload` : Ajoute un nouveau payload
-   - `lister_payloads` : Liste avec filtres (type, os, architecture)
-   - `obtenir_payload` : Récupère un payload par ID
-   - `supprimer_payload` : Supprime un payload
+2. **Create CRUD tools**:
+   - `create_payload`: Add a new payload
+   - `list_payloads`: List with filters (type, os, architecture)
+   - `get_payload`: Retrieve a payload by ID
+   - `delete_payload`: Delete a payload
 
-3. **Crée l'outil `selectionner_payload`** avec elicitation :
-   - Demande le contexte (os, architecture, type)
-   - Utilise elicitation pour confirmer le choix
-   - Retourne le payload le plus adapté
+3. **Create `select_payload` tool** with elicitation:
+   - Requests context (os, architecture, type)
+   - Uses elicitation to confirm the choice
+   - Returns the most suitable payload
 
-4. **Crée la resource `payload://list`** :
-   - Expose tous les payloads disponibles
+4. **Create resource `payload://list`**:
+   - Exposes all available payloads
 
-5. **Valide les données** :
-   - Vérifie que os/architecture sont compatibles
-   - Valide le format du code
+5. **Validate data**:
+   - Verifies that os/architecture are compatible
+   - Validates code format
 
 ## Test
 
-Utilise `python test.py` pour vérifier le CRUD et la sélection.
-
+Use `python test.py` to verify CRUD and selection.

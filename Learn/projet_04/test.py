@@ -1,6 +1,6 @@
 """
-Script de test pour le projet 04
-Ce script vérifie que le Context est bien utilisé pour le logging
+Test script for project 04
+This script verifies that Context is properly used for logging
 """
 
 import sys
@@ -9,7 +9,7 @@ import asyncio
 from unittest.mock import AsyncMock
 
 def test_context_import():
-    """Test que Context est importé"""
+    """Test that Context is imported"""
 
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
@@ -17,55 +17,55 @@ def test_context_import():
     try:
         spec.loader.exec_module(solution)
     except Exception as e:
-        print(f"Erreur lors de l'import : {e}")
+        print(f"Error during import: {e}")
         import traceback
         traceback.print_exc()
         return False
 
-    # Vérifie que Context est disponible
+    # Check that Context is available
     try:
         from mcp.server.fastmcp import Context
-        print("Context est bien importable")
+        print("Context is properly importable")
     except ImportError:
-        print("Impossible d'importer Context")
+        print("Cannot import Context")
         return False
 
     return True
 
 async def test_tool_with_context():
-    """Test que l'outil utilise bien le Context"""
+    """Test that the tool properly uses Context"""
 
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
 
-    # Crée un mock Context
+    # Create a mock Context
     mock_ctx = AsyncMock()
 
-    # Test avec un fichier valide
+    # Test with a valid file
     try:
-        result = await solution.traiter_fichier("test.txt", mock_ctx)
+        result = await solution.process_file("test.txt", mock_ctx)
 
-        # Vérifie que ctx.info a été appelé
+        # Check that ctx.info was called
         if mock_ctx.info.call_count < 2:
-            print(f"ctx.info() devrait être appelé au moins 2 fois, mais a été appelé {mock_ctx.info.call_count} fois")
+            print(f"ctx.info() should be called at least 2 times, but was called {mock_ctx.info.call_count} times")
             return False
 
-        # Vérifie que le résultat est un dict
+        # Check that the result is a dict
         if not isinstance(result, dict):
-            print(f"Le résultat devrait être un dict, mais c'est {type(result)}")
+            print(f"The result should be a dict, but it's {type(result)}")
             return False
 
-        # Vérifie les clés du résultat
-        if "fichier" not in result or "statut" not in result:
-            print(f"Le résultat devrait contenir 'fichier' et 'statut'")
+        # Check result keys
+        if "file" not in result or "status" not in result:
+            print(f"The result should contain 'file' and 'status'")
             return False
 
-        print(f"L'outil fonctionne avec Context ! Résultat : {result}")
-        print(f"  ctx.info() appelé {mock_ctx.info.call_count} fois")
+        print(f"Tool works with Context! Result: {result}")
+        print(f"  ctx.info() called {mock_ctx.info.call_count} times")
 
     except Exception as e:
-        print(f"Erreur lors de l'exécution : {e}")
+        print(f"Error during execution: {e}")
         import traceback
         traceback.print_exc()
         return False
@@ -73,7 +73,7 @@ async def test_tool_with_context():
     return True
 
 async def test_tool_with_warning():
-    """Test que l'outil utilise ctx.warning() quand nécessaire"""
+    """Test that the tool uses ctx.warning() when necessary"""
 
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
@@ -81,25 +81,25 @@ async def test_tool_with_warning():
 
     mock_ctx = AsyncMock()
 
-    # Test avec un fichier non-.txt (devrait générer un warning)
+    # Test with a non-.txt file (should generate a warning)
     try:
-        result = await solution.traiter_fichier("test.pdf", mock_ctx)
+        result = await solution.process_file("test.pdf", mock_ctx)
 
-        # Vérifie que ctx.warning a été appelé
+        # Check that ctx.warning was called
         if mock_ctx.warning.call_count == 0:
-            print("ctx.warning() devrait être appelé pour un fichier non-.txt")
+            print("ctx.warning() should be called for a non-.txt file")
             return False
 
-        print("ctx.warning() est bien utilisé pour les fichiers non-.txt")
+        print("ctx.warning() is properly used for non-.txt files")
 
     except Exception as e:
-        print(f"Erreur lors de l'exécution : {e}")
+        print(f"Error during execution: {e}")
         return False
 
     return True
 
 async def test_tool_with_error():
-    """Test que l'outil utilise ctx.error() et lève une exception"""
+    """Test that the tool uses ctx.error() and raises an exception"""
 
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
@@ -107,52 +107,52 @@ async def test_tool_with_error():
 
     mock_ctx = AsyncMock()
 
-    # Test avec le fichier "erreur.txt" (devrait générer une erreur)
+    # Test with the file "error.txt" (should generate an error)
     try:
-        result = await solution.traiter_fichier("erreur.txt", mock_ctx)
+        result = await solution.process_file("error.txt", mock_ctx)
 
-        # Si on arrive ici, l'erreur n'a pas été levée
-        print("L'outil devrait lever une ValueError pour 'erreur.txt'")
+        # If we get here, the error was not raised
+        print("The tool should raise a ValueError for 'error.txt'")
         return False
 
     except ValueError:
-        # C'est ce qu'on attend !
-        # Vérifie que ctx.error a été appelé
+        # This is what we expect!
+        # Check that ctx.error was called
         if mock_ctx.error.call_count == 0:
-            print("ctx.error() devrait être appelé avant de lever l'exception")
+            print("ctx.error() should be called before raising the exception")
             return False
 
-        print("ctx.error() est bien utilisé et l'exception est levée correctement")
+        print("ctx.error() is properly used and the exception is correctly raised")
         return True
 
     except Exception as e:
-        print(f"Erreur inattendue : {e}")
+        print(f"Unexpected error: {e}")
         import traceback
         traceback.print_exc()
         return False
 
 if __name__ == "__main__":
-    print("Test du Projet 04\n")
+    print("Test for Project 04\n")
 
     success = True
     success = test_context_import() and success
     print()
 
-    print("Test d'exécution avec Context...")
+    print("Testing execution with Context...")
     success = asyncio.run(test_tool_with_context()) and success
     print()
 
-    print("Test avec warning...")
+    print("Testing with warning...")
     success = asyncio.run(test_tool_with_warning()) and success
     print()
 
-    print("Test avec error...")
+    print("Testing with error...")
     success = asyncio.run(test_tool_with_error()) and success
 
     print()
     if success:
-        print("Tous les tests passent !")
-        print("Tu as appris à utiliser le Context pour le logging !")
+        print("All tests pass!")
+        print("You've learned to use Context for logging!")
     else:
-        print("Certains tests ont échoué. Vérifie ton code !")
+        print("Some tests failed. Check your code!")
         sys.exit(1)

@@ -34,14 +34,14 @@ class ExploitChain(BaseModel):
 
 # TODO: Create tools
 @mcp_server.tool()
-async def analyser_cible(
+async def analyze_target(
     ctx: Context = None
 ) -> TargetInfo:
     """Analyze target and collect information using elicitation"""
     pass
 
 @mcp_server.tool()
-async def creer_chain(
+async def create_chain(
     target: TargetInfo,
     ctx: Context = None
 ) -> ExploitChain:
@@ -49,7 +49,7 @@ async def creer_chain(
     pass
 
 @mcp_server.tool()
-async def executer_chain(
+async def execute_chain(
     chain_id: int,
     ctx: Context = None
 ) -> ExploitChain:
@@ -57,7 +57,7 @@ async def executer_chain(
     pass
 
 @mcp_server.tool()
-async def generer_payload(
+async def generate_payload(
     exploit_id: str,
     target_info: TargetInfo,
     ctx: Context = None
@@ -94,4 +94,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

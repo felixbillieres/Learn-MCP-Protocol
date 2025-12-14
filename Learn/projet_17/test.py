@@ -1,6 +1,6 @@
 """
-Script de test pour le projet 17
-Note: Le sampling nécessite un client MCP réel avec LLM pour être testé complètement
+Test script for project 17
+Note: Sampling requires a real MCP client with LLM to be fully tested
 """
 
 import sys
@@ -9,24 +9,24 @@ import asyncio
 from unittest.mock import AsyncMock, MagicMock
 
 async def test_tools_exist():
-    """Test que les outils existent"""
+    """Test that tools exist"""
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
     
-    if not hasattr(solution, 'poser_question'):
-        print("❌ L'outil 'poser_question' n'existe pas")
+    if not hasattr(solution, 'ask_question'):
+        print("❌ The tool 'ask_question' does not exist")
         return False
     
-    if not hasattr(solution, 'generer_resume'):
-        print("❌ L'outil 'generer_resume' n'existe pas")
+    if not hasattr(solution, 'generate_summary'):
+        print("❌ The tool 'generate_summary' does not exist")
         return False
     
-    print("✅ Les outils existent")
+    print("✅ Tools exist")
     return True
 
 async def test_sampling_usage():
-    """Test que le sampling peut être utilisé (simulé)"""
+    """Test that sampling can be used (simulated)"""
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
@@ -34,31 +34,31 @@ async def test_sampling_usage():
     mock_ctx = AsyncMock()
     mock_sampling = MagicMock()
     mock_response = MagicMock()
-    mock_response.content.text = "Réponse simulée du LLM"
+    mock_response.content.text = "Simulated LLM response"
     mock_sampling.create_message = AsyncMock(return_value=mock_response)
     mock_ctx.sampling = mock_sampling
     
     try:
-        result = await solution.poser_question("Test question", mock_ctx)
+        result = await solution.ask_question("Test question", mock_ctx)
         if mock_sampling.create_message.called:
-            print("✅ ctx.sampling.create_message() est utilisé")
+            print("✅ ctx.sampling.create_message() is used")
         else:
-            print("⚠️  ctx.sampling.create_message() n'a pas été appelé")
-        print("✅ L'outil peut être appelé")
+            print("⚠️  ctx.sampling.create_message() was not called")
+        print("✅ The tool can be called")
         return True
     except AttributeError as e:
         if "sampling" in str(e):
-            print("⚠️  Le sampling n'est pas encore implémenté")
-            print("💡 Assure-toi d'utiliser ctx.sampling.create_message()")
+            print("⚠️  Sampling is not yet implemented")
+            print("💡 Make sure to use ctx.sampling.create_message()")
             return True
         raise
     except Exception as e:
-        print(f"⚠️  Erreur (peut être normal si non implémenté) : {e}")
+        print(f"⚠️  Error (may be normal if not implemented): {e}")
         return True
 
 if __name__ == "__main__":
-    print("🧪 Test du Projet 17\n")
-    print("Note: Le sampling nécessite un client MCP réel avec LLM pour être testé complètement\n")
+    print("🧪 Test for Project 17\n")
+    print("Note: Sampling requires a real MCP client with LLM to be fully tested\n")
     
     success = True
     success = asyncio.run(test_tools_exist()) and success
@@ -67,9 +67,8 @@ if __name__ == "__main__":
     
     print()
     if success:
-        print("✅ Tests de base passent !")
-        print("💡 Pour tester le sampling complètement, utilise un client MCP réel avec LLM")
+        print("✅ Basic tests pass!")
+        print("💡 To test sampling completely, use a real MCP client with LLM")
     else:
-        print("❌ Certains tests ont échoué.")
+        print("❌ Some tests failed.")
         sys.exit(1)
-

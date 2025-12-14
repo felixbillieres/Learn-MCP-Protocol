@@ -1,21 +1,20 @@
-# Projet 25 : PROJET FINAL AVANCÉ
+# Project 25: ADVANCED FINAL PROJECT
 
-## Objectif
+## Objective
 
-Créer un serveur MCP complet qui combine TOUS les concepts appris : tools, resources, prompts, elicitation, sampling, authorization, roots.
+Create a complete MCP server that combines ALL learned concepts: tools, resources, prompts, elicitation, sampling, authorization, roots.
 
 ## Mission
 
-Créer un serveur MCP professionnel "Gestionnaire de Projet" avec :
-- Tools pour gérer des tâches
-- Resources pour exposer des données
-- Prompts pour des workflows
-- Elicitation pour collecter des infos
-- Sampling pour l'IA
-- Authorization pour la sécurité
-- Bonne structure de code
+Create a professional MCP server "Project Manager" with:
+- Tools to manage tasks
+- Resources to expose data
+- Prompts for workflows
+- Elicitation to collect info
+- Sampling for AI
+- Authorization for security
+- Good code structure
 
-## Ce que tu vas créer
+## What you will create
 
-Un serveur complet qui pourrait être utilisé en production (simplifié).
-
+A complete server that could be used in production (simplified).

@@ -1,31 +1,30 @@
-# Projet 12 : Prompts avec arguments dynamiques
+# Project 12: Prompts with dynamic arguments
 
-## Objectif
+## Objective
 
-Apprendre à créer des prompts qui acceptent des arguments dynamiques pour personnaliser le contenu.
+Learn to create prompts that accept dynamic arguments to personalize content.
 
-## Concepts à apprendre
+## Concepts to learn
 
-### Arguments dans les prompts
+### Arguments in prompts
 
-Les prompts peuvent accepter des **arguments** qui permettent de personnaliser le message retourné. Par exemple, un prompt de code review peut accepter un argument `language` pour adapter le message.
+Prompts can accept **arguments** that allow you to personalize the returned message. For example, a code review prompt can accept a `language` argument to adapt the message.
 
-### Structure des arguments
+### Argument structure
 
-Chaque argument a :
-- `name` : Nom de l'argument
-- `description` : Description (optionnel)
-- `required` : Si l'argument est obligatoire (optionnel, défaut false)
+Each argument has:
+- `name`: Argument name
+- `description`: Description (optional)
+- `required`: If the argument is required (optional, default false)
 
-### Utilisation
+### Usage
 
-Quand un client demande un prompt avec `prompts/get`, il peut passer un dict `arguments` avec les valeurs des arguments.
+When a client requests a prompt with `prompts/get`, it can pass an `arguments` dict with argument values.
 
-## Ce que tu vas créer
+## What you will create
 
-Dans ce projet, tu vas créer des prompts qui utilisent des arguments pour personnaliser le contenu.
+In this project, you will create prompts that use arguments to personalize content.
 
-## Prochaines étapes
+## Next steps
 
-Lis `INSTRUCTIONS.md` pour voir ce que tu dois faire exactement !
-
+Read `INSTRUCTIONS.md` to see exactly what you need to do!

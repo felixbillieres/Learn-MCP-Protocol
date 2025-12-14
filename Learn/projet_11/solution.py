@@ -1,81 +1,80 @@
 from mcp.server.fastmcp import FastMCP
 from typing import Any
 
-# TODO: Crée le serveur MCP avec support des prompts
+# TODO: Create the MCP server with prompt support
 mcp_server = FastMCP(
-    "MonServeurPrompts",
+    "PromptsServer",
     host="127.0.0.1",
     port=8000,
     stateless_http=True,
     json_response=True
-    # TODO: Ajoute capabilities={"prompts": {}}
+    # TODO: Add capabilities={"prompts": {}}
 )
 
-# Définitions des prompts
+# Prompt definitions
 PROMPTS = {
     "greeting": {
-        "title": "Salutation",
-        "description": "Un message de salutation amical",
+        "title": "Greeting",
+        "description": "A friendly greeting message",
         "messages": [
             {
                 "role": "user",
                 "content": {
                     "type": "text",
-                    "text": "Salut ! Comment puis-je t'aider aujourd'hui ?"
+                    "text": "Hello! How can I help you today?"
                 }
             }
         ]
     },
     "help": {
-        "title": "Aide",
-        "description": "Obtenir de l'aide sur le système",
+        "title": "Help",
+        "description": "Get help about the system",
         "messages": [
             {
                 "role": "user",
                 "content": {
                     "type": "text",
-                    "text": "J'ai besoin d'aide. Peux-tu me donner des informations sur les fonctionnalités disponibles ?"
+                    "text": "I need help. Can you give me information about available features?"
                 }
             }
         ]
     }
 }
 
-# TODO: Crée la fonction list_prompts
+# TODO: Create the list_prompts function
 @mcp_server.list_prompts()
 async def list_prompts() -> list[dict[str, Any]]:
     """
-    Liste tous les prompts disponibles.
+    Lists all available prompts.
     
     Returns:
-        Liste de prompts avec name, title, description
+        List of prompts with name, title, description
     """
     pass
 
-# TODO: Crée la fonction get_prompt
+# TODO: Create the get_prompt function
 @mcp_server.get_prompt()
 async def get_prompt(name: str) -> dict[str, Any]:
     """
-    Récupère un prompt par son nom.
+    Retrieves a prompt by its name.
     
     Args:
-        name: Le nom du prompt
+        name: The prompt name
         
     Returns:
-        Dict avec 'messages' contenant les messages formatés
+        Dict with 'messages' containing formatted messages
         
     Raises:
-        ValueError: Si le prompt n'existe pas
+        ValueError: If the prompt doesn't exist
     """
     pass
 
 
 def main():
-    print("Mon serveur MCP avec prompts démarre !")
+    print("My MCP server with prompts is starting!")
     print("URL: http://127.0.0.1:8000/mcp")
     mcp_server.run(transport="streamable-http")
 
 
 if __name__ == "__main__":
     main()
-

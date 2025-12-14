@@ -31,20 +31,20 @@ Create an exploitation framework that chains exploits together with intelligent 
      - `session_created` : bool
 
 2. **Create Tools**:
-   - `analyser_cible` : Analyze target and collect information (uses elicitation)
-   - `creer_chain` : Create an exploit chain for a target
-   - `executer_chain` : Execute the exploit chain
-   - `generer_payload` : Use sampling to generate custom payload
+   - `analyze_target` : Analyze target and collect information (uses elicitation)
+   - `create_chain` : Create an exploit chain for a target
+   - `execute_chain` : Execute the exploit chain
+   - `generate_payload` : Use sampling to generate custom payload
 
 3. **Create Elicitation**:
-   - `analyser_cible` should use elicitation to ask for:
+   - `analyze_target` should use elicitation to ask for:
      - Target IP/hostname
      - OS information
      - Known vulnerabilities
      - Services detected
 
 4. **Create Sampling Tool**:
-   - `generer_payload` uses sampling with:
+   - `generate_payload` uses sampling with:
      - `temperature`: 0.7 (creative but controlled)
      - Generates payload based on target info and exploit
 

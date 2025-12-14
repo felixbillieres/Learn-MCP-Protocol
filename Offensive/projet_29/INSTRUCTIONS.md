@@ -26,10 +26,10 @@ Create a session manager for pentesting with subscriptions and notifications.
    ```
 
 3. **Create Tools**:
-   - `creer_session` : Create a new session
-   - `lister_sessions` : List all active sessions
-   - `fermer_session` : Close a session
-   - `obtenir_session` : Get session details
+   - `create_session` : Create a new session
+   - `list_sessions` : List all active sessions
+   - `close_session` : Close a session
+   - `get_session` : Get session details
 
 4. **Create Resources**:
    - `session://list` : List all sessions

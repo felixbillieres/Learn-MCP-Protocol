@@ -1,39 +1,38 @@
-# Projet 15 : Elicitation avec schémas JSON
+# Project 15: Elicitation with JSON schemas
 
-## Objectif
+## Objective
 
-Apprendre à créer des schémas JSON détaillés pour l'elicitation, avec validation et contraintes.
+Learn to create detailed JSON schemas for elicitation, with validation and constraints.
 
-## Concepts à apprendre
+## Concepts to learn
 
-### Schémas JSON pour l'elicitation
+### JSON schemas for elicitation
 
-Les schémas permettent de définir précisément la structure des données demandées :
-- Types de données (string, number, boolean, enum)
-- Contraintes (minLength, maxLength, pattern, minimum, maximum)
+Schemas allow you to precisely define the structure of requested data:
+- Data types (string, number, boolean, enum)
+- Constraints (minLength, maxLength, pattern, minimum, maximum)
 - Formats (email, uri, date, date-time)
-- Valeurs par défaut
-- Champs requis vs optionnels
+- Default values
+- Required vs optional fields
 
-### Structure d'un schéma
+### Schema structure
 
-Un schéma d'elicitation est un objet JSON Schema avec :
-- `type: "object"` pour la racine
-- `properties` : Définition des champs
-- `required` : Liste des champs obligatoires
+An elicitation schema is a JSON Schema object with:
+- `type: "object"` for the root
+- `properties`: Field definitions
+- `required`: List of required fields
 
-### Types supportés
+### Supported types
 
-1. **String** : avec minLength, maxLength, pattern, format
-2. **Number/Integer** : avec minimum, maximum
-3. **Boolean** : vrai/faux
-4. **Enum** : liste de valeurs possibles (avec `enum` ou `oneOf`)
+1. **String**: with minLength, maxLength, pattern, format
+2. **Number/Integer**: with minimum, maximum
+3. **Boolean**: true/false
+4. **Enum**: list of possible values (with `enum` or `oneOf`)
 
-## Ce que tu vas créer
+## What you will create
 
-Dans ce projet, tu vas créer des schémas d'elicitation complexes avec validation.
+In this project, you will create complex elicitation schemas with validation.
 
-## Prochaines étapes
+## Next steps
 
-Lis `INSTRUCTIONS.md` pour voir ce que tu dois faire exactement !
-
+Read `INSTRUCTIONS.md` to see exactly what you need to do!

@@ -44,7 +44,7 @@ def mask_secret(value: str) -> str:
 
 # TODO: Create tools (all require authorization)
 @mcp_server.tool()
-async def creer_secret(
+async def create_secret(
     name: str,
     type: str,
     value: str,
@@ -56,7 +56,7 @@ async def creer_secret(
     pass
 
 @mcp_server.tool()
-async def obtenir_secret(
+async def get_secret(
     secret_id: str,
     token: str,
     ctx: Context = None
@@ -65,7 +65,7 @@ async def obtenir_secret(
     pass
 
 @mcp_server.tool()
-async def lister_secrets(
+async def list_secrets(
     token: str,
     ctx: Context = None
 ) -> List[Dict[str, Any]]:
@@ -73,7 +73,7 @@ async def lister_secrets(
     pass
 
 @mcp_server.tool()
-async def modifier_secret(
+async def update_secret(
     secret_id: str,
     value: str,
     token: str,
@@ -83,7 +83,7 @@ async def modifier_secret(
     pass
 
 @mcp_server.tool()
-async def supprimer_secret(
+async def delete_secret(
     secret_id: str,
     token: str,
     ctx: Context = None
@@ -92,7 +92,7 @@ async def supprimer_secret(
     pass
 
 @mcp_server.tool()
-async def consulter_logs(
+async def view_logs(
     secret_id: str | None = None,
     token: str = None,
     ctx: Context = None
@@ -118,4 +118,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

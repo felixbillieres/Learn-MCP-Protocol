@@ -1,16 +1,15 @@
-# Projet 24 : Transports personnalisés
+# Project 24: Custom transports
 
-## Objectif
+## Objective
 
-Comprendre les différents transports MCP (HTTP, STDIO) et leurs cas d'usage.
+Understand different MCP transports (HTTP, STDIO) and their use cases.
 
 ## Concepts
 
-- HTTP transport : Pour serveurs distants
-- STDIO transport : Pour serveurs locaux
-- Optimisations et configurations
+- HTTP transport: For remote servers
+- STDIO transport: For local servers
+- Optimizations and configurations
 
-## Ce que tu vas créer
+## What you will create
 
-Un serveur configurable pour différents transports.
-
+A server configurable for different transports.

@@ -1,95 +1,54 @@
-# Projet 06 : Outils avec paramètres complexes
+# Project 06: Tools with complex parameters
 
-## Objectif
+## Objective
 
-Créer des outils plus avancés avec des paramètres complexes (listes, dictionnaires, modèles Pydantic imbriqués).
+Create more advanced tools with complex parameters (lists, dictionaries, nested Pydantic models).
 
-## Concepts à apprendre
+## Concepts to learn
 
-### Types complexes en MCP
+### Complex types in MCP
 
-Les outils MCP peuvent accepter :
-- **Types de base** : `str`, `int`, `float`, `bool`
-- **Listes** : `List[str]`, `List[int]`, etc.
-- **Dictionnaires** : `Dict[str, str]`, etc.
-- **Modèles Pydantic** : Tes propres classes
-- **Types optionnels** : `str | None`, `Optional[str]`
+MCP tools can accept:
+- **Basic types**: `str`, `int`, `float`, `bool`
+- **Lists**: `List[str]`, `List[int]`, etc.
+- **Dictionaries**: `Dict[str, str]`, etc.
+- **Pydantic models**: Your own classes
+- **Optional types**: `str | None`, `Optional[str]`
 
-### Exemple avec liste
+### Example with list
 
 ```python
 from typing import List
 
 @mcp_server.tool()
-async def traiter_liste(items: List[str], ctx: Context) -> List[str]:
-    """Traite une liste d'items"""
+async def process_list(items: List[str], ctx: Context) -> List[str]:
+    """Processes a list of items"""
     return [item.upper() for item in items]
 ```
 
-### Exemple avec modèle Pydantic imbriqué
+### Example with nested Pydantic model
 
 ```python
 from pydantic import BaseModel, Field
 from typing import List
 
-class Adresse(BaseModel):
-    rue: str
-    ville: str
+class Address(BaseModel):
+    street: str
+    city: str
 
-class Personne(BaseModel):
-    nom: str
-    age: int
-    adresses: List[Adresse]  # Liste de modèles !
-```
-
-## Exemple dans Exegol-MCP
-
-Regarde `src/models/container.py` :
-
-```6:21:Exegol-MCP/src/models/container.py
-class ContainerInfo(BaseModel):
-    """Container information from Exegol SDK"""
+class Person(BaseModel):
     name: str
-    creation_date: str
-    image_name: str
-    image_version: str
-    status: str
-    network_driver: Optional[str]
-    network_name: Optional[str]
-    features: List[str]
-    devices: List[str]
-    vpn: Optional[str]
-    env: List[str]
-    is_privileged: bool
-    capabilities: List[str]
-    comment: Optional[str]
+    age: int
+    addresses: List[Address]  # List of models!
 ```
 
-Et son utilisation avec une liste :
+## What you will create
 
-```11:22:Exegol-MCP/src/assets/tools_orchestractor.py
-@mcp_server.tool()
-async def list_exegol_containers(ctx: Context) -> List[ContainerInfo]:
-    """List all available Exegol containers with their status.
-        Returns a list of Exegol containers configured on the system
-        with their detailed information (name, status, image, network_driver etc...) in a chart.
-        Returns:
-            List of Exegol containers with their metadata
-        Raises:
-            RuntimeError: If Exegol is not ready or configured
-    """
-    await ctx.info("Starting action: Listing Exegol containers")
-    await check_exegol_readiness(ctx)
-    return await get_exegol_container()
-```
+In this project, you will create:
+1. A `User` model with lists and optional fields
+2. A tool that manipulates lists of users
+3. A tool that returns complex data
 
-## Ce que tu vas créer
+## Next steps
 
-Dans ce projet, tu vas créer :
-1. Un modèle `Utilisateur` avec des listes et des champs optionnels
-2. Un outil qui manipule des listes d'utilisateurs
-3. Un outil qui retourne des données complexes
-
-## Prochaines étapes
-
-Lis `INSTRUCTIONS.md` pour voir ce que tu dois faire exactement !
+Read `INSTRUCTIONS.md` to see exactly what you need to do!

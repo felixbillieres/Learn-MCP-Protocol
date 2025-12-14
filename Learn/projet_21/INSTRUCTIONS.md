@@ -1,22 +1,21 @@
-# Instructions - Projet 21
+# Instructions - Project 21
 
-## Ta mission
+## Your mission
 
-Créer une validation de tokens avec scopes et audiences.
+Create token validation with scopes and audiences.
 
-## Étapes à suivre
+## Steps to follow
 
-1. **Crée un serveur FastMCP**
+1. **Create a FastMCP server**
 
-2. **Améliore `valider_token`** pour accepter :
-   - `required_scopes` : Liste de scopes requis (optionnel)
-   - `required_audience` : Audience requise (optionnel)
+2. **Enhance `validate_token`** to accept:
+   - `required_scopes`: List of required scopes (optional)
+   - `required_audience`: Required audience (optional)
 
-3. **Ajoute des tokens avec scopes et audiences** :
-   - Token avec scopes : "read:data", "write:data"
-   - Token avec audience : "api.example.com"
+3. **Add tokens with scopes and audiences**:
+   - Token with scopes: "read:data", "write:data"
+   - Token with audience: "api.example.com"
 
-4. **Crée des outils qui nécessitent des scopes** :
-   - `lire_donnees` : Nécessite scope "read:data"
-   - `ecrire_donnees` : Nécessite scope "write:data"
-
+4. **Create tools that require scopes**:
+   - `read_data`: Requires scope "read:data"
+   - `write_data`: Requires scope "write:data"

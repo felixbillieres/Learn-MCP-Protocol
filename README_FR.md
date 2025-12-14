@@ -1,6 +1,6 @@
 # Apprentissage MCP en Python
 
-Bienvenue dans ce guide d'apprentissage progressif pour comprendre le Model Context Protocol (MCP) en Python, en se basant sur la structure de votre projet Exegol-MCP.
+Bienvenue dans ce guide d'apprentissage progressif pour comprendre le Model Context Protocol (MCP) en Python.
 
 ## Structure d'apprentissage
 
@@ -21,7 +21,7 @@ Les projets sont organisés en trois catégories :
 4. **Projet 04** - Utiliser le Context pour le logging (info, error, warning)
 5. **Projet 05** - Gestion d'erreurs et validation
 6. **Projet 06** - Outils avec paramètres complexes et types avancés
-7. **Projet 07** - Projet final débutant : Mini serveur complet (inspiré d'Exegol-MCP)
+7. **Projet 07** - Projet final débutant : Mini serveur complet
 
 ### Projets - Resources (08-10)
 
@@ -138,7 +138,7 @@ uv pip install mcp pydantic
 - ✅ Utiliser Pydantic pour valider les données
 - ✅ Gérer les logs et le contexte
 - ✅ Gérer les erreurs proprement
-- ✅ Structurer un projet MCP comme Exegol-MCP
+- ✅ Structurer un projet MCP professionnellement
 - ✅ **Outils sécurité offensive** : Scan de ports, exploitation, gestion C2
 - ✅ **Outils sécurité défensive** : SIEM, réponse aux incidents, analyse malware
 - ✅ **Plateformes de sécurité complètes** : Combiner capacités offensive et défensive
@@ -156,7 +156,7 @@ Le code, les fichiers de test et les noms de variables utilisent les conventions
 
 - Les projets sont **progressifs** : commence par le 01 et avance dans l'ordre
 - Chaque projet reprend les concepts des projets précédents
-- N'hésite pas à regarder le code d'Exegol-MCP pour référence
+- N'hésite pas à regarder des implémentations MCP réelles pour référence
 - Je suis là pour t'aider et corriger tes solutions !
 
 ## Ressources

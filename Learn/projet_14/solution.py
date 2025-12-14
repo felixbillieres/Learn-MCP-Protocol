@@ -1,64 +1,63 @@
 from mcp.server.fastmcp import FastMCP, Context
 from typing import Any
 
-# TODO: Crée le serveur MCP
+# TODO: Create the MCP server
 mcp_server = FastMCP(
-    "MonServeurElicitation",
+    "ElicitationServer",
     host="127.0.0.1",
     port=8000,
     stateless_http=True,
     json_response=True
 )
 
-# TODO: Crée l'outil creer_profil
+# TODO: Create the create_profile tool
 @mcp_server.tool()
-async def creer_profil(ctx: Context) -> dict[str, Any]:
+async def create_profile(ctx: Context) -> dict[str, Any]:
     """
-    Crée un profil utilisateur en demandant les informations via elicitation.
+    Creates a user profile by requesting information via elicitation.
     
     Returns:
-        Dict avec les informations du profil créé
+        Dict with created profile information
     """
-    # TODO: Utilise ctx.elicitation.create() pour demander:
-    # - nom (string, requis)
-    # - age (integer, requis)
-    # - email (string, optionnel)
+    # TODO: Use ctx.elicitation.create() to request:
+    # - name (string, required)
+    # - age (integer, required)
+    # - email (string, optional)
     # 
-    # Schema exemple pour un champ:
+    # Example schema for a field:
     # {
     #     "type": "object",
     #     "properties": {
-    #         "nom": {"type": "string", "title": "Nom", "description": "Votre nom"}
+    #         "name": {"type": "string", "title": "Name", "description": "Your name"}
     #     },
-    #     "required": ["nom"]
+    #     "required": ["name"]
     # }
     
-    # TODO: Retourne les informations collectées
+    # TODO: Return collected information
     pass
 
-# TODO: Crée l'outil configurer_preferences
+# TODO: Create the configure_preferences tool
 @mcp_server.tool()
-async def configurer_preferences(ctx: Context) -> dict[str, Any]:
+async def configure_preferences(ctx: Context) -> dict[str, Any]:
     """
-    Configure les préférences utilisateur via elicitation.
+    Configures user preferences via elicitation.
     
     Returns:
-        Dict avec les préférences configurées
+        Dict with configured preferences
     """
-    # TODO: Utilise ctx.elicitation.create() pour demander:
+    # TODO: Use ctx.elicitation.create() to request:
     # - theme (enum: "dark", "light", "auto")
     # - notifications (boolean)
     
-    # TODO: Retourne les préférences
+    # TODO: Return preferences
     pass
 
 
 def main():
-    print("Mon serveur MCP avec elicitation démarre !")
+    print("My MCP server with elicitation is starting!")
     print("URL: http://127.0.0.1:8000/mcp")
     mcp_server.run(transport="streamable-http")
 
 
 if __name__ == "__main__":
     main()
-

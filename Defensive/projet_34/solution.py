@@ -32,14 +32,14 @@ class ResponseAction(BaseModel):
 
 # TODO: Create tools
 @mcp_server.tool()
-async def creer_incident(
+async def create_incident(
     ctx: Context = None
 ) -> Incident:
     """Create new incident (uses elicitation)"""
     pass
 
 @mcp_server.tool()
-async def trier_incident(
+async def triage_incident(
     incident_id: int,
     ctx: Context = None
 ) -> Incident:
@@ -47,7 +47,7 @@ async def trier_incident(
     pass
 
 @mcp_server.tool()
-async def ajouter_ioc(
+async def add_ioc(
     incident_id: int,
     ioc: IOC,
     ctx: Context = None
@@ -56,7 +56,7 @@ async def ajouter_ioc(
     pass
 
 @mcp_server.tool()
-async def creer_action(
+async def create_action(
     incident_id: int,
     action: str,
     ctx: Context = None
@@ -65,7 +65,7 @@ async def creer_action(
     pass
 
 @mcp_server.tool()
-async def executer_action(
+async def execute_action(
     action_id: int,
     ctx: Context = None
 ) -> ResponseAction:
@@ -73,7 +73,7 @@ async def executer_action(
     pass
 
 @mcp_server.tool()
-async def resoudre_incident(
+async def resolve_incident(
     incident_id: int,
     ctx: Context = None
 ) -> Incident:
@@ -109,4 +109,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

@@ -1,58 +1,57 @@
 from mcp.server.fastmcp import FastMCP, Context
 from typing import Any
 
-# TODO: Crée le serveur MCP
+# TODO: Create the MCP server
 mcp_server = FastMCP(
-    "MonServeurElicitationURL",
+    "ElicitationURLServer",
     host="127.0.0.1",
     port=8000,
     stateless_http=True,
     json_response=True
 )
 
-# Configuration (simulée)
+# Configuration (simulated)
 AUTH_URL = "https://auth.example.com/login"
 API_KEY_URL = "https://auth.example.com/api-keys"
 
-# TODO: Crée l'outil authentifier avec URL mode
+# TODO: Create the authenticate tool with URL mode
 @mcp_server.tool()
-async def authentifier(ctx: Context) -> dict[str, Any]:
+async def authenticate(ctx: Context) -> dict[str, Any]:
     """
-    Authentifie l'utilisateur via URL mode pour la sécurité.
+    Authenticates the user via URL mode for security.
     
     Returns:
-        Dict avec message de confirmation
+        Dict with confirmation message
     """
-    # TODO: Utilise ctx.elicitation.create() avec mode="url"
+    # TODO: Use ctx.elicitation.create() with mode="url"
     # Format: {
     #     "mode": "url",
-    #     "message": "Veuillez vous authentifier via l'URL suivante",
+    #     "message": "Please authenticate via the following URL",
     #     "url": "https://..."
     # }
     
-    # TODO: Après l'authentification (simulée), retourne un message
+    # TODO: After authentication (simulated), return a message
     pass
 
-# TODO: Crée l'outil configurer_api_key avec URL mode
+# TODO: Create the configure_api_key tool with URL mode
 @mcp_server.tool()
-async def configurer_api_key(ctx: Context) -> dict[str, Any]:
+async def configure_api_key(ctx: Context) -> dict[str, Any]:
     """
-    Configure une clé API via URL mode (données sensibles).
+    Configures an API key via URL mode (sensitive data).
     
     Returns:
-        Dict avec confirmation
+        Dict with confirmation
     """
-    # TODO: Utilise URL mode pour rediriger vers la page de configuration
-    # TODO: Retourne une confirmation
+    # TODO: Use URL mode to redirect to configuration page
+    # TODO: Return a confirmation
     pass
 
 
 def main():
-    print("Mon serveur MCP avec elicitation URL mode démarre !")
+    print("My MCP server with URL mode elicitation is starting!")
     print("URL: http://127.0.0.1:8000/mcp")
     mcp_server.run(transport="streamable-http")
 
 
 if __name__ == "__main__":
     main()
-

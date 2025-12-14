@@ -34,7 +34,7 @@ class YaraRule(BaseModel):
 
 # TODO: Create tools
 @mcp_server.tool()
-async def analyser_fichier(
+async def analyze_file(
     filename: str,
     file_content: str | None = None,
     ctx: Context = None
@@ -43,7 +43,7 @@ async def analyser_fichier(
     pass
 
 @mcp_server.tool()
-async def extraire_strings(
+async def extract_strings(
     sample_id: int,
     ctx: Context = None
 ) -> List[str]:
@@ -51,7 +51,7 @@ async def extraire_strings(
     pass
 
 @mcp_server.tool()
-async def comparer_threat_intel(
+async def compare_threat_intel(
     sample_id: int,
     ctx: Context = None
 ) -> List[str]:
@@ -59,7 +59,7 @@ async def comparer_threat_intel(
     pass
 
 @mcp_server.tool()
-async def generer_yara_rule(
+async def generate_yara_rule(
     sample_id: int,
     ctx: Context = None
 ) -> YaraRule:
@@ -95,4 +95,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

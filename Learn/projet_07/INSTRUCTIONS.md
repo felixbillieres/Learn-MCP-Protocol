@@ -1,83 +1,83 @@
-# Instructions - Projet 07 (PROJET FINAL)
+# Instructions - Project 07 (FINAL PROJECT)
 
-## Ta mission
+## Your mission
 
-Créer un serveur MCP complet pour gérer une liste de tâches (todo list), en utilisant TOUS les concepts appris !
+Create a complete MCP server to manage a todo list, using ALL the concepts learned!
 
-## Fonctionnalités à implémenter
+## Features to implement
 
-### 1. Modèles Pydantic
+### 1. Pydantic models
 
-**Crée `Tache`** :
-- `id` : int (obligatoire)
-- `titre` : str (obligatoire, min 1 caractère)
-- `description` : str | None (optionnel)
-- `termine` : bool (défaut False)
-- `priorite` : str (défaut "normale", valeurs possibles: "basse", "normale", "haute", "urgente")
-- `tags` : List[str] (liste de tags, peut être vide)
-- `date_creation` : str (date au format "YYYY-MM-DD HH:MM:SS")
+**Create `Task`**:
+- `id`: int (required)
+- `title`: str (required, min 1 character)
+- `description`: str | None (optional)
+- `completed`: bool (default False)
+- `priority`: str (default "normal", possible values: "low", "normal", "high", "urgent")
+- `tags`: List[str] (list of tags, can be empty)
+- `creation_date`: str (date in format "YYYY-MM-DD HH:MM:SS")
 
-**Crée `StatistiquesTaches`** :
-- `total` : int
-- `terminees` : int
-- `en_cours` : int
-- `par_priorite` : Dict[str, int]
-- `par_tag` : Dict[str, int]
+**Create `TaskStatistics`**:
+- `total`: int
+- `completed`: int
+- `in_progress`: int
+- `by_priority`: Dict[str, int]
+- `by_tag`: Dict[str, int]
 
-### 2. Outils à créer
+### 2. Tools to create
 
-#### `creer_tache`
-- Paramètres : `titre` (str), `description` (str | None), `priorite` (str, défaut "normale"), `tags` (List[str], défaut []), `ctx: Context`
-- Valide que le titre n'est pas vide
-- Génère un ID unique (compteur ou random)
-- Crée la date de création
-- Ajoute la tâche à la liste
-- Retourne : `Tache`
-- Logge avec `ctx.info()`
+#### `create_task`
+- Parameters: `title` (str), `description` (str | None), `priority` (str, default "normal"), `tags` (List[str], default []), `ctx: Context`
+- Validates that the title is not empty
+- Generates a unique ID (counter or random)
+- Creates the creation date
+- Adds the task to the list
+- Returns: `Task`
+- Logs with `ctx.info()`
 
-#### `lister_taches`
-- Paramètres : `termine` (bool | None, optionnel pour filtrer), `priorite` (str | None, optionnel), `tag` (str | None, optionnel), `ctx: Context`
-- Retourne : `List[Tache]`
-- Filtre selon les paramètres fournis
-- Logge avec `ctx.info()`
+#### `list_tasks`
+- Parameters: `completed` (bool | None, optional to filter), `priority` (str | None, optional), `tag` (str | None, optional), `ctx: Context`
+- Returns: `List[Task]`
+- Filters according to provided parameters
+- Logs with `ctx.info()`
 
-#### `obtenir_tache`
-- Paramètres : `tache_id` (int), `ctx: Context`
-- Retourne : `Tache`
-- Valide que la tâche existe
-- Si non trouvée : `ctx.error()` + `raise ValueError`
-- Logge avec `ctx.info()`
+#### `get_task`
+- Parameters: `task_id` (int), `ctx: Context`
+- Returns: `Task`
+- Validates that the task exists
+- If not found: `ctx.error()` + `raise ValueError`
+- Logs with `ctx.info()`
 
-#### `modifier_tache`
-- Paramètres : `tache_id` (int), `titre` (str | None), `description` (str | None), `priorite` (str | None), `tags` (List[str] | None), `ctx: Context`
-- Retourne : `Tache` (modifiée)
-- Valide que la tâche existe
-- Met à jour seulement les champs fournis (pas None)
-- Valide la priorité si fournie
-- Logge avec `ctx.info()`
+#### `update_task`
+- Parameters: `task_id` (int), `title` (str | None), `description` (str | None), `priority` (str | None), `tags` (List[str] | None), `ctx: Context`
+- Returns: `Task` (updated)
+- Validates that the task exists
+- Updates only the provided fields (not None)
+- Validates priority if provided
+- Logs with `ctx.info()`
 
-#### `marquer_termine`
-- Paramètres : `tache_id` (int), `termine` (bool, défaut True), `ctx: Context`
-- Retourne : `Tache`
-- Valide que la tâche existe
-- Change le statut `termine`
-- Logge avec `ctx.info()`
+#### `mark_completed`
+- Parameters: `task_id` (int), `completed` (bool, default True), `ctx: Context`
+- Returns: `Task`
+- Validates that the task exists
+- Changes the `completed` status
+- Logs with `ctx.info()`
 
-#### `supprimer_tache`
-- Paramètres : `tache_id` (int), `ctx: Context`
-- Retourne : `bool` (True si supprimée)
-- Valide que la tâche existe
-- Supprime la tâche de la liste
-- Logge avec `ctx.warning()` (car c'est une action destructive)
-- Si non trouvée : `ctx.error()` + `raise ValueError`
+#### `delete_task`
+- Parameters: `task_id` (int), `ctx: Context`
+- Returns: `bool` (True if deleted)
+- Validates that the task exists
+- Deletes the task from the list
+- Logs with `ctx.warning()` (because it's a destructive action)
+- If not found: `ctx.error()` + `raise ValueError`
 
-#### `obtenir_statistiques`
-- Paramètres : `ctx: Context`
-- Retourne : `StatistiquesTaches`
-- Calcule toutes les statistiques
-- Logge avec `ctx.info()`
+#### `get_statistics`
+- Parameters: `ctx: Context`
+- Returns: `TaskStatistics`
+- Calculates all statistics
+- Logs with `ctx.info()`
 
-### 3. Structure du code
+### 3. Code structure
 
 ```python
 # Imports
@@ -86,22 +86,22 @@ from pydantic import BaseModel, Field
 from typing import List, Dict, Optional
 from datetime import datetime
 
-# Serveur MCP
+# MCP Server
 mcp_server = FastMCP(...)
 
-# Liste globale pour stocker les tâches
-taches = []
+# Global list to store tasks
+tasks = []
 
-# Modèles Pydantic
-class Tache(BaseModel):
+# Pydantic models
+class Task(BaseModel):
     ...
 
-class StatistiquesTaches(BaseModel):
+class TaskStatistics(BaseModel):
     ...
 
-# Outils
+# Tools
 @mcp_server.tool()
-async def creer_tache(...):
+async def create_task(...):
     ...
 
 # etc.
@@ -113,24 +113,24 @@ if __name__ == "__main__":
     main()
 ```
 
-## Conseils
+## Tips
 
-1. **Organise ton code** : modèles d'abord, puis outils
-2. **Valide tôt** : vérifie les paramètres au début de chaque fonction
-3. **Logge toujours** : utilise `ctx.info()`, `ctx.warning()`, `ctx.error()`
-4. **Messages clairs** : les erreurs doivent être compréhensibles
-5. **Réutilise la logique** : crée peut-être une fonction `trouver_tache(id)` pour éviter la duplication
+1. **Organize your code**: models first, then tools
+2. **Validate early**: check parameters at the start of each function
+3. **Always log**: use `ctx.info()`, `ctx.warning()`, `ctx.error()`
+4. **Clear messages**: errors must be understandable
+5. **Reuse logic**: maybe create a `find_task(id)` function to avoid duplication
 
 ## Test
 
-Utilise `python test.py` pour tester toutes les fonctionnalités.
+Use `python test.py` to test all features.
 
-## Résultat attendu
+## Expected result
 
-Un serveur MCP fonctionnel qui permet de :
-- Créer des tâches
-- Lister et filtrer les tâches
-- Modifier et supprimer des tâches
-- Obtenir des statistiques
+A functional MCP server that allows you to:
+- Create tasks
+- List and filter tasks
+- Update and delete tasks
+- Get statistics
 
-C'est ton projet final ! Montre-moi ce que tu as créé !
+This is your final project! Show me what you've created!

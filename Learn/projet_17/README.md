@@ -1,33 +1,33 @@
-# Projet 17 : Utiliser le sampling pour demander des complétions LLM
+# Project 17: Use sampling to request LLM completions
 
-## Objectif
+## Objective
 
-Apprendre à utiliser le sampling pour demander des complétions de modèles de langage via le client MCP.
+Learn to use sampling to request language model completions via the MCP client.
 
-## Concepts à apprendre
+## Concepts to learn
 
-### Qu'est-ce que le sampling ?
+### What is sampling?
 
-Le **sampling** permet aux serveurs MCP de demander des complétions LLM au client. Cela permet aux serveurs d'utiliser l'IA sans avoir besoin de leurs propres clés API.
+**Sampling** allows MCP servers to request LLM completions from the client. This allows servers to use AI without needing their own API keys.
 
-### Avantages
+### Advantages
 
-- Pas besoin de clé API dans le serveur
-- Le client contrôle quel modèle utiliser
-- L'utilisateur peut voir et modifier les prompts avant envoi
-- Sécurité : contrôle côté client
+- No need for API keys in the server
+- Client controls which model to use
+- User can see and modify prompts before sending
+- Security: client-side control
 
-### Flow de sampling
+### Sampling flow
 
-1. Serveur envoie `sampling/createMessage` avec messages et paramètres
-2. Client présente la requête à l'utilisateur (qui peut modifier)
-3. Client envoie au LLM
-4. Client présente la réponse (qui peut être modifiée)
-5. Client retourne la réponse au serveur
+1. Server sends `sampling/createMessage` with messages and parameters
+2. Client presents the request to the user (who can modify)
+3. Client sends to LLM
+4. Client presents the response (which can be modified)
+5. Client returns the response to the server
 
-### Utilisation dans FastMCP
+### Usage in FastMCP
 
-Dans FastMCP, tu utilises le Context pour demander un sampling :
+In FastMCP, you use Context to request sampling:
 ```python
 response = await ctx.sampling.create_message(
     messages=[...],
@@ -35,11 +35,10 @@ response = await ctx.sampling.create_message(
 )
 ```
 
-## Ce que tu vas créer
+## What you will create
 
-Dans ce projet, tu vas créer un outil qui utilise le sampling pour obtenir une réponse d'un LLM.
+In this project, you will create a tool that uses sampling to get a response from an LLM.
 
-## Prochaines étapes
+## Next steps
 
-Lis `INSTRUCTIONS.md` pour voir ce que tu dois faire exactement !
-
+Read `INSTRUCTIONS.md` to see exactly what you need to do!

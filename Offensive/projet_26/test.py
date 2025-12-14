@@ -1,6 +1,6 @@
 """
-Script de test pour le projet 26
-Ce script vérifie le scanner de ports
+Test script for project 26
+This script verifies the port scanner
 """
 
 import sys
@@ -9,31 +9,31 @@ import asyncio
 from unittest.mock import AsyncMock
 
 def test_models_exist():
-    """Test que les modèles existent"""
+    """Test that models exist"""
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     
     try:
         spec.loader.exec_module(solution)
     except Exception as e:
-        print(f"Erreur lors de l'import : {e}")
+        print(f"Error during import: {e}")
         import traceback
         traceback.print_exc()
         return False
     
     if not hasattr(solution, 'PortInfo'):
-        print("Le modèle 'PortInfo' n'existe pas")
+        print("The model 'PortInfo' does not exist")
         return False
     
     if not hasattr(solution, 'ScanResult'):
-        print("Le modèle 'ScanResult' n'existe pas")
+        print("The model 'ScanResult' does not exist")
         return False
     
-    print("Les modèles existent")
+    print("Models exist")
     return True
 
-async def test_scanner_ports():
-    """Test l'outil scanner_ports"""
+async def test_scan_ports():
+    """Test the scan_ports tool"""
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
@@ -44,31 +44,31 @@ async def test_scanner_ports():
     mock_ctx = AsyncMock()
     
     try:
-        result = await solution.scanner_ports("192.168.1.1", None, "quick", mock_ctx)
+        result = await solution.scan_ports("192.168.1.1", None, "quick", mock_ctx)
         
         if not isinstance(result, solution.ScanResult):
-            print(f"Le résultat devrait être un ScanResult, mais c'est {type(result)}")
+            print(f"The result should be a ScanResult, but it's {type(result)}")
             return False
         
         if result.target != "192.168.1.1":
-            print(f"La cible devrait être '192.168.1.1', mais c'est '{result.target}'")
+            print(f"The target should be '192.168.1.1', but it's '{result.target}'")
             return False
         
         if len(result.ports) == 0:
-            print("Le scan devrait détecter au moins un port")
+            print("The scan should detect at least one port")
             return False
         
-        print("scanner_ports fonctionne")
+        print("scan_ports works")
         return True
     
     except Exception as e:
-        print(f"Erreur lors du scan : {e}")
+        print(f"Error during scan: {e}")
         import traceback
         traceback.print_exc()
         return False
 
-async def test_analyser_services():
-    """Test l'outil analyser_services"""
+async def test_analyze_services():
+    """Test the analyze_services tool"""
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
@@ -78,44 +78,43 @@ async def test_analyser_services():
     
     mock_ctx = AsyncMock()
     
-    # Crée un scan d'abord
-    await solution.scanner_ports("192.168.1.1", None, "quick", mock_ctx)
+    # Create a scan first
+    await solution.scan_ports("192.168.1.1", None, "quick", mock_ctx)
     
     try:
-        result = await solution.analyser_services(0, mock_ctx)
+        result = await solution.analyze_services(0, mock_ctx)
         
         if not isinstance(result, dict):
-            print(f"Le résultat devrait être un dict, mais c'est {type(result)}")
+            print(f"The result should be a dict, but it's {type(result)}")
             return False
         
-        print("analyser_services fonctionne")
+        print("analyze_services works")
         return True
     
     except Exception as e:
-        print(f"Erreur lors de l'analyse : {e}")
+        print(f"Error during analysis: {e}")
         import traceback
         traceback.print_exc()
         return False
 
 if __name__ == "__main__":
-    print("Test du Projet 26\n")
+    print("Test for Project 26\n")
     
     success = True
     success = test_models_exist() and success
     print()
     
-    print("Test scanner_ports...")
-    success = asyncio.run(test_scanner_ports()) and success
+    print("Testing scan_ports...")
+    success = asyncio.run(test_scan_ports()) and success
     print()
     
-    print("Test analyser_services...")
-    success = asyncio.run(test_analyser_services()) and success
+    print("Testing analyze_services...")
+    success = asyncio.run(test_analyze_services()) and success
     print()
     
     if success:
-        print("Tous les tests passent !")
-        print("Tu as créé un scanner de ports fonctionnel !")
+        print("All tests pass!")
+        print("You've created a functional port scanner!")
     else:
-        print("Certains tests ont échoué. Vérifie ton code !")
+        print("Some tests failed. Check your code!")
         sys.exit(1)
-

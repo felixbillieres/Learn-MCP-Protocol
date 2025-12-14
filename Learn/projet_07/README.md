@@ -1,47 +1,39 @@
-# Projet 07 : Projet final - Mini serveur MCP complet
+# Project 07: Final project - Complete mini MCP server
 
-## Objectif
+## Objective
 
-Créer un mini serveur MCP complet qui combine tous les concepts appris ! Ce projet sera inspiré de la structure d'Exegol-MCP mais simplifié.
+Create a complete mini MCP server that combines all the concepts learned! This project will be simplified but comprehensive.
 
-## Ce que tu vas créer
+## What you will create
 
-Un serveur MCP pour gérer une liste de tâches (todo list) avec :
-- Des modèles Pydantic pour les tâches
-- Des outils pour CRUD (Create, Read, Update, Delete)
-- Une gestion d'erreurs complète
-- Du logging avec Context
-- Des filtres et des statistiques
+An MCP server to manage a todo list with:
+- Pydantic models for tasks
+- Tools for CRUD (Create, Read, Update, Delete)
+- Complete error handling
+- Logging with Context
+- Filters and statistics
 
-## Concepts récapitulatifs
+## Recap of concepts
 
-Tu vas utiliser :
--  FastMCP pour créer le serveur
--  Des outils avec `@mcp_server.tool()`
--  Des modèles Pydantic pour structurer les données
--  Le Context pour le logging
--  La gestion d'erreurs avec validation
--  Des types complexes (listes, optionnels)
+You will use:
+- FastMCP to create the server
+- Tools with `@mcp_server.tool()`
+- Pydantic models to structure data
+- Context for logging
+- Error handling with validation
+- Complex types (lists, optionals)
 
-## Inspiration : Exegol-MCP
+## Expected structure
 
-Regarde comment Exegol-MCP est structuré :
-- `src/mcp_app.py` : Configuration du serveur
-- `src/models/container.py` : Modèles de données
-- `src/assets/tools_*.py` : Outils organisés par catégorie
-- `src/main.py` : Point d'entrée
-
-## Structure attendue
-
-Ton projet final devrait avoir :
+Your final project should have:
 ```
 projet_07/
-├── solution.py        # Tout ton code (pour simplifier)
+├── solution.py        # All your code (to simplify)
 ├── README.md
 ├── INSTRUCTIONS.md
 └── test.py
 ```
 
-## Prochaines étapes
+## Next steps
 
-Lis `INSTRUCTIONS.md` pour voir ce que tu dois créer exactement !
+Read `INSTRUCTIONS.md` to see exactly what you need to create!

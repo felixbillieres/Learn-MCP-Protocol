@@ -1,6 +1,6 @@
 """
-Script de test pour le projet 03
-Ce script vérifie que les modèles Pydantic sont bien définis et fonctionnent
+Test script for project 03
+This script verifies that Pydantic models are properly defined and work
 """
 
 import sys
@@ -9,7 +9,7 @@ import asyncio
 from pydantic import ValidationError
 
 def test_models_exist():
-    """Test que les modèles existent"""
+    """Test that models exist"""
 
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
@@ -17,139 +17,139 @@ def test_models_exist():
     try:
         spec.loader.exec_module(solution)
     except Exception as e:
-        print(f"Erreur lors de l'import : {e}")
+        print(f"Error during import: {e}")
         import traceback
         traceback.print_exc()
         return False
 
-    # Vérifie que les modèles existent
+    # Check that models exist
     if not hasattr(solution, 'Message'):
-        print("La classe 'Message' n'existe pas")
+        print("The class 'Message' does not exist")
         return False
 
     if not hasattr(solution, 'MessageResponse'):
-        print("La classe 'MessageResponse' n'existe pas")
+        print("The class 'MessageResponse' does not exist")
         return False
 
-    # Vérifie que ce sont des modèles Pydantic
+    # Check that they are Pydantic models
     from pydantic import BaseModel
 
     if not issubclass(solution.Message, BaseModel):
-        print("'Message' doit hériter de BaseModel")
+        print("'Message' must inherit from BaseModel")
         return False
 
     if not issubclass(solution.MessageResponse, BaseModel):
-        print("'MessageResponse' doit hériter de BaseModel")
+        print("'MessageResponse' must inherit from BaseModel")
         return False
 
-    print("Les modèles Pydantic sont bien définis !")
+    print("Pydantic models are properly defined!")
     return True
 
 def test_message_validation():
-    """Test que le modèle Message valide correctement"""
+    """Test that the Message model validates correctly"""
 
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
 
-    # Test création valide
+    # Test valid creation
     try:
         msg = solution.Message(
-            expediteur="Alice",
-            destinataire="Bob",
-            contenu="Hello !"
+            sender="Alice",
+            recipient="Bob",
+            content="Hello !"
         )
-        if msg.priorite != "normale":
-            print(f"La priorité par défaut devrait être 'normale', mais c'est '{msg.priorite}'")
+        if msg.priority != "normal":
+            print(f"The default priority should be 'normal', but it's '{msg.priority}'")
             return False
-        print("Message créé avec succès (priorité par défaut)")
+        print("Message created successfully (default priority)")
     except Exception as e:
-        print(f"Erreur lors de la création d'un Message valide : {e}")
+        print(f"Error during creation of a valid Message: {e}")
         import traceback
         traceback.print_exc()
         return False
 
-    # Test avec priorité explicite
+    # Test with explicit priority
     try:
         msg = solution.Message(
-            expediteur="Alice",
-            destinataire="Bob",
-            contenu="Urgent !",
-            priorite="haute"
+            sender="Alice",
+            recipient="Bob",
+            content="Urgent!",
+            priority="high"
         )
-        if msg.priorite != "haute":
-            print(f"La priorité devrait être 'haute', mais c'est '{msg.priorite}'")
+        if msg.priority != "high":
+            print(f"The priority should be 'high', but it's '{msg.priority}'")
             return False
-        print("Message créé avec priorité explicite")
+        print("Message created with explicit priority")
     except Exception as e:
-        print(f"Erreur lors de la création avec priorité : {e}")
+        print(f"Error during creation with priority: {e}")
         return False
 
-    # Test validation (champs manquants)
+    # Test validation (missing fields)
     try:
-        msg = solution.Message(expediteur="Alice")  # Manque destinataire et contenu
-        print("Le modèle devrait rejeter un message incomplet")
+        msg = solution.Message(sender="Alice")  # Missing recipient and content
+        print("The model should reject an incomplete message")
         return False
     except ValidationError:
-        print("Validation fonctionne : rejette les messages incomplets")
+        print("Validation works: rejects incomplete messages")
     except Exception as e:
-        print(f"Erreur inattendue : {e}")
+        print(f"Unexpected error: {e}")
         return False
 
     return True
 
 async def test_tool_execution():
-    """Test que l'outil fonctionne"""
+    """Test that the tool works"""
 
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
 
-    # Crée un message
+    # Create a message
     message = solution.Message(
-        expediteur="Alice",
-        destinataire="Bob",
-        contenu="Test message",
-        priorite="haute"
+        sender="Alice",
+        recipient="Bob",
+        content="Test message",
+        priority="high"
     )
 
-    # Appelle l'outil
+    # Call the tool
     try:
-        result = await solution.envoyer_message(message)
+        result = await solution.send_message(message)
 
-        # Vérifie le type
+        # Check the type
         if not isinstance(result, solution.MessageResponse):
-            print(f"Le résultat devrait être un MessageResponse, mais c'est {type(result)}")
+            print(f"The result should be a MessageResponse, but it's {type(result)}")
             return False
 
-        # Vérifie les champs
+        # Check fields
         if not hasattr(result, 'message_id') or not isinstance(result.message_id, int):
-            print("'message_id' devrait être un int")
+            print("'message_id' should be an int")
             return False
 
-        if result.expediteur != "Alice":
-            print(f"L'expéditeur devrait être 'Alice', mais c'est '{result.expediteur}'")
+        if result.sender != "Alice":
+            print(f"The sender should be 'Alice', but it's '{result.sender}'")
             return False
 
-        if result.destinataire != "Bob":
-            print(f"Le destinataire devrait être 'Bob', mais c'est '{result.destinataire}'")
+        if result.recipient != "Bob":
+            print(f"The recipient should be 'Bob', but it's '{result.recipient}'")
             return False
 
-        if not hasattr(result, 'date_envoi') or not isinstance(result.date_envoi, str):
-            print("'date_envoi' devrait être une string")
+        if not hasattr(result, 'send_date') or not isinstance(result.send_date, str):
+            print("'send_date' should be a string")
             return False
 
-        print(f"L'outil fonctionne ! Message ID: {result.message_id}, Date: {result.date_envoi}")
+        print(f"Tool works! Message ID: {result.message_id}, Date: {result.send_date}")
         return True
 
     except Exception as e:
-        print(f"Erreur lors de l'exécution de l'outil : {e}")
+        print(f"Error during tool execution: {e}")
         import traceback
         traceback.print_exc()
         return False
 
 if __name__ == "__main__":
-    print("Test du Projet 03\n")
+    print("Test for Project 03\n")
 
     success = True
     success = test_models_exist() and success
@@ -158,13 +158,13 @@ if __name__ == "__main__":
     success = test_message_validation() and success
     print()
 
-    print("Test d'exécution de l'outil...")
+    print("Testing tool execution...")
     success = asyncio.run(test_tool_execution()) and success
 
     print()
     if success:
-        print("Tous les tests passent !")
-        print("Tu as appris à utiliser Pydantic avec MCP !")
+        print("All tests pass!")
+        print("You've learned to use Pydantic models in MCP!")
     else:
-        print("Certains tests ont échoué. Vérifie ton code !")
+        print("Some tests failed. Check your code!")
         sys.exit(1)

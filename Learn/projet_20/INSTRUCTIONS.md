@@ -1,37 +1,36 @@
-# Instructions - Projet 20
+# Instructions - Project 20
 
-## Ta mission
+## Your mission
 
-Créer un serveur qui simule la validation de tokens OAuth.
+Create a server that simulates OAuth token validation.
 
-## Étapes à suivre
+## Steps to follow
 
-1. **Crée un serveur FastMCP** basique
+1. **Create a basic FastMCP server**
 
-2. **Crée une fonction `valider_token`** :
-   - Prend un token (str)
-   - Simule la validation (vérifie format, expiration, etc.)
-   - Retourne un dict avec user info si valide
-   - Retourne None si invalide
+2. **Create a `validate_token` function**:
+   - Takes a token (str)
+   - Simulates validation (checks format, expiration, etc.)
+   - Returns a dict with user info if valid
+   - Returns None if invalid
 
-3. **Crée un outil `info_utilisateur`** :
-   - Nécessite un token valide (simulé via paramètre `token`)
-   - Valide le token
-   - Retourne les infos de l'utilisateur
+3. **Create a `user_info` tool**:
+   - Requires a valid token (simulated via `token` parameter)
+   - Validates the token
+   - Returns user info
 
-4. **Crée un outil `donnees_sensibles`** :
-   - Nécessite aussi un token valide
-   - Simule l'accès à des données sensibles
-   - Retourne les données si autorisé
+4. **Create a `sensitive_data` tool**:
+   - Also requires a valid token
+   - Simulates access to sensitive data
+   - Returns data if authorized
 
-## Indices
+## Hints
 
-- Pour ce projet, on simule l'autorisation (pas de vrai OAuth)
-- Dans un vrai serveur, FastMCP gère automatiquement les tokens HTTP
-- Tu peux stocker des tokens valides dans un dict pour simulation
-- Valide le format du token (ex: doit commencer par "Bearer ")
+- For this project, we simulate authorization (not real OAuth)
+- In a real server, FastMCP automatically handles HTTP tokens
+- You can store valid tokens in a dict for simulation
+- Validate token format (e.g., must start with "Bearer ")
 
 ## Test
 
-Le test vérifiera que la validation fonctionne.
-
+The test will verify that validation works.

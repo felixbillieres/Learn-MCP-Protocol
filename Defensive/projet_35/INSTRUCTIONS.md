@@ -28,17 +28,17 @@ Create a malware analysis system with YARA rule generation.
      - `description` : str
 
 2. **Create Tools**:
-   - `analyser_fichier` : Analyze a file (uses elicitation for confirmation)
+   - `analyze_file` : Analyze a file (uses elicitation for confirmation)
    - `extraire_strings` : Extract strings from file
    - `comparer_threat_intel` : Compare with threat intelligence
-   - `generer_yara_rule` : Generate YARA rule (uses prompts)
+   - `generate_yara_rule` : Generate YARA rule (uses prompts)
 
 3. **Create Resources**:
    - `analysis://{sample_id}` : Get analysis results
    - `yara://rules` : List YARA rules
 
 4. **Create Prompts**:
-   - `generer_yara_rule` : Generate YARA rule based on analysis
+   - `generate_yara_rule` : Generate YARA rule based on analysis
 
 5. **Use Elicitation**:
    - Confirm before analyzing potentially dangerous files

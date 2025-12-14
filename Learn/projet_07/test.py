@@ -1,6 +1,6 @@
 """
-Script de test pour le projet 07 (PROJET FINAL)
-Ce script teste toutes les fonctionnalités du gestionnaire de tâches
+Test script for project 07 (FINAL PROJECT)
+This script tests all features of the task manager
 """
 
 import sys
@@ -9,7 +9,7 @@ import asyncio
 from unittest.mock import AsyncMock
 
 def test_basic_structure():
-    """Test que la structure de base est correcte"""
+    """Test that the basic structure is correct"""
 
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
@@ -17,183 +17,266 @@ def test_basic_structure():
     try:
         spec.loader.exec_module(solution)
     except Exception as e:
-        print(f"Erreur lors de l'import : {e}")
+        print(f"Error during import: {e}")
         import traceback
         traceback.print_exc()
         return False
 
-    # Vérifie les modèles
-    if not hasattr(solution, 'Tache'):
-        print("Le modèle 'Tache' n'existe pas")
+    # Check models
+    if not hasattr(solution, 'Task'):
+        print("The model 'Task' does not exist")
         return False
 
-    if not hasattr(solution, 'StatistiquesTaches'):
-        print("Le modèle 'StatistiquesTaches' n'existe pas")
+    if not hasattr(solution, 'TaskStatistics'):
+        print("The model 'TaskStatistics' does not exist")
         return False
 
-    # Vérifie la liste
-    if not hasattr(solution, 'taches'):
-        print("La liste 'taches' n'existe pas")
+    # Check the list
+    if not hasattr(solution, 'tasks'):
+        print("The list 'tasks' does not exist")
         return False
 
-    print("Structure de base correcte")
+    print("Basic structure correct")
     return True
 
-async def test_creer_tache():
-    """Test création de tâche"""
+async def test_create_task():
+    """Test task creation"""
 
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
 
-    # Réinitialise
-    solution.taches.clear()
+    # Reset
+    solution.tasks.clear()
     mock_ctx = AsyncMock()
 
     try:
-        result = await solution.creer_tache(
-            titre="Ma première tâche",
-            description="Description de test",
-            priorite="haute",
+        result = await solution.create_task(
+            title="My first task",
+            description="Test description",
+            priority="high",
             tags=["test", "important"],
             ctx=mock_ctx
         )
 
-        if not isinstance(result, solution.Tache):
-            print(f"Le résultat devrait être une Tache, mais c'est {type(result)}")
+        if not isinstance(result, solution.Task):
+            print(f"The result should be a Task, but it's {type(result)}")
             return False
 
-        if result.titre != "Ma première tâche":
-            print("Le titre n'est pas correct")
+        if result.title != "My first task":
+            print("The title is not correct")
             return False
 
-        if len(solution.taches) != 1:
-            print(f"La tâche devrait être ajoutée, mais la liste contient {len(solution.taches)} éléments")
+        if len(solution.tasks) != 1:
+            print(f"The task should be added, but the list contains {len(solution.tasks)} elements")
             return False
 
-        print("creer_tache fonctionne")
+        print("create_task works")
         return True
 
     except Exception as e:
-        print(f"Erreur : {e}")
+        print(f"Error: {e}")
         import traceback
         traceback.print_exc()
         return False
 
-async def test_lister_taches():
-    """Test liste et filtres"""
+async def test_list_tasks():
+    """Test list and filters"""
 
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
 
-    solution.taches.clear()
+    solution.tasks.clear()
     mock_ctx = AsyncMock()
 
-    # Crée quelques tâches
-    t1 = await solution.creer_tache("Tâche 1", None, "haute", ["a"], mock_ctx)
-    t2 = await solution.creer_tache("Tâche 2", None, "normale", ["b"], mock_ctx)
-    t3 = await solution.creer_tache("Tâche 3", None, "haute", ["a"], mock_ctx)
+    # Create some tasks
+    t1 = await solution.create_task("Task 1", None, "high", ["a"], mock_ctx)
+    t2 = await solution.create_task("Task 2", None, "normal", ["b"], mock_ctx)
+    t3 = await solution.create_task("Task 3", None, "high", ["a"], mock_ctx)
 
-    await solution.marquer_termine(t1.id, True, mock_ctx)
+    await solution.mark_completed(t1.id, True, mock_ctx)
 
     try:
-        # Liste toutes
-        toutes = await solution.lister_taches(None, None, None, mock_ctx)
-        if len(toutes) != 3:
-            print(f"Devrait retourner 3 tâches, mais a retourné {len(toutes)}")
+        # Test list all
+        all_tasks = await solution.list_tasks(None, None, None, mock_ctx)
+        if len(all_tasks) != 3:
+            print(f"Should return 3 tasks, but returned {len(all_tasks)}")
             return False
 
-        # Filtre par terminé
-        terminees = await solution.lister_taches(True, None, None, mock_ctx)
-        if len(terminees) != 1:
-            print(f"Devrait retourner 1 tâche terminée, mais a retourné {len(terminees)}")
+        # Test filter by completed
+        completed = await solution.list_tasks(True, None, None, mock_ctx)
+        if len(completed) != 1:
+            print(f"Should return 1 completed task, but returned {len(completed)}")
             return False
 
-        # Filtre par priorité
-        hautes = await solution.lister_taches(None, "haute", None, mock_ctx)
-        if len(hautes) != 2:
-            print(f"Devrait retourner 2 tâches haute priorité, mais a retourné {len(hautes)}")
+        # Test filter by priority
+        high_priority = await solution.list_tasks(None, "high", None, mock_ctx)
+        if len(high_priority) != 2:
+            print(f"Should return 2 high priority tasks, but returned {len(high_priority)}")
             return False
 
-        # Filtre par tag
-        tag_a = await solution.lister_taches(None, None, "a", mock_ctx)
+        # Test filter by tag
+        tag_a = await solution.list_tasks(None, None, "a", mock_ctx)
         if len(tag_a) != 2:
-            print(f"Devrait retourner 2 tâches avec tag 'a', mais a retourné {len(tag_a)}")
+            print(f"Should return 2 tasks with tag 'a', but returned {len(tag_a)}")
             return False
 
-        print("lister_taches avec filtres fonctionne")
+        print("list_tasks works with all filters")
         return True
 
     except Exception as e:
-        print(f"Erreur : {e}")
+        print(f"Error: {e}")
         import traceback
         traceback.print_exc()
         return False
 
-async def test_statistiques():
-    """Test statistiques"""
+async def test_update_task():
+    """Test task update"""
 
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
 
-    solution.taches.clear()
+    solution.tasks.clear()
     mock_ctx = AsyncMock()
 
-    # Crée des tâches variées
-    t1 = await solution.creer_tache("T1", None, "haute", ["a"], mock_ctx)
-    t2 = await solution.creer_tache("T2", None, "haute", ["b"], mock_ctx)
-    t3 = await solution.creer_tache("T3", None, "normale", ["a"], mock_ctx)
-
-    await solution.marquer_termine(t1.id, True, mock_ctx)
+    t1 = await solution.create_task("Original title", "Original desc", "normal", [], mock_ctx)
 
     try:
-        stats = await solution.obtenir_statistiques(mock_ctx)
+        updated = await solution.update_task(
+            t1.id,
+            title="Updated title",
+            priority="high",
+            ctx=mock_ctx
+        )
+
+        if updated.title != "Updated title":
+            print("Title should be updated")
+            return False
+
+        if updated.priority != "high":
+            print("Priority should be updated")
+            return False
+
+        if updated.description != "Original desc":
+            print("Description should remain unchanged")
+            return False
+
+        print("update_task works")
+        return True
+
+    except Exception as e:
+        print(f"Error: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
+
+async def test_delete_task():
+    """Test task deletion"""
+
+    spec = importlib.util.spec_from_file_location("solution", "solution.py")
+    solution = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(solution)
+
+    solution.tasks.clear()
+    mock_ctx = AsyncMock()
+
+    t1 = await solution.create_task("Task to delete", None, "normal", [], mock_ctx)
+    task_id = t1.id
+
+    try:
+        deleted = await solution.delete_task(task_id, mock_ctx)
+
+        if not deleted:
+            print("delete_task should return True")
+            return False
+
+        if len(solution.tasks) != 0:
+            print("The task should be removed from the list")
+            return False
+
+        print("delete_task works")
+        return True
+
+    except Exception as e:
+        print(f"Error: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
+
+async def test_get_statistics():
+    """Test statistics"""
+
+    spec = importlib.util.spec_from_file_location("solution", "solution.py")
+    solution = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(solution)
+
+    solution.tasks.clear()
+    mock_ctx = AsyncMock()
+
+    # Create varied tasks
+    t1 = await solution.create_task("Task 1", None, "high", ["a"], mock_ctx)
+    t2 = await solution.create_task("Task 2", None, "normal", ["b"], mock_ctx)
+    t3 = await solution.create_task("Task 3", None, "high", ["a"], mock_ctx)
+
+    await solution.mark_completed(t1.id, True, mock_ctx)
+
+    try:
+        stats = await solution.get_statistics(mock_ctx)
 
         if stats.total != 3:
-            print(f"Total devrait être 3, mais c'est {stats.total}")
+            print(f"Total should be 3, but it's {stats.total}")
             return False
 
-        if stats.terminees != 1:
-            print(f"Terminées devrait être 1, mais c'est {stats.terminees}")
+        if stats.completed != 1:
+            print(f"Completed should be 1, but it's {stats.completed}")
             return False
 
-        if stats.par_priorite.get("haute", 0) != 2:
-            print(f"Devrait avoir 2 tâches haute priorité, mais c'est {stats.par_priorite}")
+        if stats.in_progress != 2:
+            print(f"In progress should be 2, but it's {stats.in_progress}")
             return False
 
-        print("obtenir_statistiques fonctionne")
+        print("get_statistics works")
         return True
 
     except Exception as e:
-        print(f"Erreur : {e}")
+        print(f"Error: {e}")
         import traceback
         traceback.print_exc()
         return False
 
 if __name__ == "__main__":
-    print("Test du Projet 07 (FINAL)\n")
+    print("Test for Project 07 (FINAL PROJECT)\n")
 
     success = True
     success = test_basic_structure() and success
     print()
 
-    print("Test création de tâche...")
-    success = asyncio.run(test_creer_tache()) and success
+    print("Testing create_task...")
+    success = asyncio.run(test_create_task()) and success
     print()
 
-    print("Test liste et filtres...")
-    success = asyncio.run(test_lister_taches()) and success
+    print("Testing list_tasks...")
+    success = asyncio.run(test_list_tasks()) and success
     print()
 
-    print("Test statistiques...")
-    success = asyncio.run(test_statistiques()) and success
+    print("Testing update_task...")
+    success = asyncio.run(test_update_task()) and success
+    print()
+
+    print("Testing delete_task...")
+    success = asyncio.run(test_delete_task()) and success
+    print()
+
+    print("Testing get_statistics...")
+    success = asyncio.run(test_get_statistics()) and success
 
     print()
     if success:
-        print("FÉLICITATIONS ! Tous les tests passent !")
-        print("Tu as terminé tous les projets et maîtrisé MCP en Python !")
+        print("🎉 All tests pass!")
+        print("You've completed the final beginner project!")
+        print("You now know how to create a complete MCP server!")
     else:
-        print("Certains tests ont échoué. Vérifie ton code !")
+        print("Some tests failed. Check your code!")
         sys.exit(1)

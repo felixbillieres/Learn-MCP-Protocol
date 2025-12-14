@@ -1,41 +1,40 @@
-# Instructions - Projet 18
+# Instructions - Project 18
 
-## Ta mission
+## Your mission
 
-Créer des outils qui utilisent les paramètres avancés du sampling.
+Create tools that use advanced sampling parameters.
 
-## Étapes à suivre
+## Steps to follow
 
-1. **Crée un serveur FastMCP** basique
+1. **Create a basic FastMCP server**
 
-2. **Crée un outil `creatif_ideation`** :
-   - Prend `sujet` (str) et `ctx: Context`
-   - Utilise sampling avec :
-     - `temperature`: 0.9 (créatif)
-     - `model_preferences`: intelligencePriority élevé
-     - Demande des idées créatives sur le sujet
-   - Retourne les idées
+2. **Create a `creative_ideation` tool**:
+   - Takes `topic` (str) and `ctx: Context`
+   - Uses sampling with:
+     - `temperature`: 0.9 (creative)
+     - `model_preferences`: high intelligencePriority
+     - Requests creative ideas on the topic
+   - Returns the ideas
 
-3. **Crée un outil `conversation`** :
-   - Prend `messages_historique` (list de dict) et `nouveau_message` (str) et `ctx: Context`
-   - Construit une conversation avec l'historique
-   - Utilise `max_tokens`: 500
-   - Retourne la réponse
+3. **Create a `conversation` tool**:
+   - Takes `message_history` (list of dict) and `new_message` (str) and `ctx: Context`
+   - Builds a conversation with history
+   - Uses `max_tokens`: 500
+   - Returns the response
 
-4. **Crée un outil `reponse_rapide`** :
-   - Prend `question` (str) et `ctx: Context`
-   - Utilise sampling avec :
-     - `speed_priority`: élevé
-     - `max_tokens`: 100 (courte réponse)
-   - Retourne une réponse rapide
+4. **Create a `quick_response` tool**:
+   - Takes `question` (str) and `ctx: Context`
+   - Uses sampling with:
+     - `speed_priority`: high
+     - `max_tokens`: 100 (short response)
+   - Returns a quick response
 
-## Indices
+## Hints
 
-- Utilise `model_preferences` avec `intelligencePriority`, `speedPriority`, etc.
-- `temperature` contrôle la créativité (0 = déterministe, 2 = très créatif)
-- Pour les conversations, passe tous les messages dans la liste
+- Use `model_preferences` with `intelligencePriority`, `speedPriority`, etc.
+- `temperature` controls creativity (0 = deterministic, 2 = very creative)
+- For conversations, pass all messages in the list
 
 ## Test
 
-Le test vérifiera que les outils utilisent les paramètres avancés.
-
+The test will verify that tools use advanced parameters.

@@ -1,61 +1,61 @@
-# Instructions - Projet 06
+# Instructions - Project 06
 
-## Ta mission
+## Your mission
 
-Créer des outils avec des paramètres et retours complexes (listes, modèles imbriqués).
+Create tools with complex parameters and returns (lists, nested models).
 
-## Étapes à suivre
+## Steps to follow
 
-1. **Crée un modèle Pydantic `Utilisateur`** :
-   - `id` : int (obligatoire)
-   - `nom` : str (obligatoire)
-   - `email` : str | None (optionnel)
-   - `tags` : List[str] (liste de tags, peut être vide)
-   - `score` : float (obligatoire, valeur par défaut 0.0)
-   - Utilise `Field()` pour les descriptions
+1. **Create a Pydantic `User` model**:
+   - `id`: int (required)
+   - `name`: str (required)
+   - `email`: str | None (optional)
+   - `tags`: List[str] (list of tags, can be empty)
+   - `score`: float (required, default value 0.0)
+   - Use `Field()` for descriptions
 
-2. **Crée un modèle `StatistiquesUtilisateurs`** :
-   - `total` : int (nombre total d'utilisateurs)
-   - `par_tag` : Dict[str, int] (nombre d'utilisateurs par tag)
-   - `score_moyen` : float (score moyen)
+2. **Create a `UserStatistics` model**:
+   - `total`: int (total number of users)
+   - `by_tag`: Dict[str, int] (number of users per tag)
+   - `average_score`: float (average score)
 
-3. **Crée l'outil `ajouter_utilisateur`** :
-   - Prend un paramètre `utilisateur` (type `Utilisateur`) et `ctx: Context`
-   - Simule l'ajout d'un utilisateur (stocke dans une liste en mémoire)
-   - Retourne l'utilisateur avec son ID assigné
-   - Logge avec `ctx.info()`
+3. **Create the `add_user` tool**:
+   - Takes a parameter `user` (type `User`) and `ctx: Context`
+   - Simulates adding a user (stores in an in-memory list)
+   - Returns the user with their assigned ID
+   - Logs with `ctx.info()`
 
-4. **Crée l'outil `lister_utilisateurs`** :
-   - Prend `ctx: Context`
-   - Prend un paramètre optionnel `tag_filtre` : str | None
-   - Si `tag_filtre` est fourni, retourne seulement les utilisateurs ayant ce tag
-   - Sinon, retourne tous les utilisateurs
-   - Retourne `List[Utilisateur]`
-   - Logge avec `ctx.info()`
+4. **Create the `list_users` tool**:
+   - Takes `ctx: Context`
+   - Takes an optional parameter `tag_filter`: str | None
+   - If `tag_filter` is provided, returns only users having this tag
+   - Otherwise, returns all users
+   - Returns `List[User]`
+   - Logs with `ctx.info()`
 
-5. **Crée l'outil `obtenir_statistiques`** :
-   - Prend `ctx: Context`
-   - Retourne `StatistiquesUtilisateurs`
-   - Calcule le total, les stats par tag, et le score moyen
-   - Logge avec `ctx.info()`
+5. **Create the `get_statistics` tool**:
+   - Takes `ctx: Context`
+   - Returns `UserStatistics`
+   - Calculates total, stats by tag, and average score
+   - Logs with `ctx.info()`
 
-## Indices
+## Hints
 
-- Utilise `from typing import List, Dict, Optional`
-- Pour stocker les utilisateurs, utilise une liste globale : `utilisateurs = []`
-- Pour compter par tag, itère sur les utilisateurs et leurs tags
-- Pour calculer la moyenne : `sum(u.score for u in utilisateurs) / len(utilisateurs)` si la liste n'est pas vide
+- Use `from typing import List, Dict, Optional`
+- To store users, use a global list: `users = []`
+- To count by tag, iterate over users and their tags
+- To calculate the average: `sum(u.score for u in users) / len(users)` if the list is not empty
 
 ## Test
 
-Utilise `python test.py` pour vérifier que :
-- Les modèles fonctionnent avec des listes
-- Les outils manipulent correctement les données complexes
-- Les filtres fonctionnent
+Use `python test.py` to verify that:
+- Models work with lists
+- Tools correctly manipulate complex data
+- Filters work
 
-## Résultat attendu
+## Expected result
 
-- Ajouter plusieurs utilisateurs avec différents tags
-- Lister tous les utilisateurs
-- Filtrer par tag
-- Obtenir les statistiques
+- Add multiple users with different tags
+- List all users
+- Filter by tag
+- Get statistics

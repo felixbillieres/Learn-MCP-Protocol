@@ -32,10 +32,10 @@ Create a C2 server manager with strict authorization and real-time notifications
    ```
 
 3. **Create Tools** (all require authorization):
-   - `lister_beacons` : List all beacons
-   - `creer_task` : Create a task for a beacon
-   - `obtenir_tasks` : Get tasks for a beacon
-   - `obtenir_response` : Get task output
+   - `list_beacons` : List all beacons
+   - `create_task` : Create a task for a beacon
+   - `get_tasks` : Get tasks for a beacon
+   - `get_response` : Get task output
 
 4. **Create Resources**:
    - `beacon://list` : List all beacons
@@ -52,7 +52,7 @@ Create a C2 server manager with strict authorization and real-time notifications
    - Protect sensitive operations
 
 7. **Create Prompts**:
-   - `generer_commande` : Generate command templates
+   - `generate_command` : Generate command templates
 
 ## Hints
 

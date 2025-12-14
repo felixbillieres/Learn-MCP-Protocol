@@ -33,11 +33,11 @@ Create a firewall rules manager with validation and authorization.
      - `rule_id` : int | None
 
 2. **Create Tools**:
-   - `creer_regle` : Create firewall rule (validate IPs and ports)
-   - `lister_regles` : List all rules
+   - `create_rule` : Create firewall rule (validate IPs and ports)
+   - `list_rules` : List all rules
    - `modifier_regle` : Modify a rule (requires authorization)
    - `supprimer_regle` : Delete a rule (requires authorization)
-   - `creer_policy` : Create network policy
+   - `create_policy` : Create network policy
    - `appliquer_policy` : Apply policy to systems
 
 3. **Create Resources**:

@@ -1,47 +1,47 @@
-# Instructions - Projet 04
+# Instructions - Project 04
 
-## Ta mission
+## Your mission
 
-Créer un outil qui utilise le Context pour logger des informations pendant son exécution.
+Create a tool that uses Context to log information during its execution.
 
-## Étapes à suivre
+## Steps to follow
 
-1. **Crée un outil `traiter_fichier`** qui :
-   - Prend un paramètre `nom_fichier` (str) et `ctx: Context`
-   - Simule le traitement d'un fichier avec plusieurs étapes
-   - Utilise le Context pour logger chaque étape
+1. **Create a `process_file` tool** that:
+   - Takes a parameter `filename` (str) and `ctx: Context`
+   - Simulates file processing with several steps
+   - Uses Context to log each step
 
-2. **Étapes de traitement** :
-   - **Étape 1** : `ctx.info()` : "Début du traitement du fichier {nom_fichier}"
-   - **Étape 2** : Vérifie si le fichier existe (simule avec `nom_fichier.endswith(".txt")`)
-     - Si oui : `ctx.info()` : "Fichier trouvé"
-     - Si non : `ctx.warning()` : "Attention : le fichier ne semble pas être un .txt"
-   - **Étape 3** : `ctx.info()` : "Lecture du contenu..."
-   - **Étape 4** : Simule une erreur si `nom_fichier == "erreur.txt"`
-     - Si erreur : `ctx.error()` : "Erreur lors de la lecture du fichier" puis `raise ValueError(...)`
-   - **Étape 5** : `ctx.info()` : "Traitement terminé avec succès"
-   - **Retourne** : un dict avec `{"fichier": nom_fichier, "statut": "traité", "lignes": 42}`
+2. **Processing steps**:
+   - **Step 1**: `ctx.info()`: "Starting to process file {filename}"
+   - **Step 2**: Check if the file exists (simulate with `filename.endswith(".txt")`)
+     - If yes: `ctx.info()`: "File found"
+     - If no: `ctx.warning()`: "Warning: the file does not appear to be a .txt file"
+   - **Step 3**: `ctx.info()`: "Reading content..."
+   - **Step 4**: Simulate an error if `filename == "error.txt"`
+     - If error: `ctx.error()`: "Error reading the file" then `raise ValueError(...)`
+   - **Step 5**: `ctx.info()`: "Processing completed successfully"
+   - **Returns**: a dict with `{"file": filename, "status": "processed", "lines": 42}`
 
-3. **Important** :
-   - N'oublie pas d'importer `Context` depuis `mcp.server.fastmcp`
-   - Utilise `await` pour toutes les méthodes du Context
-   - Le paramètre `ctx` doit être le dernier paramètre de la fonction
+3. **Important**:
+   - Don't forget to import `Context` from `mcp.server.fastmcp`
+   - Use `await` for all Context methods
+   - The `ctx` parameter must be the last parameter of the function
 
-## Indices
+## Hints
 
-- Importe `Context` : `from mcp.server.fastmcp import Context`
-- Utilise `await ctx.info(...)`, `await ctx.warning(...)`, `await ctx.error(...)`
-- Le paramètre `ctx: Context` est généralement placé en dernier
-- Tu peux utiliser `time.sleep(0.1)` pour simuler un traitement qui prend du temps
+- Import `Context`: `from mcp.server.fastmcp import Context`
+- Use `await ctx.info(...)`, `await ctx.warning(...)`, `await ctx.error(...)`
+- The `ctx: Context` parameter is usually placed last
+- You can use `time.sleep(0.1)` to simulate processing that takes time
 
 ## Test
 
-Utilise `python test.py` pour vérifier que :
-- L'outil logge correctement les informations
-- Les différents niveaux de log fonctionnent
+Use `python test.py` to verify that:
+- The tool logs information correctly
+- Different log levels work
 
-## Résultat attendu
+## Expected result
 
-Quand tu appelles l'outil :
-- Tu devrais voir des messages de log à chaque étape
-- Les messages devraient être adaptés au contexte (info, warning, error)
+When you call the tool:
+- You should see log messages at each step
+- Messages should be adapted to the context (info, warning, error)

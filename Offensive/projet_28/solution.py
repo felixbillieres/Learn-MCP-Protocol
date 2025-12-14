@@ -28,7 +28,7 @@ class VulnerabilityAnalysis(BaseModel):
 
 # TODO: Create tools
 @mcp_server.tool()
-async def rechercher_cve(
+async def search_cve(
     cve_id: str | None = None,
     product: str | None = None,
     ctx: Context = None
@@ -37,7 +37,7 @@ async def rechercher_cve(
     pass
 
 @mcp_server.tool()
-async def analyser_cve(
+async def analyze_cve(
     cve_id: str,
     ctx: Context = None
 ) -> VulnerabilityAnalysis:
@@ -45,7 +45,7 @@ async def analyser_cve(
     pass
 
 @mcp_server.tool()
-async def lister_cve_par_produit(
+async def list_cve_by_product(
     product: str,
     ctx: Context = None
 ) -> List[CVE]:
@@ -86,4 +86,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

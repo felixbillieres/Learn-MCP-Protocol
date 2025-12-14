@@ -28,10 +28,10 @@ Create an incident management system with triage workflows.
      - `executed_at` : str | None
 
 2. **Create Tools**:
-   - `creer_incident` : Create new incident (uses elicitation)
+   - `create_incident` : Create new incident (uses elicitation)
    - `trier_incident` : Triage an incident (uses prompts)
    - `ajouter_ioc` : Add IOC to incident
-   - `creer_action` : Create response action
+   - `create_action` : Create response action
    - `executer_action` : Execute response action
    - `resoudre_incident` : Mark incident as resolved
 
@@ -41,7 +41,7 @@ Create an incident management system with triage workflows.
 
 4. **Create Prompts**:
    - `workflow_triage` : Guide through triage process
-   - `generer_rapport_incident` : Generate incident report
+   - `generate_incident_report` : Generate incident report
 
 5. **Use Elicitation**:
    - Collect incident details when creating

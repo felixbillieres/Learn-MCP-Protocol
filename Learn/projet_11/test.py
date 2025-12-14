@@ -1,5 +1,5 @@
 """
-Script de test pour le projet 11
+Test script for project 11
 """
 
 import sys
@@ -7,7 +7,7 @@ import importlib.util
 import asyncio
 
 async def test_list_prompts():
-    """Test que list_prompts fonctionne"""
+    """Test that list_prompts works"""
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
@@ -16,30 +16,30 @@ async def test_list_prompts():
         result = await solution.list_prompts()
         
         if not isinstance(result, list):
-            print(f"❌ list_prompts devrait retourner une liste")
+            print(f"❌ list_prompts should return a list")
             return False
         
         if len(result) < 2:
-            print(f"❌ Il devrait y avoir au moins 2 prompts, mais il y en a {len(result)}")
+            print(f"❌ There should be at least 2 prompts, but there are {len(result)}")
             return False
         
-        # Vérifie la structure
+        # Check structure
         for prompt in result:
             if "name" not in prompt:
-                print("❌ Chaque prompt doit avoir un champ 'name'")
+                print("❌ Each prompt must have a 'name' field")
                 return False
         
-        print(f"✅ list_prompts fonctionne ! {len(result)} prompts trouvés")
+        print(f"✅ list_prompts works! {len(result)} prompts found")
         return True
         
     except Exception as e:
-        print(f"❌ Erreur : {e}")
+        print(f"❌ Error: {e}")
         import traceback
         traceback.print_exc()
         return False
 
 async def test_get_prompt():
-    """Test que get_prompt fonctionne"""
+    """Test that get_prompt works"""
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
@@ -48,52 +48,52 @@ async def test_get_prompt():
         result = await solution.get_prompt("greeting")
         
         if not isinstance(result, dict):
-            print("❌ get_prompt devrait retourner un dict")
+            print("❌ get_prompt should return a dict")
             return False
         
         if "messages" not in result:
-            print("❌ Le résultat doit contenir 'messages'")
+            print("❌ The result must contain 'messages'")
             return False
         
         messages = result["messages"]
         if not isinstance(messages, list) or len(messages) == 0:
-            print("❌ 'messages' doit être une liste non vide")
+            print("❌ 'messages' must be a non-empty list")
             return False
         
-        # Vérifie le format d'un message
+        # Check message format
         msg = messages[0]
         if "role" not in msg or "content" not in msg:
-            print("❌ Chaque message doit avoir 'role' et 'content'")
+            print("❌ Each message must have 'role' and 'content'")
             return False
         
-        print("✅ get_prompt fonctionne !")
+        print("✅ get_prompt works!")
         return True
         
     except Exception as e:
-        print(f"❌ Erreur : {e}")
+        print(f"❌ Error: {e}")
         import traceback
         traceback.print_exc()
         return False
 
 async def test_get_invalid_prompt():
-    """Test que get_prompt lève une erreur pour un prompt invalide"""
+    """Test that get_prompt raises an error for invalid prompt"""
     spec = importlib.util.spec_from_file_location("solution", "solution.py")
     solution = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(solution)
     
     try:
         await solution.get_prompt("nonexistent")
-        print("❌ get_prompt devrait lever ValueError pour un prompt inexistant")
+        print("❌ get_prompt should raise ValueError for non-existent prompt")
         return False
     except ValueError:
-        print("✅ get_prompt lève correctement ValueError pour prompt inexistant")
+        print("✅ get_prompt correctly raises ValueError for non-existent prompt")
         return True
     except Exception as e:
-        print(f"❌ Erreur inattendue : {e}")
+        print(f"❌ Unexpected error: {e}")
         return False
 
 if __name__ == "__main__":
-    print("🧪 Test du Projet 11\n")
+    print("🧪 Test for Project 11\n")
     
     success = True
     success = asyncio.run(test_list_prompts()) and success
@@ -104,8 +104,7 @@ if __name__ == "__main__":
     
     print()
     if success:
-        print("🎉 Tous les tests passent !")
+        print("🎉 All tests pass!")
     else:
-        print("❌ Certains tests ont échoué.")
+        print("❌ Some tests failed.")
         sys.exit(1)
-

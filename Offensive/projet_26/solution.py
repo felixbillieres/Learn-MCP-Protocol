@@ -1,107 +1,106 @@
-# PROJET 26 - Scanner de Ports MCP
+# PROJECT 26 - Port Scanner MCP
 # 
-# TODO: Crée un serveur MCP pour scanner des ports et analyser les services
+# TODO: Create an MCP server to scan ports and analyze services
 
 from mcp.server.fastmcp import FastMCP, Context
 from pydantic import BaseModel, Field
 from typing import List, Dict, Any, Optional
 from datetime import datetime
 
-# TODO: Crée le serveur avec capabilities pour resources
+# TODO: Create the server with capabilities for resources
 mcp_server = FastMCP(
-    "ScannerPorts",
+    "PortScanner",
     host="127.0.0.1",
     port=8000,
     stateless_http=True,
     json_response=True
-    # TODO: Ajoute les capabilities nécessaires
+    # TODO: Add necessary capabilities
 )
 
-# TODO: Liste globale pour stocker les scans
+# TODO: Global list to store scans
 # scans: List[ScanResult] = []
 
-# TODO: Crée le modèle PortInfo
+# TODO: Create the PortInfo model
 class PortInfo(BaseModel):
     pass
 
-# TODO: Crée le modèle ScanResult
+# TODO: Create the ScanResult model
 class ScanResult(BaseModel):
     pass
 
-# TODO: Crée l'outil scanner_ports
+# TODO: Create the scan_ports tool
 @mcp_server.tool()
-async def scanner_ports(
+async def scan_ports(
     target: str,
     ports: List[int] | None = None,
     scan_type: str = "quick",
     ctx: Context = None
 ) -> ScanResult:
     """
-    Scanne les ports d'une cible.
+    Scans ports on a target.
 
     Args:
-        target: Adresse IP ou hostname à scanner
-        ports: Liste de ports à scanner (optionnel, si None scanne les ports communs)
-        scan_type: Type de scan ("quick" ou "full")
-        ctx: Le contexte MCP
+        target: IP address or hostname to scan
+        ports: List of ports to scan (optional, if None scans common ports)
+        scan_type: Type of scan ("quick" or "full")
+        ctx: MCP context
 
     Returns:
-        Résultat du scan avec les ports détectés
+        Scan result with detected ports
     """
     pass
 
-# TODO: Crée l'outil analyser_services
+# TODO: Create the analyze_services tool
 @mcp_server.tool()
-async def analyser_services(
+async def analyze_services(
     scan_id: int,
     ctx: Context = None
 ) -> Dict[str, Any]:
     """
-    Analyse les services détectés dans un scan.
+    Analyzes services detected in a scan.
 
     Args:
-        scan_id: ID du scan (index dans la liste)
-        ctx: Le contexte MCP
+        scan_id: Scan ID (index in the list)
+        ctx: MCP context
 
     Returns:
-        Analyse des services avec vulnérabilités potentielles
+        Service analysis with potential vulnerabilities
     """
     pass
 
-# TODO: Crée la resource pour exposer les scans
+# TODO: Create resource to expose scans
 @mcp_server.list_resources()
 async def list_resources() -> List[Dict[str, Any]]:
-    """Liste toutes les resources de scans disponibles"""
+    """Lists all available scan resources"""
     pass
 
-# TODO: Crée le template URI pour accéder aux scans
+# TODO: Create URI template to access scans
 @mcp_server.list_resource_templates()
 async def list_resource_templates() -> List[Dict[str, Any]]:
-    """Liste les templates URI pour les scans"""
+    """Lists URI templates for scans"""
     pass
 
-# TODO: Crée la fonction pour lire une resource
+# TODO: Create function to read a resource
 @mcp_server.read_resource()
 async def read_resource(uri: str) -> Dict[str, Any]:
-    """Lit une resource de scan par URI"""
+    """Reads a scan resource by URI"""
     pass
 
-# TODO: Crée le prompt pour générer des rapports
+# TODO: Create prompt to generate reports
 @mcp_server.list_prompts()
 async def list_prompts() -> List[Dict[str, Any]]:
-    """Liste les prompts disponibles"""
+    """Lists available prompts"""
     pass
 
 @mcp_server.get_prompt()
 async def get_prompt(name: str, arguments: Dict[str, Any] | None = None) -> Dict[str, Any]:
-    """Récupère un prompt avec ses arguments"""
+    """Retrieves a prompt with its arguments"""
     pass
 
 def main():
-    print("Scanner de Ports MCP démarre !")
+    print("Port Scanner MCP is starting!")
     print("URL: http://127.0.0.1:8000/mcp")
     mcp_server.run(transport="streamable-http")
 
 if __name__ == "__main__":
     main()
-
