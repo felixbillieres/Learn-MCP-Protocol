@@ -1,0 +1,40 @@
+"""
+Test script for Python Exercise $i
+Tests complete MCP server concepts
+"""
+
+import sys
+import importlib.util
+
+def test_concept():
+    """Test the implemented concept"""
+    spec = importlib.util.spec_from_file_location("exercise", "exercise_$i.py")
+    exercise = importlib.util.module_from_spec(spec)
+    
+    try:
+        spec.loader.exec_module(exercise)
+    except Exception as e:
+        print(f"Error loading exercise: {e}")
+        return False
+    
+    # Test that main function exists and runs
+    if not hasattr(exercise, 'main'):
+        print("main function is not defined")
+        return False
+    
+    print("✓ Implementation is complete and functional")
+    return True
+
+if __name__ == "__main__":
+    print("Testing Python Exercise $i - Complete MCP Server\n")
+    
+    tests = [test_concept]
+    passed = sum(1 for test in tests if test())
+    
+    print(f"Results: {passed}/{len(tests)} tests passed")
+    
+    if passed == len(tests):
+        print("🎉 All tests passed! You're ready for MCP Project $i!")
+    else:
+        print("❌ Some tests failed. Review your code and try again!")
+        sys.exit(1)

@@ -1,202 +1,299 @@
-# Learn MCP Protocol in Python
+# Learn MCP Protocol in Python - Complete Learning Platform
 
-A progressive learning guide for mastering the Model Context Protocol (MCP) in Python, based on real-world project structures.
+A comprehensive, progressive learning guide for mastering the Model Context Protocol (MCP) in Python, with 40+ pedagogical exercises to build your skills step-by-step.
 
-## Overview
+## What's New: Python Exercises System
 
-This repository contains **40 progressive mini-projects** designed to take you from beginner to advanced level in MCP development. Each project builds upon previous concepts, providing hands-on experience with all major MCP features.
+This repository now includes comprehensive Python exercises for each MCP project! Before diving into MCP implementation, master the Python concepts you'll need.
 
-The projects are organized into three categories:
-- **Learn** (Projects 01-25): Core MCP concepts and fundamentals
-- **Offensive** (Projects 26-32): Security offensive tools and techniques
-- **Defensive** (Projects 33-40): Security defensive tools and incident response
+### Python Exercises Structure
 
-## Learning Path
+Each project now has a `python_exercises/` folder with:
+- `exercise_XX.py` - Complete Python code with TODOs (not just tests!)
+- `test_exercise_XX.py` - Automated validation tests
+- `README.md` - Detailed learning instructions
 
-### Beginner Level (Projects 01-07)
+### Learning Flow
 
-1. **Project 01** - Create a basic MCP server with FastMCP
-2. **Project 02** - Add your first simple tool
-3. **Project 03** - Use Pydantic models to structure data
-4. **Project 04** - Use Context for logging (info, error, warning)
-5. **Project 05** - Error handling and validation
-6. **Project 06** - Tools with complex parameters and advanced types
-7. **Project 07** - Beginner final project: Complete mini server
+```
+1. Study Python Exercise -> Master concepts
+2. Implement MCP Project -> Apply knowledge
+3. Validate with Tests -> Confirm understanding
+4. Next Project -> Progressive learning
+```
 
-### Resources (Projects 08-10)
+---
 
-8. **Project 08** - Create your first resource (expose data)
-9. **Project 09** - Resources with URI templates and dynamic URIs
-10. **Project 10** - Advanced resources: subscriptions and notifications
+## Repository Overview
 
-### Prompts (Projects 11-13)
+### 40 Progressive MCP Projects
 
-11. **Project 11** - Create your first prompt (message template)
-12. **Project 12** - Prompts with dynamic arguments
-13. **Project 13** - Advanced prompts: chaining and complex workflows
+| Section | Projects | Focus | Difficulty |
+|---------|----------|-------|------------|
+| **Learn** | 01-25 | Core MCP + Advanced Features | Beginner → Expert |
+| **Offensive** | 26-32 | Security Offensive Tools | Advanced |
+| **Defensive** | 33-40 | Security Defensive Tools | Advanced |
 
-### Elicitation (Projects 14-16)
+### Complete Learning Path
 
-14. **Project 14** - Use elicitation to request information
-15. **Project 15** - Elicitation with JSON schemas and validation
-16. **Project 16** - Elicitation URL mode for sensitive interactions
+#### Core MCP Fundamentals (Projects 01-07)
+1. **Project 01** - Basic MCP server with FastMCP
+2. **Project 02** - First tools (async functions, decorators)
+3. **Project 03** - Pydantic models & validation
+4. **Project 04** - Context logging (info/warning/error)
+5. **Project 05** - Error handling & validation
+6. **Project 06** - Complex types (List, Dict, Optional)
+7. **Project 07** - Complete mini-server (all concepts combined)
 
-### Sampling (Projects 17-19)
+#### MCP Core Features (Projects 08-19)
+8. **Resources** - Expose data via MCP
+9. **URI Templates** - Dynamic resource access
+10. **Subscriptions** - Real-time notifications
+11. **Prompts** - Message templates for LLMs
+12. **Dynamic Prompts** - Arguments & personalization
+13. **Advanced Prompts** - Multi-message workflows
+14. **Elicitation** - Request user information
+15. **Schema Validation** - JSON Schema elicitation
+16. **URL Elicitation** - OAuth & secure interactions
+17. **LLM Sampling** - Request completions
+18. **Advanced Sampling** - Temperature, tokens, preferences
+19. **Agentic Workflows** - Tools + LLM orchestration
 
-17. **Project 17** - Use sampling to request LLM completions
-18. **Project 18** - Sampling with model preferences and parameters
-19. **Project 19** - Advanced sampling: complex agentic workflows
+#### Security & Authorization (Projects 20-22)
+20. **OAuth Basics** - Token validation
+21. **Scopes & Audiences** - Granular permissions
+22. **Advanced Security** - Rate limiting, monitoring
 
-### Authorization & Security (Projects 20-22)
+#### ⚡ **Advanced Concepts (Projects 23-25)**
+23. **Roots** - Path-based access control
+24. **Transports** - Multi-transport configuration
+25. **FINAL PROJECT** - Complete MCP server (all features)
 
-20. **Project 20** - Introduction to OAuth 2.1 authorization
-21. **Project 21** - Implement authentication with tokens
-22. **Project 22** - Advanced security: audience and scope validation
+#### Offensive Security (Projects 26-32)
+26. **Port Scanner** - Network scanning & service analysis
+27. **Payload Manager** - Exploit/shellcode management
+28. **Vulnerability Analyzer** - CVE analysis & advisories
+29. **Pentest Sessions** - Exploitation session management
+30. **Exploit Framework** - Chained exploit execution
+31. **C2 Manager** - Command & control simulation
+32. **Pentest Automation** - Complete workflow orchestration
 
-### Advanced Concepts (Projects 23-25)
+#### Defensive Security (Projects 33-40)
+33. **SIEM** - Security event processing & alerting
+34. **Incident Manager** - Security incident triage
+35. **Malware Analyzer** - File analysis & YARA rules
+36. **Patch Manager** - Security patch tracking
+37. **Firewall Manager** - Rule validation & management
+38. **Anomaly Detector** - ML-based anomaly detection
+39. **Secrets Manager** - Secure credential management
+40. **FINAL PROJECT** - Complete security platform
 
-23. **Project 23** - Use Roots to define access boundaries
-24. **Project 24** - Custom transports and optimizations
-25. **Project 25** - ADVANCED FINAL PROJECT: Complete MCP server with all features
-
-### Offensive Security (Projects 26-32)
-
-26. **Project 26** - Port Scanner MCP: Scan ports and analyze services
-27. **Project 27** - Payload Manager: Manage exploits, shells, and shellcodes
-28. **Project 28** - Vulnerability Analyzer: Analyze CVEs and generate advisories
-29. **Project 29** - Pentest Session Manager: Manage exploitation sessions
-30. **Project 30** - Exploitation Framework: Chain exploits with intelligent payloads
-31. **Project 31** - C2 Manager: Command & Control server simulation
-32. **Project 32** - Pentest Automation: Orchestrate complete pentest workflows
-
-### Defensive Security (Projects 33-40)
-
-33. **Project 33** - SIEM MCP: Security Information and Event Management
-34. **Project 34** - Incident Manager: Manage security incidents with triage
-35. **Project 35** - Malware Analyzer: Analyze suspicious files and generate YARA rules
-36. **Project 36** - Patch Manager: Track and deploy security patches
-37. **Project 37** - Firewall Rules Manager: Manage firewall rules with validation
-38. **Project 38** - Anomaly Detector: Detect anomalies using baselines and ML
-39. **Project 39** - Secrets Manager: Securely manage passwords, tokens, and keys
-40. **Project 40** - ADVANCED FINAL PROJECT: Complete security platform (offensive + defensive)
+---
 
 ## Repository Structure
 
-The repository is organized into three main directories:
-
 ```
-Learn/
-├── projet_01/       # Core MCP learning projects (01-25)
-├── projet_02/
-└── ...
-
-Offensive/
-├── projet_26/       # Security offensive projects (26-32)
-├── projet_27/
-└── ...
-
-Defensive/
-├── projet_33/       # Security defensive projects (33-40)
-├── projet_34/
-└── ...
+Learn-MCP-Protocol/
+├── Learn/                    # Core MCP learning (01-25)
+│   ├── projet_01/
+│   │   ├── python_exercises/    # 🆕 Python prep exercises!
+│   │   │   ├── exercise_01.py
+│   │   │   ├── test_exercise_01.py
+│   │   │   └── README.md
+│   │   ├── README.md
+│   │   ├── INSTRUCTIONS.md
+│   │   ├── solution.py
+│   │   └── test.py
+│   └── ...
+│
+├── Offensive/               # Security offensive tools (26-32)
+│   ├── projet_26/
+│   │   ├── python_exercises/    # 🆕 Python prep exercises!
+│   │   └── ...
+│   └── ...
+│
+├── Defensive/              # Security defensive tools (33-40)
+│   ├── projet_33/
+│   │   ├── python_exercises/    # 🆕 Python prep exercises!
+│   │   └── ...
+│   └── ...
+│
+├── README.md               # This file
+├── README_FR.md           # French version
+└── README_EN.md           # English version
 ```
 
-## Project Structure
+---
 
-Each project follows the same structure:
+## How to Use the Python Exercises
 
-```
-projet_XX/
-├── README.md        # Theoretical concepts and explanations
-├── INSTRUCTIONS.md  # Detailed step-by-step instructions
-├── solution.py      # Code template with TODOs to complete
-├── test.py          # Test scripts to validate your implementation
-└── .gitignore       # Git ignore rules (optional)
-```
+### Before Each MCP Project
 
-**Note:** Learn projects (01-25) have documentation in French. Offensive and Defensive projects (26-40) have documentation in English.
+1. **Check if Python exercises exist** for your project:
+   ```bash
+   ls Learn/projet_XX/python_exercises/
+   ```
+
+2. **Study the Python concepts** needed:
+   ```bash
+   cat Learn/projet_XX/python_exercises/README.md
+   ```
+
+3. **Complete the exercise**:
+   ```bash
+   # Edit the exercise
+   nano Learn/projet_XX/python_exercises/exercise_XX.py
+
+   # Run tests to validate
+   python3 Learn/projet_XX/python_exercises/test_exercise_XX.py
+   ```
+
+4. **When tests pass** - You're ready for the MCP project!
+
+### Progressive Difficulty
+
+| Project Range | Python Concepts | MCP Focus |
+|---------------|----------------|-----------|
+| 01-07 | Basic Python | MCP Fundamentals |
+| 08-13 | Data structures | Resources & Prompts |
+| 14-19 | Async, validation | Elicitation & Sampling |
+| 20-25 | Security, auth | Advanced MCP |
+| 26-32 | Network, security | Offensive Tools |
+| 33-40 | Monitoring, analysis | Defensive Tools |
+
+---
 
 ## Getting Started
 
 ### Prerequisites
-
 - Python 3.10 or higher
-- Basic Python knowledge (functions, classes, imports)
-- No prior MCP knowledge required - you'll learn everything here!
+- Basic Python knowledge (recommended but not required)
+- No prior MCP knowledge needed!
 
 ### Installation
-
 ```bash
+# Install MCP and dependencies
 pip install mcp pydantic
+
+# For some exercises (optional)
+pip install requests aiohttp
 ```
 
-Or using `uv`:
+### Learning Workflow
+
+1. **Start with Project 01** - Complete the Python exercise first
+2. **Read the theory** - `README.md` explains MCP concepts
+3. **Follow instructions** - `INSTRUCTIONS.md` guides implementation
+4. **Code & test** - Complete `solution.py`, validate with `test.py`
+5. **Repeat** - Each project builds on previous knowledge
+
+### Testing Your Progress
 
 ```bash
-uv pip install mcp pydantic
+# Test Python exercise (prep)
+python3 Learn/projet_XX/python_exercises/test_exercise_XX.py
+
+# Test MCP implementation
+python3 Learn/projet_XX/test.py
 ```
-
-### How to Use
-
-1. Start with **Project 01** and work through them sequentially
-2. Read `README.md` to understand the theoretical concepts
-3. Follow `INSTRUCTIONS.md` for detailed steps
-4. Complete the code in `solution.py`
-5. Run `python test.py` to validate your implementation
-6. Ask for help or code review if needed!
-
-## Translation Status
-
-**Note:** 
-- **Learn projects (01-25)**: Documentation is in French (README.md and INSTRUCTIONS.md)
-- **Offensive projects (26-32)**: Documentation is in English
-- **Defensive projects (33-40)**: Documentation is in English
-
-The code, test files, and variable names use English conventions across all projects.
-
-The main README is available in both languages:
-- `README.md` - English version (this file)
-- `README_FR.md` - French version
-- `README_EN.md` - English version (same as README.md)
-
-## Learning Objectives
-
-By completing these projects, you will master:
-
-- ✅ Creating MCP servers with FastMCP
-- ✅ Declaring and implementing tools
-- ✅ Using Pydantic for data validation
-- ✅ Managing logs and context
-- ✅ Proper error handling
-- ✅ Working with resources, prompts, and elicitation
-- ✅ Implementing authorization and security
-- ✅ Building production-ready MCP servers
-- ✅ **Security offensive tools**: Port scanning, exploitation, C2 management
-- ✅ **Security defensive tools**: SIEM, incident response, malware analysis
-- ✅ **Complete security platforms**: Combining offensive and defensive capabilities
-
-## Resources
-
-- [MCP Specification](https://modelcontextprotocol.io)
-- [FastMCP Documentation](https://github.com/jlowin/fastmcp)
-- [Pydantic Documentation](https://docs.pydantic.dev)
-
-## Contributing
-
-This is a learning resource. Feel free to:
-- Report issues or suggest improvements
-- Submit pull requests for better examples
-- Share your solutions and implementations
-
-## License
-
-See LICENSE file for details.
-
-## Acknowledgments
-
-This learning path is inspired by real-world MCP implementations and follows the official MCP specification patterns.
 
 ---
 
-**Happy Learning!**
+## Language Support
+
+- **Learn Projects (01-25)**: Documentation in **French** 🇫🇷
+- **Offensive/Defensive (26-40)**: Documentation in **English** 🇺🇸
+- **Code & Tests**: Always in **English** (consistent naming)
+
+---
+
+## What You'll Master
+
+### ✅ **Python Skills**
+- Async/await programming
+- Pydantic data validation
+- Error handling & logging
+- Network programming
+- Security concepts
+- Data structures & algorithms
+
+### ✅ **MCP Expertise**
+- Server creation with FastMCP
+- Tools, resources, prompts
+- Elicitation & sampling
+- Authentication & authorization
+- Production-ready implementations
+
+### ✅ **Security Proficiency**
+- Offensive security tools
+- Defensive security systems
+- Incident response
+- Security automation
+
+---
+
+## Resources & Documentation
+
+- **[MCP Specification](https://modelcontextprotocol.io)** - Official protocol docs
+- **[FastMCP](https://github.com/jlowin/fastmcp)** - Python MCP implementation
+- **[Pydantic](https://docs.pydantic.dev)** - Data validation library
+
+### 🆘 **Getting Help**
+
+- Check the `README.md` and `INSTRUCTIONS.md` in each project
+- Review the Python exercises for concept clarification
+- Run tests to identify specific issues
+- Join MCP community discussions
+
+---
+
+## Contributing
+
+This is a learning platform - contributions welcome!
+
+- Report Issues: Found a bug or unclear instruction?
+- Suggest Improvements: Better examples or explanations?
+- Code Contributions: Enhanced exercises or tools?
+- Documentation: Improve clarity or add examples?
+
+**See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.**
+
+---
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## Acknowledgments
+
+- **MCP Community** - For the excellent protocol specification
+- **FastMCP Authors** - For the Python implementation
+- **Security Researchers** - For offensive/defensive techniques
+- **Open Source Community** - For the tools and libraries
+
+---
+
+## Ready to Start?
+
+```bash
+# Clone the repository
+git clone https://github.com/el/learn-mcp-protocol.git
+cd learn-mcp-protocol
+
+# Start with the first Python exercise
+cd Learn/projet_01/python_exercises
+python3 test_exercise_01.py  # Should show what to implement
+
+# Then move to MCP implementation
+cd ..
+python3 test.py  # MCP project tests
+```
+
+**Happy Learning! Master MCP step by step, from Python basics to advanced security platforms.**
+
+---
+
+**Built with love by Félix Billières**
 
