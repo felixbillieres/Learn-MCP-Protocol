@@ -201,9 +201,10 @@ python3 Learn/projet_XX/test.py
 
 ## Language Support
 
-- **Learn Projects (01-25)**: Documentation in **French** 🇫🇷
-- **Offensive/Defensive (26-40)**: Documentation in **English** 🇺🇸
+- **All Projects (01-40)**: Documentation in **English** 🇺🇸
 - **Code & Tests**: Always in **English** (consistent naming)
+
+*Note: A French README (`README_FR.md`) is available for French-speaking learners.*
 
 ---
 
@@ -279,7 +280,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ```bash
 # Clone the repository
-git clone https://github.com/el/learn-mcp-protocol.git
+git clone https://github.com/felixbillieres/learn-mcp-protocol.git
 cd learn-mcp-protocol
 
 # Start with the first Python exercise
