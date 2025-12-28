@@ -27,6 +27,10 @@ Each project now has a `python_exercises/` folder with:
 Launch our **terminal-based IDE** for an enhanced learning experience:
 
 ```bash
+# Quick launch (installs dependencies automatically)
+./run_ide.sh
+
+# Or manual launch
 python3 mcp_ide.py
 ```
 
