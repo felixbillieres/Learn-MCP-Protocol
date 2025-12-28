@@ -35,7 +35,7 @@ This exercise covers all MCP features in a comprehensive project manager impleme
 
 When all tests pass, you should see:
 ```
-🎉 All tests passed! You're ready for MCP Project 23!
+All tests passed! You're ready for MCP Project 23!
 ```
 
 This exercise shows how to build a complete, production-ready MCP server!

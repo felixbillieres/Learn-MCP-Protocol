@@ -36,7 +36,7 @@ This exercise covers:
 
 When all tests pass, you should see:
 ```
-🎉 All tests passed! You're ready for MCP Project 03!
+All tests passed! You're ready for MCP Project 03!
 ```
 
 ### Tips
