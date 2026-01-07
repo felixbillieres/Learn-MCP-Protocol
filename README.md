@@ -22,28 +22,6 @@ Each project now has a `python_exercises/` folder with:
 4. Next Project -> Progressive learning
 ```
 
-## Interactive Learning IDE 🖥️
-
-Launch our **terminal-based IDE** for an enhanced learning experience:
-
-```bash
-# Quick launch (installs dependencies automatically)
-./run_ide.sh
-
-# Or manual launch
-python3 mcp_ide.py
-```
-
-### IDE Features
-- **📚 Project Navigation** - Browse all 40 MCP projects by category
-- **🐍 Code Viewer** - Syntax-highlighted code viewing with line numbers
-- **🧪 Test Runner** - Execute individual or all tests with detailed output
-- **📊 Progress Tracking** - Mark exercises complete and view learning progress
-- **📖 Documentation Access** - View instructions, solutions, and exercise guides
-- **🎯 Guided Learning** - Structured workflow from Python exercises to MCP implementation
-
-The IDE provides a complete development environment for your MCP learning journey!
-
 ---
 
 ## Repository Overview
